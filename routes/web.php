@@ -18,8 +18,8 @@ Route::get('/', function () {
 });
 
 // Rutas usuario
-Route::get('usuario', 'UsuarioController@index')->name('usuario.index');
+Route::get('usuario', ['UsuarioController@index'])->name('usuario.index');
 
 // Rutas bicicleta
-Route::get('bicicleta', 'BicicletaController@index') -> name('bicicleta.index');
+Route::get('bicicleta', 'BicicletaController@index')->name('bicicleta.index');
 
