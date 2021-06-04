@@ -22,8 +22,6 @@ class UsuarioController extends Controller
 
     public function store() {
         Usuario::create(request()->all());
-        return view('usuario.mostrarUsuarios')->with([
-            'usuarios' => Usuario::all(),
-        ]);
+        return redirect()->route('usuario.mostrarUsuarios');
     }
 }
