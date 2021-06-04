@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Bicicleta;
+use App\Models\Usuario;
 use Illuminate\Http\Request;
 
 class BicicletaController extends Controller
@@ -13,8 +14,11 @@ class BicicletaController extends Controller
         ]);
     }
 
-    public function create() {
-        return view('bicicleta.index');
+    public function create($identificacion) {
+        // dd($identificacion);
+        return view('bicicleta.index')->with([
+            'identificacion' => Usuario::findOrFail($identificacion),
+        ]);
     }
 
     public function store() {

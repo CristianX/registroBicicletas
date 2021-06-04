@@ -13,17 +13,17 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
+Route::get('/', function () {
+    return view('welcome');
+});
 
 // Rutas usuario
 Route::get('mostrarUsuarios', 'App\Http\Controllers\UsuarioController@index')->name('usuario.mostrarUsuarios');
-Route::get('/', 'App\Http\Controllers\UsuarioController@create')->name('usuario.index');
+Route::get('usuario', 'App\Http\Controllers\UsuarioController@create')->name('usuario.index');
 Route::post('usuario', 'App\Http\Controllers\UsuarioController@store')->name('usuario.store');
 
 // Rutas bicicleta
 Route::get('mostrarBicicletas', 'App\Http\Controllers\BicicletaController@index')->name('bicicleta.mostrarBicicletas');
-Route::get('bicicleta', 'App\Http\Controllers\BicicletaController@create')->name('bicicleta.index');
+Route::get('bicicleta/{identificacion}', 'App\Http\Controllers\BicicletaController@create')->name('bicicleta.index');
 Route::post('bicicleta', 'App\Http\Controllers\BicicletaController@store')->name('bicicleta.store');
 

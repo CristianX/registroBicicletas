@@ -9,6 +9,7 @@ class Usuario extends Model
 {
     use HasFactory;
     public $timestamps = false;
+    protected $primaryKey = "IDENTIFICACION_USUARIO";
     
     /**
      * The attributes that are mass assignable.

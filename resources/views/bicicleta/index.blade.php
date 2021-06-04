@@ -8,7 +8,7 @@
         <title>Formulario de Bicicletas</title>
     </head>
     <body>
-        <h1 style="text-align: center" >Registro de Bicicletas</h1>
+        <h1 style="text-align: center" >Registro de Bicicletas {{ $identificacion->NOMBRES_USUARIO  }} </h1>
         <hr>
         <form method="POST" action="{{ route('bicicleta.store') }}" style="padding: 10px" >
             @csrf
