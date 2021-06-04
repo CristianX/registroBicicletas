@@ -7,6 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Usuario extends Model
 {
+    use HasFactory;
+    public $timestamps = false;
+    
     /**
      * The attributes that are mass assignable.
      *
@@ -24,4 +27,5 @@ class Usuario extends Model
         'PARROQUIARES_USUARIO',
         'BARRIORES_USUARIO',
     ];
+    
 }

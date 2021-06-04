@@ -22,16 +22,16 @@ class UsuarioFactory extends Factory
     public function definition()
     {
         return [
-            'IDENTIFICACION_USUARIO'-> $this->faker->name();
-            'NOMBRES_USUARIO'-> $this->faker->name();
-            'APELLIDOS_USUARIO'-> $this->faker->name();
-            'EDAD_USUARIO'-> $this->faker->name();
-            'EMAIL_USUARIO'-> $this->faker->name();
-            'TELFCONVENCIONAL_USUARIO'-> $this->faker->name();
-            'TELFCELULAR_USUARIO'-> $this->faker->name();
-            'NACIONALIDAD_USUARIO'-> $this->faker->name();
-            'PARROQUIARES_USUARIO'-> $this->faker->name();
-            'BARRIORES_USUARIO'-> $this->faker->name();
+            'IDENTIFICACION_USUARIO'=> $this->faker->numberBetween(0, 10000000000),
+            'NOMBRES_USUARIO'=> $this->faker->sentence(2),
+            'APELLIDOS_USUARIO'=> $this->faker->sentence(2),
+            'EDAD_USUARIO'=> $this->faker->numberBetween(1, 125),
+            'EMAIL_USUARIO'=> $this->faker->sentence(1),
+            'TELFCONVENCIONAL_USUARIO'=> $this->faker->numberBetween(0, 10000000000),
+            'TELFCELULAR_USUARIO'=> $this->faker->numberBetween(0, 10000000000),
+            'NACIONALIDAD_USUARIO'=> $this->faker->sentence(1),
+            'PARROQUIARES_USUARIO'=> $this->faker->sentence(2),
+            'BARRIORES_USUARIO'=> $this->faker->sentence(2),
         ];
     }
 }
