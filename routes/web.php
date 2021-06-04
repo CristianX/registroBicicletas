@@ -18,7 +18,9 @@ Route::get('/', function () {
 });
 
 // Rutas usuario
-Route::get('usuario', 'App\Http\Controllers\UsuarioController@index')->name('usuario.index');
+Route::get('mostrarUsuarios', 'App\Http\Controllers\UsuarioController@index')->name('usuario.mostrarusuarios');
+Route::get('usuario', 'App\Http\Controllers\UsuarioController@create')->name('usuario.index');
+Route::post('usuario', 'App\Http\Controllers\UsuarioController@store')->name('usuario.store');
 
 // Rutas bicicleta
 Route::get('bicicleta', 'App\Http\Controllers\BicicletaController@index')->name('bicicleta.index');
