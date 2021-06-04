@@ -14,43 +14,43 @@
             @csrf
             <div class="mb-3">
                 <label for="identificacion" class="form-label">Identificación</label>
-                <input placeholder="Ingrese su identificación" type="text" class="form-control"name="identificacion" required>
+                <input placeholder="Ingrese su identificación" type="number" class="form-control"name="IDENTIFICACION_USUARIO" required>
             </div>
             <div class="mb-3">
                 <label for="nombres" class="form-label">Nombres</label>
-                <input placeholder="Ingrese sus Nombres" type="text" class="form-control" name="nombres" required>
+                <input placeholder="Ingrese sus Nombres" type="text" class="form-control" name="NOMBRES_USUARIO" required>
             </div>
             <div class="mb-3">
                 <label for="apellidos" class="form-label">Apellidos</label>
-                <input placeholder="Ingrese sus Apellidos" type="text" class="form-control" name="apellidos" required>
+                <input placeholder="Ingrese sus Apellidos" type="text" class="form-control" name="APELLIDOS_USUARIO" required>
             </div>
             <div class="mb-3">
                 <label for="edad" class="form-label">Edad</label>
-                <input placeholder="Ingrese su Edad" type="number" min="18" step="1" class="form-control" name="edad" required>
+                <input placeholder="Ingrese su Edad" type="number" min="18" step="1" class="form-control" name="EDAD_USUARIO" required>
             </div>
             <div class="mb-3">
               <label for="email" class="form-label">Correo Electrónico</label>
-              <input placeholder="Ingrese su Correo Electrónico" type="email" class="form-control" name="email" required>
+              <input placeholder="Ingrese su Correo Electrónico" type="email" class="form-control" name="EMAIL_USUARIO" required>
             </div>
             <div class="mb-3">
                 <label for="telefConvencional" class="form-label">Teléfono Convencional</label>
-                <input placeholder="Ingrese su teléfono convencional" type="number" class="form-control" name="telefConvencional" required>
+                <input placeholder="Ingrese su teléfono convencional" type="number" class="form-control" name="TELFCONVENCIONAL_USUARIO" required>
             </div>
             <div class="mb-3">
                 <label for="telefCelular" class="form-label">Teléfono Celular</label>
-                <input placeholder="Ingrese su teléfono celular" type="number" class="form-control" name="telefCelular" required>
+                <input placeholder="Ingrese su teléfono celular" type="number" class="form-control" name="TELFCELULAR_USUARIO" required>
             </div>
             <div class="mb-3">
                 <label for="nacionalidad" class="form-label">Nacionalidad</label>
-                <input placeholder="Ingrese su Nacionalidad" type="text" class="form-control" name="nacionalidad" required>
+                <input placeholder="Ingrese su Nacionalidad" type="text" class="form-control" name="NACIONALIDAD_USUARIO" required>
             </div>
             <div class="mb-3">
                 <label for="parroquiaReside" class="form-label">Parroquia donde Reside</label>
-                <input placeholder="Ingrese la Parroquia donde Reside" type="text" class="form-control" name="parroquiaReside" required>
+                <input placeholder="Ingrese la Parroquia donde Reside" type="text" class="form-control" name="PARROQUIARES_USUARIO" required>
             </div>
             <div class="mb-3">
                 <label for="barrioDondeReside" class="form-label">Barrio donde Reside</label>
-                <input placeholder="Ingrese el Barrio donde Reside" type="text" class="form-control" name="barrioDondeReside" required>
+                <input placeholder="Ingrese el Barrio donde Reside" type="text" class="form-control" name="BARRIORES_USUARIO" required>
             </div>
             <button type="submit" class="btn btn-primary">Registrar</button>
           </form>

@@ -21,6 +21,9 @@ class UsuarioController extends Controller
     }
 
     public function store() {
-        dd('Estamos en store');
+        Usuario::create(request()->all());
+        return view('usuario.mostrarUsuarios')->with([
+            'usuarios' => Usuario::all(),
+        ]);
     }
 }
