@@ -8,7 +8,7 @@
     <title>Inicio</title>
 </head>
 <body>
-    <div style="padding: 10px" class="center" >
+    <div style="padding: 10px"  >
         <h1>Usted está Registrado?</h1>
         <br><br><br>
         <label for="notificacion" class="form-label">Registrarse por Primera Vez</label>
