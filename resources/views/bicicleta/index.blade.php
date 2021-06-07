@@ -8,9 +8,9 @@
         <title>Formulario de Bicicletas</title>
     </head>
     <body>
-        <h1 style="text-align: center" >Registro de Bicicletas {{ $identificacion->NOMBRES_USUARIO  }} </h1>
+        <h1 style="text-align: center" >Registro de Bicicletas de {{ $identificacion->NOMBRES_USUARIO  }} </h1>
         <hr>
-        <form method="POST" action="{{ route('bicicleta.store') }}" style="padding: 10px" >
+        <form method="POST" action="{{ route('bicicleta.store',['identificacion' => $registroIdentificacion ]) }}" enctype="multipart/form-data" style="padding: 10px" >
             @csrf
             <div class="mb-3">
                 <label for="nserie" class="form-label">Número de Serie</label>
@@ -68,11 +68,59 @@
                 <div class="card">
                     <div class="card-body">
                         <div class="form-group">
-                            <label for="especBicicleta" class="form-label">Subir Imágenes</label>
+                            <label for="especBicicleta" class="form-label">Foto Frontal de la Bicicleta</label>
                             <br>
-                            <input type="file" name="FOTOFRONTAL_BICICLETA">
+                            <input type="file" name="FOTOFRONTAL_BICICLETA" accept="image/*" required>
+                            @error('FOTOFRONTAL_BICICLETA')
+                                <br>
+                                <small class="text-danger" >{{'No se admiten otro tipo de archivos que no sean imagenes'}}</small>
+                            @enderror
                         </div>
-                        <button type="submit" class="btn btn-primary">Subir Imagen</button>
+                    </div>
+                </div>
+            </div>
+            <div class="mb-3">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="form-group">
+                            <label for="especBicicleta" class="form-label">Foto Lateral de la Bicicleta</label>
+                            <br>
+                            <input type="file" name="FOTOCOMPLETA_BICICLETA" accept="image/*" required>
+                            @error('FOTOCOMPLETA_BICICLETA')
+                                <br>
+                                <small class="text-danger" >{{'No se admiten otro tipo de archivos que no sean imagenes'}}</small>
+                            @enderror
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="mb-3">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="form-group">
+                            <label for="especBicicleta" class="form-label">Foto del Número de serie de la Bicicleta</label>
+                            <br>
+                            <input type="file" name="FOTONUMSERIE_BICICLETA" accept="image/*" required>
+                            @error('FOTONUMSERIE_BICICLETA')
+                                <br>
+                                <small class="text-danger" >{{'No se admiten otro tipo de archivos que no sean imagenes'}}</small>
+                            @enderror
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="mb-3">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="form-group">
+                            <label for="especBicicleta" class="form-label">Foto de los componentes de la Bicicleta</label>
+                            <br>
+                            <input type="file" name="FOTOCOMP_BICICLETA" accept="image/*" required>
+                            @error('FOTOCOMP_BICICLETA')
+                                <br>
+                                <small class="text-danger" >{{'No se admiten otro tipo de archivos que no sean imagenes'}}</small>
+                            @enderror
+                        </div>
                     </div>
                 </div>
             </div>

@@ -13,9 +13,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'App\Http\Controllers\WelcomeController@index')->name('welcome');
+// Route::get('/', 'App\Http\Controllers\WelcomeController@pasarRegBIcicletas')->name('welcome.pasarRegBIcicletas');
 
 // Rutas usuario
 Route::get('mostrarUsuarios', 'App\Http\Controllers\UsuarioController@index')->name('usuario.mostrarUsuarios');
@@ -25,5 +24,5 @@ Route::post('usuario', 'App\Http\Controllers\UsuarioController@store')->name('us
 // Rutas bicicleta
 Route::get('mostrarBicicletas', 'App\Http\Controllers\BicicletaController@index')->name('bicicleta.mostrarBicicletas');
 Route::get('bicicleta/{identificacion}', 'App\Http\Controllers\BicicletaController@create')->name('bicicleta.index');
-Route::post('bicicleta', 'App\Http\Controllers\BicicletaController@store')->name('bicicleta.store');
+Route::post('bicicleta/{identificacion}', 'App\Http\Controllers\BicicletaController@store')->name('bicicleta.store');
 
