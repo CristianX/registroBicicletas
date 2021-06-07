@@ -4,8 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Models\Bicicleta;
 use App\Models\Usuario;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+
+use function GuzzleHttp\Promise\exception_for;
 
 class BicicletaController extends Controller
 {
@@ -41,22 +44,31 @@ class BicicletaController extends Controller
         $urlImgCompleta = Storage::url($imgCompleta);
         $urlImgNumSerie = Storage::url($imgNumSerie);
         $urlImgComponentes = Storage::url($imgComponentes);
-        Bicicleta::create([
-            'NUMEROSERIE_BICICLETA' => request()->NUMEROSERIE_BICICLETA,
-            'IDENTIFICACION_USUARIO' => $identificacion,
-            'MARCA_BICICLETA' => request()->MARCA_BICICLETA,
-            'MODELO_BICICLETA' => request()->MODELO_BICICLETA,
-            'CATEGORIA_BICICLETA' => request()->CATEGORIA_BICICLETA,
-            'TIPOBICICLETA_BICICLETA' => request()->TIPOBICICLETA_BICICLETA,
-            'TAMANIO_BICICLETA' => request()->TAMANIO_BICICLETA,
-            'COMBCOLORES_BICICLETA' => request()->COMBCOLORES_BICICLETA,
-            'ESPEC_BICICLETA' => request()->ESPEC_BICICLETA,
-            'FOTOFRONTAL_BICICLETA' => $urlImgFrontal,
-            'FOTOCOMPLETA_BICICLETA' => $urlImgCompleta,
-            'FOTONUMSERIE_BICICLETA' => $urlImgNumSerie,
-            'FOTOCOMP_BICICLETA' => $urlImgComponentes,
-        ]);
-        
+
+        try {
+            Bicicleta::create([
+                'NUMEROSERIE_BICICLETA' => request()->NUMEROSERIE_BICICLETA,
+                'IDENTIFICACION_USUARIO' => $identificacion,
+                'MARCA_BICICLETA' => request()->MARCA_BICICLETA,
+                'MODELO_BICICLETA' => request()->MODELO_BICICLETA,
+                'CATEGORIA_BICICLETA' => request()->CATEGORIA_BICICLETA,
+                'TIPOBICICLETA_BICICLETA' => request()->TIPOBICICLETA_BICICLETA,
+                'TAMANIO_BICICLETA' => request()->TAMANIO_BICICLETA,
+                'COMBCOLORES_BICICLETA' => request()->COMBCOLORES_BICICLETA,
+                'ESPEC_BICICLETA' => request()->ESPEC_BICICLETA,
+                'FOTOFRONTAL_BICICLETA' => $urlImgFrontal,
+                'FOTOCOMPLETA_BICICLETA' => $urlImgCompleta,
+                'FOTONUMSERIE_BICICLETA' => $urlImgNumSerie,
+                'FOTOCOMP_BICICLETA' => $urlImgComponentes,
+            ]);
+            
+            
+        } catch (\Exception $e) {
+            return back()->withError("Bicicleta registrada anteriormente")->withInput();
+        }
+
         return redirect()->route('registro.index');
+
+        
     }
 }

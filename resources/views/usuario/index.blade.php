@@ -10,6 +10,9 @@
     <body>
         <h1 style="text-align: center" >Registro de Usuarios</h1>
         <hr>
+        @if (session('error'))
+            <div class="alert alert-danger">{{ session('error') }}</div>
+        @endif
         <form method="POST" action="{{ route('usuario.store') }}" style="padding: 10px" >
             @csrf
             <div class="mb-3">

@@ -8,7 +8,10 @@
         <title>Formulario de Bicicletas</title>
     </head>
     <body>
-        <h1 style="text-align: center" >Registro de Bicicletas de {{ $identificacion->NOMBRES_USUARIO  }} </h1>
+        @if (session('error'))
+            <div class="alert alert-danger">{{ session('error') }}</div>
+        @endif
+        <h1 style="text-align: center" >Registro de Bicicletas de {{ $identificacion->NOMBRES_USUARIO  }} {{ $identificacion->APELLIDOS_USUARIO }} </h1>
         <hr>
         <form method="POST" action="{{ route('bicicleta.store',['identificacion' => $registroIdentificacion ]) }}" enctype="multipart/form-data" style="padding: 10px" >
             @csrf
@@ -73,7 +76,7 @@
                             <input type="file" name="FOTOFRONTAL_BICICLETA" accept="image/*" required>
                             @error('FOTOFRONTAL_BICICLETA')
                                 <br>
-                                <small class="text-danger" >{{'No se admiten otro tipo de archivos que no sean imagenes'}}</small>
+                                <small class="text-danger" >{{'No se admiten otro tipo de archivos que no sean imagenes que tengan un peso máximo de 2mb'}}</small>
                             @enderror
                         </div>
                     </div>
@@ -88,7 +91,7 @@
                             <input type="file" name="FOTOCOMPLETA_BICICLETA" accept="image/*" required>
                             @error('FOTOCOMPLETA_BICICLETA')
                                 <br>
-                                <small class="text-danger" >{{'No se admiten otro tipo de archivos que no sean imagenes'}}</small>
+                                <small class="text-danger" >{{'No se admiten otro tipo de archivos que no sean imagenes que tengan un peso máximo de 2mb'}}</small>
                             @enderror
                         </div>
                     </div>
@@ -103,7 +106,7 @@
                             <input type="file" name="FOTONUMSERIE_BICICLETA" accept="image/*" required>
                             @error('FOTONUMSERIE_BICICLETA')
                                 <br>
-                                <small class="text-danger" >{{'No se admiten otro tipo de archivos que no sean imagenes'}}</small>
+                                <small class="text-danger" >{{'No se admiten otro tipo de archivos que no sean imagenes que tengan un peso máximo de 2mb'}}</small>
                             @enderror
                         </div>
                     </div>
@@ -118,7 +121,7 @@
                             <input type="file" name="FOTOCOMP_BICICLETA" accept="image/*" required>
                             @error('FOTOCOMP_BICICLETA')
                                 <br>
-                                <small class="text-danger" >{{'No se admiten otro tipo de archivos que no sean imagenes'}}</small>
+                                <small class="text-danger" >{{'No se admiten otro tipo de archivos que no sean imagenes que tengan un peso máximo de 2mb'}}</small>
                             @enderror
                         </div>
                     </div>
