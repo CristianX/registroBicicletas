@@ -10,9 +10,10 @@ class WelcomeController extends Controller
         return view('welcome');
     }
 
-    // public function pasarRegBIcicletas(Request $request) {
-    //     $identificacion = $request->get('identificacion');
-    //     return redirect()->route('bicicleta.index', [$identificacion]);
-    // }
+    public function pasarRegBIcicletas(Request $request) {
+        $identificacion = $request->get('identificacion');
+        // return $identificacion;
+        return redirect()->route('bicicleta.index', [$identificacion]);
+    }
 }
 

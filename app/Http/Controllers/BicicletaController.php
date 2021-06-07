@@ -32,10 +32,10 @@ class BicicletaController extends Controller
             'FOTONUMSERIE_BICICLETA'=> 'required|image|max:2048',
             'FOTOCOMP_BICICLETA'=> 'required|image|max:2048',
         ]);
-        $imgFrontal = $request->file('FOTOFRONTAL_BICICLETA')->store('public');
-        $imgCompleta = $request->file('FOTOCOMPLETA_BICICLETA')->store('public');
-        $imgNumSerie = $request->file('FOTONUMSERIE_BICICLETA')->store('public');
-        $imgComponentes = $request->file('FOTOCOMP_BICICLETA')->store('public');
+        $imgFrontal = $request->file('FOTOFRONTAL_BICICLETA')->store('public/'.$identificacion);
+        $imgCompleta = $request->file('FOTOCOMPLETA_BICICLETA')->store('public/'.$identificacion);
+        $imgNumSerie = $request->file('FOTONUMSERIE_BICICLETA')->store('public/'.$identificacion);
+        $imgComponentes = $request->file('FOTOCOMP_BICICLETA')->store('public/'.$identificacion);
 
         $urlImgFrontal = Storage::url($imgFrontal);
         $urlImgCompleta = Storage::url($imgCompleta);
@@ -57,6 +57,6 @@ class BicicletaController extends Controller
             'FOTOCOMP_BICICLETA' => $urlImgComponentes,
         ]);
         
-        return redirect()->route('bicicleta.mostrarBicicletas');
+        return redirect()->route('registro.index');
     }
 }

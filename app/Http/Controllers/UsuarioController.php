@@ -22,6 +22,7 @@ class UsuarioController extends Controller
 
     public function store() {
         Usuario::create(request()->all());
-        return redirect()->route('usuario.mostrarUsuarios');
+        $identificacion = request()->get('IDENTIFICACION_USUARIO');
+        return redirect()->route('bicicleta.index', [$identificacion]);
     }
 }

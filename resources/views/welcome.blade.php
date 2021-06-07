@@ -10,11 +10,11 @@
 <body>
     <h1>Usted está Registrado?</h1>
     <br><br><br>
-    <label for="identificacion" class="form-label">Registrarse por Primera Vez</label>
+    <label for="notificacion" class="form-label">Registrarse por Primera Vez</label>
     <br>
     <a class="btn btn-primary" href="{{ route('usuario.index') }}">Registrarse</a>
     <br><br>
-    <form>
+    <form method="GET" action="{{ route('welcome.pasarRegBIcicletas') }}">
         <label for="identificacion" class="form-label">Registrar bicicleta</label>
         <input name="identificacion" placeholder="Ingrese su Identificación" type="text" class="form-control" required>
         <br>

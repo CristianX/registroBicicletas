@@ -12,9 +12,9 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
+// Inicio
 Route::get('/', 'App\Http\Controllers\WelcomeController@index')->name('welcome');
-// Route::get('/', 'App\Http\Controllers\WelcomeController@pasarRegBIcicletas')->name('welcome.pasarRegBIcicletas');
+Route::get('mostrarFormBicicleta', 'App\Http\Controllers\WelcomeController@pasarRegBIcicletas')->name('welcome.pasarRegBIcicletas');
 
 // Rutas usuario
 Route::get('mostrarUsuarios', 'App\Http\Controllers\UsuarioController@index')->name('usuario.mostrarUsuarios');
@@ -26,3 +26,5 @@ Route::get('mostrarBicicletas', 'App\Http\Controllers\BicicletaController@index'
 Route::get('bicicleta/{identificacion}', 'App\Http\Controllers\BicicletaController@create')->name('bicicleta.index');
 Route::post('bicicleta/{identificacion}', 'App\Http\Controllers\BicicletaController@store')->name('bicicleta.store');
 
+// Registro completado
+Route::get('regCompletado', 'App\Http\Controllers\RegCompController@index')->name('registro.index');
