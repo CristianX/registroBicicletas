@@ -31,7 +31,6 @@
     flex-direction: column;
     background: #DFF0D8;
     height: 250px;
-    /*IMPORTANTE*/
     display: flex;
     justify-content: center;
     align-items: center;
