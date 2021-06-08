@@ -15,14 +15,9 @@
       </div>
       <div class="container">
         <div class="row">
-          <div class="col">
-            {{-- <label for="especBicicleta" class="form-label">Registrar Usuario</label> --}}
-            {{-- <br> --}}
-            <a class="btn btn-primary btn-block" style="width: 100%" href="{{ route('usuario.index') }}">Registrar Nueva Bicicleta</a>
+          <div class="col">        
+            <a class="btn btn-primary btn-block" style="width: 100%" href="{{ route('welcome') }}">Inicio</a>
           </div>
-          <form class="col" style="left: 0%" action="">        
-            <button class="btn btn-primary btn-block" style="width: 100%" href="{{ route('welcome') }}">Incio</button>
-          </form>
         </div>
       </div>
     </div>
