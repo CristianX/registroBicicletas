@@ -7,6 +7,7 @@
     <title>Registro Completado</title>
 </head>
 <body>
-    <h1>Registro realizado satisfactoriamente</h1>
+    <div class="border border-dark" align="center" middle style="background-color: #B1FFC0"> 
+    </div>
 </body>
 </html>

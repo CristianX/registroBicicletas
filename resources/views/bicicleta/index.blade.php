@@ -17,20 +17,20 @@
             @csrf
             <div class="mb-3">
                 <label for="nserie" class="form-label">Número de Serie</label>
-                <input placeholder="Ingrese el número de serie de su Bicicleta" type="text" class="form-control" name="NUMEROSERIE_BICICLETA" required>
+                <input placeholder="Ingrese el número de serie de su Bicicleta" type="text" class="form-control" name="NUMEROSERIE_BICICLETA" minlength="4" maxlength="40" required>
             </div>
             <div class="mb-3">
                 <label for="modelo" class="form-label">Marca</label>
-                <input placeholder="Ingrese la marca de su Bicicleta" type="text" class="form-control" name="MARCA_BICICLETA" required>
+                <input placeholder="Ingrese la marca de su Bicicleta" type="text" class="form-control" name="MARCA_BICICLETA" minlength="4" maxlength="200" required>
             </div>
             <div class="mb-3">
                 <label for="modelo" class="form-label">Modelo</label>
-                <input placeholder="Ingrese el modelo de su Bicicleta" type="text" class="form-control" name="MODELO_BICICLETA" required>
+                <input placeholder="Ingrese el modelo de su Bicicleta" type="text" class="form-control" name="MODELO_BICICLETA" minlength="4" maxlength="200" required>
             </div>
             <div class="mb-3">
                 <label for="categoria" class="form-label">Gama o Categoría</label>
                 <select class="form-select" name="CATEGORIA_BICICLETA" required>
-                    <option selected>Seleccione una Categoría</option>
+                    <option value="" selected disabled>Seleccione una Categoría</option>
                     <option value="alta">Alta</option>
                     <option value="media">Media</option>
                     <option value="baja">Baja</option>
@@ -39,7 +39,7 @@
             <div class="mb-3">
                 <label for="tipoBicicleta" class="form-label">Tipo de Bicicleta</label>
                 <select class="form-select" name="TIPOBICICLETA_BICICLETA" required>
-                    <option selected>Seleccione un Tipo</option>
+                    <option value="" selected disabled>Seleccione un Tipo</option>
                     <option value="montania">Montaña</option>
                     <option value="urbana">Urbana</option>
                     <option value="carretera">Carretera</option>
@@ -48,12 +48,13 @@
                     <option value="biciCargo">Bici Cargo</option>
                     <option value="plegable">Plegable</option>
                     <option value="nino">Niña/o</option>
+                    <option value="otro">Otro</option>
                 </select>
             </div>
             <div class="mb-3">
                 <label for="tamanio" class="form-label">Tamaño</label>
                 <select class="form-select" name="TAMANIO_BICICLETA" required>
-                    <option selected>Seleccione el Tamaño de Bicicleta</option>
+                    <option value="" selected disabled>Seleccione el Tamaño de Bicicleta</option>
                     <option value="alta">Large</option>
                     <option value="media">Medium</option>
                     <option value="baja">Small</option>
@@ -61,11 +62,11 @@
             </div>
             <div class="mb-3">
                 <label for="combColores" class="form-label">Combinación de Colores</label>
-                <input placeholder="Ingrese la combinación de colores de su Bicicleta" type="text" class="form-control" name="COMBCOLORES_BICICLETA" required>
+                <input placeholder="Ingrese la combinación de colores de su Bicicleta" type="text" class="form-control" name="COMBCOLORES_BICICLETA" minlength="4" maxlength="600" required>
             </div>
             <div class="mb-3">
                 <label for="especBicicleta" class="form-label">Especificaciónes de la Bicicleta</label>
-                <textarea placeholder="Ingrese las Especificaciones de su Bicicleta" type="text" class="form-control" name="ESPEC_BICICLETA" required></textarea>
+                <textarea placeholder="Ingrese las Especificaciones de su Bicicleta" type="text" class="form-control" name="ESPEC_BICICLETA" minlength="4" maxlength="600" required></textarea>
             </div>
             <div class="mb-3">
                 <div class="card">
