@@ -27,18 +27,18 @@ class BicicletaController extends Controller
         ]);
     }
 
-    public function store($identificacion, Request $request) {
+    public function store($identificacion) {
 
-        $request->validate([
+        request()->validate([
             'FOTOFRONTAL_BICICLETA' => 'required|image|max:2048',
             'FOTOCOMPLETA_BICICLETA' => 'required|image|max:2048',
             'FOTONUMSERIE_BICICLETA'=> 'required|image|max:2048',
             'FOTOCOMP_BICICLETA'=> 'required|image|max:2048',
         ]);
-        $imgFrontal = $request->file('FOTOFRONTAL_BICICLETA')->store('public/'.$identificacion);
-        $imgCompleta = $request->file('FOTOCOMPLETA_BICICLETA')->store('public/'.$identificacion);
-        $imgNumSerie = $request->file('FOTONUMSERIE_BICICLETA')->store('public/'.$identificacion);
-        $imgComponentes = $request->file('FOTOCOMP_BICICLETA')->store('public/'.$identificacion);
+        $imgFrontal = request()->file('FOTOFRONTAL_BICICLETA')->store('public/'.$identificacion.'/'.request()->get('NUMEROSERIE_BICICLETA'));
+        $imgCompleta = request()->file('FOTOCOMPLETA_BICICLETA')->store('public/'.$identificacion.'/'.request()->get('NUMEROSERIE_BICICLETA'));
+        $imgNumSerie = request()->file('FOTONUMSERIE_BICICLETA')->store('public/'.$identificacion.'/'.request()->get('NUMEROSERIE_BICICLETA'));
+        $imgComponentes = request()->file('FOTOCOMP_BICICLETA')->store('public/'.$identificacion.'/'.request()->get('NUMEROSERIE_BICICLETA'));
 
         $urlImgFrontal = Storage::url($imgFrontal);
         $urlImgCompleta = Storage::url($imgCompleta);

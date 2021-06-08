@@ -22,7 +22,7 @@
                 </div>
                 <div class="mb-3">
                     <label for="modelo" class="form-label">Marca</label>
-                    <input placeholder="Ingrese la marca de su Bicicleta" type="text" class="form-control" name="MARCA_BICICLETA" minlength="4" maxlength="200" required>
+                    <input placeholder="Ingrese la marca de su Bicicleta" type="text" class="form-control" name="MARCA_BICICLETA" minlength="3" maxlength="200" required>
                 </div>
                 <div class="mb-3">
                     <label for="modelo" class="form-label">Modelo</label>
@@ -56,9 +56,9 @@
                     <label for="tamanio" class="form-label">Tamaño</label>
                     <select class="form-select" name="TAMANIO_BICICLETA" required>
                         <option value="" selected disabled>Seleccione el Tamaño de Bicicleta</option>
-                        <option value="alta">Large</option>
-                        <option value="media">Medium</option>
-                        <option value="baja">Small</option>
+                        <option value="large">Large</option>
+                        <option value="medium">Medium</option>
+                        <option value="small">Small</option>
                     </select>
                 </div>
                 <div class="mb-3">

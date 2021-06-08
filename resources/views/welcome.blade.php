@@ -26,7 +26,6 @@
                                     <input name="identificacion" id="identificacion" placeholder="Ingrese su Identificación" type="text" pattern="\d*" class="form-control" maxlength="10" minlength="10" required>
                                     <label for="identificacion" style="color: #bdbdbd">Identificación</label>
                                 </div>
-                                <br>
                                 <button class="btn btn-primary" type="submit" >Registrar Bicicleta</button>
                             </form>
                         </div>
