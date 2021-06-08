@@ -3,9 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\Usuario;
-use Illuminate\Database\Eloquent\ModelNotFoundException;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 
 class UsuarioController extends Controller
 {

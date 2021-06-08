@@ -17,7 +17,7 @@
         <br><br>
         <form method="GET" action="{{ route('welcome.pasarRegBIcicletas') }}">
             <label for="identificacion" class="form-label">Registrar bicicleta</label>
-            <input name="identificacion" placeholder="Ingrese su Identificación" type="text" class="form-control" required>
+            <input name="identificacion" placeholder="Ingrese su Identificación" type="text" pattern="\d*" class="form-control" maxlength="10" minlength="10" required>
             <br>
             <button class="btn btn-primary" type="submit" >Registrar Bicicleta</button>
         </form>
