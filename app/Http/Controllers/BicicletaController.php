@@ -4,11 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Bicicleta;
 use App\Models\Usuario;
-use Illuminate\Database\Eloquent\ModelNotFoundException;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
-
-use function GuzzleHttp\Promise\exception_for;
 
 class BicicletaController extends Controller
 {
