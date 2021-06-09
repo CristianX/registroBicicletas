@@ -16,11 +16,16 @@ class BicicletaController extends Controller
 
     public function create($identificacion) {
         // dd($identificacion);
-        return view('bicicleta.index')->with([
-            'identificacion' => Usuario::findOrFail($identificacion),
-            // Corregir cuando se encuentre solucion a 0 a la izquierda
-            'registroIdentificacion' => $identificacion
-        ]);
+        try {
+            return view('bicicleta.index')->with([
+                'identificacion' => Usuario::findOrFail($identificacion),
+                // Corregir cuando se encuentre solucion a 0 a la izquierda
+                'registroIdentificacion' => $identificacion
+            ]);
+        } catch (\Exception $e) {
+            return redirect()->route('usuario.index');
+        }
+        
     }
 
     public function store($identificacion) {
@@ -60,6 +65,12 @@ class BicicletaController extends Controller
             
             
         } catch (\Exception $e) {
+            
+            Storage::delete($imgFrontal);
+            Storage::delete($imgCompleta);
+            Storage::delete($imgNumSerie);
+            Storage::delete($imgComponentes);
+            
             return back()->withError("Bicicleta registrada anteriormente")->withInput();
         }
 

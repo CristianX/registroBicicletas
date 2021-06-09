@@ -8,8 +8,20 @@
         <title>Formulario de Usuarios</title>
     </head>
     <body>
-        <h1 style="text-align: center" >Registro de Usuarios</h1>
-        <hr>
+        <div class="d-none d-sm-none d-md-block">
+            <div class="row" style="background-color: #124176">
+                <div class="col col-lg-2">
+                    <img style="padding-left: 20px" src="/assets/bicicleta.png" width="120px" alt="bicicleta">
+                </div>
+                <div class="col-md-8">
+                    <h1 style="text-align: center" >Ingrese sus Datos</h1>
+                </div>
+                <div class="col col-lg-2">
+                    <img src="/assets/bicicleta.png" width="100px" alt="bicicleta">
+                </div>
+            </div>
+        </div>
+        
         @if (session('error'))
             <div class="alert alert-danger">{{ session('error') }}</div>
         @endif
