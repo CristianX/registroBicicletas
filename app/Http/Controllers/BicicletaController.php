@@ -30,6 +30,15 @@ class BicicletaController extends Controller
 
     public function store($identificacion) {
 
+        //TODO: en caso de aceptar 
+        // $nombre = request()->get('NOMBREDUENIO_BICICLETA');
+        // if($nombre === null) {
+        //     $usuario = usuario::findOrFail($identificacion);
+        //     return $usuario;
+        // }
+
+
+
         request()->validate([
             'FOTOFRONTAL_BICICLETA' => 'required|image|max:2048',
             'FOTOCOMPLETA_BICICLETA' => 'required|image|max:2048',
