@@ -19,7 +19,7 @@ class BicicletaController extends Controller
         try {
             return view('bicicleta.index')->with([
                 'identificacion' => Usuario::findOrFail($identificacion),
-                // Corregir cuando se encuentre solucion a 0 a la izquierda
+                // Problema de 0 a la izquierda
                 'registroIdentificacion' => $identificacion
             ]);
         } catch (\Exception $e) {
@@ -65,12 +65,7 @@ class BicicletaController extends Controller
             
             
         } catch (\Exception $e) {
-            
-            Storage::delete($imgFrontal);
-            Storage::delete($imgCompleta);
-            Storage::delete($imgNumSerie);
-            Storage::delete($imgComponentes);
-            
+            Storage::deleteDirectory('public/'.$identificacion.'/'.request()->get('NUMEROSERIE_BICICLETA')); 
             return back()->withError("Bicicleta registrada anteriormente")->withInput();
         }
 
