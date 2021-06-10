@@ -8,11 +8,29 @@
         <title>Formulario de Bicicletas</title>
     </head>
     <body>
+        <div class="d-none d-sm-none d-md-block contenedorIzquierda">
+            <div class="row" style="background-color: #124176">
+                <div class="col-md-auto">
+                    <img class="imagenIzquierda" src="/assets/bicicleta.png" alt="bicicleta">
+                </div>
+                <div class="col contenedorCentro">
+                    <h1 class="estiloTexto" style="text-align: center" >Registro de bicicletas de {{ $identificacion->NOMBRES_USUARIO  }} {{ $identificacion->APELLIDOS_USUARIO }}</h1>
+                </div>
+                <div class="col-md-auto contenedorDerecha">
+                    <img src="/assets/bicicleta.png" width="100px" alt="bicicleta">
+                </div>
+            </div>
+        </div>
+        <div class="d-block d-sm-block d-md-none">
+            <div class="row" style="background-color: #124176">
+                <div class="col contenedorCentro">
+                    <h1 class="estiloTexto" style="text-align: center" >Registro de bicicletas de {{ $identificacion->NOMBRES_USUARIO  }} {{ $identificacion->APELLIDOS_USUARIO }}</h1>
+                </div>
+            </div>
+        </div>
         @if (session('error'))
             <div class="alert alert-danger">{{ session('error') }}</div>
         @endif
-        <h1 style="text-align: center" >Registro de Bicicletas de {{ $identificacion->NOMBRES_USUARIO  }} {{ $identificacion->APELLIDOS_USUARIO }} </h1>
-        <hr>
         <div class="container">
             <form method="POST" action="{{ route('bicicleta.store',['identificacion' => $registroIdentificacion ]) }}" enctype="multipart/form-data" style="padding: 10px" >
                 @csrf
@@ -129,9 +147,30 @@
                         </div>
                     </div>
                 </div>
-                <button type="submit" class="btn btn-primary">Registrar</button>
+                <button type="submit" style="width: 100%" class="btn btn-primary">Registrar</button>
             </form>
         </div>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
     </body>
 </html>
+
+<style class="text/css">
+    .contenedorIzquierda {
+        justify-content: left;
+    }
+    .imagenIzquierda {
+        padding-left: 20px;
+        width: 120px;
+    }
+    .contenedorCentro{
+        justify-content: center;
+        padding-right: 10px;
+        padding-left: 10px;
+    }
+    .contenedorDerecha {
+        padding-right: 20px;
+    }
+    .estiloTexto {
+        color: white;
+    }
+</style>

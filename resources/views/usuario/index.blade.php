@@ -8,16 +8,23 @@
         <title>Formulario de Usuarios</title>
     </head>
     <body>
-        <div class="d-none d-sm-none d-md-block">
+        <div class="d-none d-sm-none d-md-block contenedorIzquierda">
             <div class="row" style="background-color: #124176">
-                <div class="col col-lg-2">
-                    <img style="padding-left: 20px" src="/assets/bicicleta.png" width="120px" alt="bicicleta">
+                <div class="col-md-auto">
+                    <img class="imagenIzquierda" src="/assets/bicicleta.png" alt="bicicleta">
                 </div>
-                <div class="col-md-8">
-                    <h1 style="text-align: center" >Ingrese sus Datos</h1>
+                <div class="col contenedorCentro">
+                    <h1 class="estiloTexto" style="text-align: center" >Ingrese sus Datos</h1>
                 </div>
-                <div class="col col-lg-2">
+                <div class="col-md-auto contenedorDerecha">
                     <img src="/assets/bicicleta.png" width="100px" alt="bicicleta">
+                </div>
+            </div>
+        </div>
+        <div class="d-block d-sm-block d-md-none">
+            <div class="row" style="background-color: #124176">
+                <div class="col contenedorCentro">
+                    <h1 class="estiloTexto" style="text-align: center" >Ingrese sus Datos</h1>
                 </div>
             </div>
         </div>
@@ -68,10 +75,31 @@
                     <label for="barrioDondeReside" class="form-label">Barrio donde Reside</label>
                     <input placeholder="Ingrese el Barrio donde Reside" type="text" class="form-control" name="BARRIORES_USUARIO" minlength="4" maxlength="600" required>
                 </div>
-                <button type="submit" class="btn btn-primary">Registrar</button>
+                <button type="submit" style="width: 100%" class="btn btn-primary">Registrar</button>
             </form>
         </div>
         
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
     </body>
 </html>
+
+<style class="text/css">
+    .contenedorIzquierda {
+        justify-content: left;
+    }
+    .imagenIzquierda {
+        padding-left: 20px;
+        width: 120px;
+    }
+    .contenedorCentro{
+        justify-content: center;
+        padding-right: 10px;
+        padding-left: 10px;
+    }
+    .contenedorDerecha {
+        padding-right: 20px;
+    }
+    .estiloTexto {
+        color: white;
+    }
+</style>
