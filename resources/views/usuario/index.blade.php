@@ -75,7 +75,7 @@
                     <label for="barrioDondeReside" class="form-label">Barrio donde Reside</label>
                     <input placeholder="Ingrese el Barrio donde Reside" type="text" class="form-control" name="BARRIORES_USUARIO" minlength="4" maxlength="600" required>
                 </div>
-                <button type="submit" style="width: 100%" class="btn btn-primary">Registrar</button>
+                <button type="submit" class="btn btn-primary estiloBoton">Registrar</button>
             </form>
         </div>
         
@@ -101,5 +101,9 @@
     }
     .estiloTexto {
         color: white;
+    }
+    .estiloBoton {
+        width: 100%;
+        background-color: #124176;
     }
 </style>
