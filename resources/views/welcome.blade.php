@@ -9,11 +9,11 @@
 </head>
 <body>
     <div class="background_image">
-        <img src="/assets/Cabecera.png" width="100%" height="12%" alt="">
+        <img src="{{ asset('/assets/Cabecera.png') }}" width="100%" height="12%" alt="">
         <div class="container">
             <div class="row">
                 <div class="col-sm-8 imagen">
-                <img src="/assets/Bicentenario.png" style="width: 90%">
+                <img src="{{ asset('/assets/Bicentenario.png') }}" style="width: 90%">
                 </div>
                 <div class="col-sm-4 formulario">
                     <div class="card cardFormulario">
@@ -68,12 +68,5 @@
         width: 100%;
         height: 100%;
         background-image: url('/assets/Fondo_1.png');
-    }
-    .cabecera_image {
-        left: 0;
-        top: 0;
-        width: 100%;
-        height: 45px;
-        background-image: url('/assets/Caberea.png');
     }
 </style>

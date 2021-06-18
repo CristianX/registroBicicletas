@@ -1,6 +1,7 @@
 <?php
 
-use Illuminate\Http\Request;
+use App\Models\Bicicleta;
+use App\Models\Usuario;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,3 +18,16 @@ use Illuminate\Support\Facades\Route;
 // Route::middleware('auth:api')->get('/user', function (Request $request) {
 //     return $request->user();
 // });
+
+// Api para Bicicletas
+Route::get('bicicletasApi', function(){
+    return Bicicleta::all();
+});
+Route::post('crearBicicletaApi/{identificacion}', 'App\Http\Controllers\BicicletaController@storeApi');
+
+// Api para usuarios
+Route::get('usuariosApi', function(){
+    return Usuario::all();
+});
+
+Route::post('crearUsuarioApi', 'App\Http\Controllers\UsuarioController@storeApi');

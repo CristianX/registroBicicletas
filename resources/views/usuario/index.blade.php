@@ -11,13 +11,13 @@
         <div class="d-none d-sm-none d-md-block contenedorIzquierda">
             <div class="row" style="background-color: #124176">
                 <div class="col-md-auto">
-                    <img class="imagenIzquierda" src="/assets/bicicleta.png" alt="bicicleta">
+                    <img class="imagenIzquierda" src="{{ asset('/assets/bicicleta.png') }}" alt="bicicleta">
                 </div>
                 <div class="col contenedorCentro">
                     <h1 class="estiloTexto" style="text-align: center" >Ingrese sus Datos</h1>
                 </div>
                 <div class="col-md-auto contenedorDerecha">
-                    <img src="/assets/bicicleta.png" width="100px" alt="bicicleta">
+                    <img src="{{ asset('/assets/bicicleta.png') }}" width="100px" alt="bicicleta">
                 </div>
             </div>
         </div>

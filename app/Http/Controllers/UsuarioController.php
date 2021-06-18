@@ -23,6 +23,7 @@ class UsuarioController extends Controller
 
         try {
             Usuario::create(request()->all());
+            //TODO: Checar la línea 27
             $identificacion = request()->get('IDENTIFICACION_USUARIO');
         } catch (\Exception $e) {
             return back()->withError("Usuario Registrado Anteriormente")->withInput();
@@ -31,4 +32,15 @@ class UsuarioController extends Controller
         return redirect()->route('bicicleta.index', [$identificacion]);
         
     } 
+
+    // Backend de Api
+
+    public function storeApi() {
+        try {
+            $usuario = Usuario::create(request()->all());
+            return response()->json($usuario, 201);
+        } catch (\Exception $e) {
+            return response()->json($e, 400);
+        }
+    }
 }

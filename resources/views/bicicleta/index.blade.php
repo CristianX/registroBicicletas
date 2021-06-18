@@ -11,13 +11,13 @@
         <div class="d-none d-sm-none d-md-block contenedorIzquierda">
             <div class="row" style="background-color: #124176">
                 <div class="col-md-auto">
-                    <img class="imagenIzquierda" src="/assets/bicicleta.png" alt="bicicleta">
+                    <img class="imagenIzquierda" src="{{ asset('/assets/bicicleta.png') }}" alt="bicicleta">
                 </div>
                 <div class="col contenedorCentro">
                     <h1 class="estiloTexto" style="text-align: center" >Registro de bicicletas de {{ $identificacion->NOMBRES_USUARIO  }} {{ $identificacion->APELLIDOS_USUARIO }}</h1>
                 </div>
                 <div class="col-md-auto contenedorDerecha">
-                    <img src="/assets/bicicleta.png" width="100px" alt="bicicleta">
+                    <img src="{{ asset('/assets/bicicleta.png') }}" width="100px" alt="bicicleta">
                 </div>
             </div>
         </div>
@@ -150,21 +150,21 @@
                 <div class="mb-3">
                     <label class="form-label">Desea registrar esta bicicleta a nombre de su hijo(a)? (En caso de tenerlo/a)</label>
                     <div class="form-check">
-                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" onclick="mostrarCampoHijo()">
-                        <label class="form-check-label" for="flexRadioDefault1">
-                          Si
-                        </label>
-                      </div>
-                      <div class="form-check">
                         <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" onclick="ocultarCampoHijo()" checked>
                         <label class="form-check-label" for="flexRadioDefault2">
                           No
                         </label>
                     </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" onclick="mostrarCampoHijo()">
+                        <label class="form-check-label" for="flexRadioDefault1">
+                          Si
+                        </label>
+                    </div>
                 </div>
                 <div class="mb-3" id="nombreDuenio">
                     <label class="form-label">Nombre de su Hijo(a)</label>
-                    <input placeholder="Ingrese el nombre completo de su hijo(a)" type="text" class="form-control" name="NOMBREDUENIO_BICICLETA" minlength="4" maxlength="600">
+                    <input id="campoNombreDuenio" placeholder="Ingrese el nombre completo de su hijo(a)" type="text" class="form-control" name="NOMBREDUENIO_BICICLETA" minlength="4" maxlength="600">
                 </div>
                 <button type="submit" class="btn btn-primary estiloBoton">Registrar</button>
             </form>
@@ -205,6 +205,7 @@
         document.getElementById('nombreDuenio').style.display = 'block';
     }
     function ocultarCampoHijo() {
+        document.getElementById('campoNombreDuenio').value = null;
         document.getElementById('nombreDuenio').style.display = 'none';
         
     }
