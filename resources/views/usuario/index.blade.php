@@ -71,9 +71,9 @@
                     <label for="PARROQUIARES_USUARIO" class="form-label">Porroquia donde Reside</label>
                     <select class="form-select" name="PARROQUIARES_USUARIO" required>
                         <option value="" selected disabled>Seleccione una Parróquia</option>
-                        <option value="alta">Alta</option>
-                        <option value="media">Media</option>
-                        <option value="baja">Baja</option>
+                        @foreach ($parroquias as $parroquia)
+                            <option value="{{$parroquia}}">{{$parroquia}}</option>
+                        @endforeach
                     </select>
                 </div>
                 <div class="mb-3">

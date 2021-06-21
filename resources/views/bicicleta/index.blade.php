@@ -91,7 +91,7 @@
                     <div class="card">
                         <div class="card-body">
                             <div class="form-group">
-                                <label for="especBicicleta" class="form-label">Foto Frontal de la Bicicleta</label>
+                                <label for="especBicicleta" class="form-label">Foto Frontal de la Bicicleta (Con Usted)</label>
                                 <br>
                                 <input type="file" name="FOTOFRONTAL_BICICLETA" accept="image/*" required>
                                 @error('FOTOFRONTAL_BICICLETA')
@@ -148,7 +148,7 @@
                     </div>
                 </div>
                 <div class="mb-3">
-                    <label class="form-label">Desea registrar esta bicicleta a nombre de su hijo(a)? (En caso de tenerlo/a)</label>
+                    <label class="form-label">¿Desea registrar esta bicicleta a nombre de otra persona? (Menor de Edad / Empleado) </label>
                     <div class="form-check">
                         <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" onclick="ocultarCampoHijo()" checked>
                         <label class="form-check-label" for="flexRadioDefault2">
@@ -163,8 +163,35 @@
                     </div>
                 </div>
                 <div class="mb-3" id="nombreDuenio">
-                    <label class="form-label">Nombre de su Hijo(a)</label>
-                    <input id="campoNombreDuenio" placeholder="Ingrese el nombre completo de su hijo(a)" type="text" class="form-control" name="NOMBREDUENIO_BICICLETA" minlength="4" maxlength="600">
+                    <label class="form-label">Nombres completos de la Persona</label>
+                    <input id="campoNombreDuenio" placeholder="Ingrese los nombres completos de la persona apoderada de la bicicleta" type="text" class="form-control" name="APODERADO_BICICLETA" minlength="4" maxlength="400">
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">¿La bicicleta es nueva o usada?</label>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="flexRadioDefault1" id="flexRadioDefault2" onclick="ocultarCampoUsada(); mostrarCampoNueva()" checked>
+                        <label class="form-check-label" for="flexRadioDefault3">
+                          Nueva
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="flexRadioDefault1" id="flexRadioDefault1" onclick="mostrarCampoUsada(); ocultarCampoNueva()">
+                        <label class="form-check-label" for="flexRadioDefault4">
+                          Usada
+                        </label>
+                    </div>
+                </div>
+                <div class="mb-3" id="divNueva">
+                    <label class="form-label">Tienda o Establecimiento de la Compra</label>
+                    <input id="tiendaCompra" placeholder="Ingrese el nombre del establecimiento donde la adquirió" type="text" class="form-control" name="TIENDACOMPRA_BICICLETA" minlength="4" maxlength="400">
+                    <label class="form-label">Factura</label>
+                    <input id="fotoFactura" placeholder="Factura" type="text" class="form-control" name="FACTURA_BICICLETA" minlength="4" maxlength="400">
+                </div>
+                <div class="mb-3" id="divUsada">
+                    <label class="form-label">Descripción</label>
+                    <input id="descripcionUsada" placeholder="Ingrese la forma en la que la adqurió" type="text" class="form-control" name="ADQUSADA_BICICLETA" minlength="4" maxlength="400">
+                    <label class="form-label">Nombres completos de la persona que le suministró esta bicicleta</label>
+                    <input id="fotoFactura" placeholder="Nombres completos de la persona que le suministró la bicicleta" type="text" class="form-control" name="NOMBDUENIOANT_BICICLETA" minlength="4" maxlength="400">
                 </div>
                 <button type="submit" class="btn btn-primary estiloBoton">Registrar</button>
             </form>
@@ -199,6 +226,9 @@
     #nombreDuenio{
         display: none;
     }
+    #divUsada{
+        display: none;
+    }
 </style>
 <script class="text/javascript">
     function mostrarCampoHijo() {
@@ -206,7 +236,18 @@
     }
     function ocultarCampoHijo() {
         document.getElementById('campoNombreDuenio').value = null;
-        document.getElementById('nombreDuenio').style.display = 'none';
-        
+        document.getElementById('nombreDuenio').style.display = 'none';   
+    }
+    function ocultarCampoNueva() {
+        document.getElementById('divNueva').style.display = 'none';
+    }
+    function ocultarCampoUsada() {
+        document.getElementById('divUsada').style.display = 'none';
+    }
+    function mostrarCampoNueva() {
+        document.getElementById('divNueva').style.display = 'block';
+    }
+    function mostrarCampoUsada() {
+        document.getElementById('divUsada').style.display = 'block';
     }
 </script>
