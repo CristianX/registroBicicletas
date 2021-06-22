@@ -14,7 +14,7 @@
                     <img class="imagenIzquierda" src="{{ asset('/assets/bicicleta.png') }}" alt="bicicleta">
                 </div>
                 <div class="col contenedorCentro">
-                    <h1 class="estiloTexto" style="text-align: center" >Registro de bicicletas de {{ $identificacion->NOMBRES_USUARIO  }} {{ $identificacion->APELLIDOS_USUARIO }}</h1>
+                    <h1 class="estiloTexto" style="text-align: center" >Registro de bicicletas de {{ $identificacion->nombres_usuario }} {{ $identificacion->apellidos_usuario }}</h1>
                 </div>
                 <div class="col-md-auto contenedorDerecha">
                     <img src="{{ asset('/assets/bicicleta.png') }}" width="100px" alt="bicicleta">
@@ -24,7 +24,7 @@
         <div class="d-block d-sm-block d-md-none">
             <div class="row" style="background-color: #124176">
                 <div class="col contenedorCentro">
-                    <h1 class="estiloTexto" style="text-align: center" >Registro de bicicletas de {{ $identificacion->NOMBRES_USUARIO  }} {{ $identificacion->APELLIDOS_USUARIO }}</h1>
+                    <h1 class="estiloTexto" style="text-align: center" >Registro de bicicletas de {{ $identificacion->nombres_usuario }} {{ $identificacion->apellidos_usuario }}</h1>
                 </div>
             </div>
         </div>
