@@ -96,6 +96,7 @@ class UsuarioController extends Controller
             //TODO: Checar la línea 27
             $identificacion = request()->get('identificacion_usuario');
         } catch (\Exception $e) {
+            return $e;
             return back()->withError("Usuario Registrado Anteriormente")->withInput();
         }
         
