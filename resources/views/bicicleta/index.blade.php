@@ -36,19 +36,19 @@
                 @csrf
                 <div class="mb-3">
                     <label for="nserie" class="form-label">Número de Serie</label>
-                    <input placeholder="Ingrese el número de serie de su Bicicleta" type="text" class="form-control" name="NUMEROSERIE_BICICLETA" minlength="4" maxlength="40" required>
+                    <input placeholder="Ingrese el número de serie de su Bicicleta" type="text" class="form-control" name="numeroserie_bicicleta" minlength="4" maxlength="40" required>
                 </div>
                 <div class="mb-3">
                     <label for="modelo" class="form-label">Marca</label>
-                    <input placeholder="Ingrese la marca de su Bicicleta" type="text" class="form-control" name="MARCA_BICICLETA" minlength="3" maxlength="200" required>
+                    <input placeholder="Ingrese la marca de su Bicicleta" type="text" class="form-control" name="marca_bicicleta" minlength="3" maxlength="200" required>
                 </div>
                 <div class="mb-3">
                     <label for="modelo" class="form-label">Modelo</label>
-                    <input placeholder="Ingrese el modelo de su Bicicleta" type="text" class="form-control" name="MODELO_BICICLETA" minlength="4" maxlength="200" required>
+                    <input placeholder="Ingrese el modelo de su Bicicleta" type="text" class="form-control" name="modelo_bicicleta" minlength="4" maxlength="200" required>
                 </div>
                 <div class="mb-3">
                     <label for="categoria" class="form-label">Gama o Categoría</label>
-                    <select class="form-select" name="CATEGORIA_BICICLETA" required>
+                    <select class="form-select" name="categoria_bicicleta" required>
                         <option value="" selected disabled>Seleccione una Categoría</option>
                         <option value="alta">Alta</option>
                         <option value="media">Media</option>
@@ -57,7 +57,7 @@
                 </div>
                 <div class="mb-3">
                     <label for="tipoBicicleta" class="form-label">Tipo de Bicicleta</label>
-                    <select class="form-select" name="TIPOBICICLETA_BICICLETA" required>
+                    <select class="form-select" name="tipobicicleta_bicicleta" required>
                         <option value="" selected disabled>Seleccione un Tipo</option>
                         <option value="montania">Montaña</option>
                         <option value="urbana">Urbana</option>
@@ -72,7 +72,7 @@
                 </div>
                 <div class="mb-3">
                     <label for="tamanio" class="form-label">Tamaño</label>
-                    <select class="form-select" name="TAMANIO_BICICLETA" required>
+                    <select class="form-select" name="tamanio_bicicleta" required>
                         <option value="" selected disabled>Seleccione el Tamaño de Bicicleta</option>
                         <option value="large">Large</option>
                         <option value="medium">Medium</option>
@@ -81,11 +81,11 @@
                 </div>
                 <div class="mb-3">
                     <label for="combColores" class="form-label">Combinación de Colores</label>
-                    <input placeholder="Ingrese la combinación de colores de su Bicicleta" type="text" class="form-control" name="COMBCOLORES_BICICLETA" minlength="4" maxlength="600" required>
+                    <input placeholder="Ingrese la combinación de colores de su Bicicleta" type="text" class="form-control" name="combcolores_bicicleta" minlength="4" maxlength="600" required>
                 </div>
                 <div class="mb-3">
                     <label for="especBicicleta" class="form-label">Especificaciónes de la Bicicleta</label>
-                    <textarea placeholder="Ingrese las Especificaciones de su Bicicleta" type="text" class="form-control" name="ESPEC_BICICLETA" minlength="4" maxlength="600" required></textarea>
+                    <textarea placeholder="Ingrese las Especificaciones de su Bicicleta" type="text" class="form-control" name="espec_bicicleta" minlength="4" maxlength="600" required></textarea>
                 </div>
                 <div class="mb-3">
                     <div class="card">
@@ -93,8 +93,8 @@
                             <div class="form-group">
                                 <label for="especBicicleta" class="form-label">Foto Frontal de la Bicicleta (Con Usted)</label>
                                 <br>
-                                <input type="file" name="FOTOFRONTAL_BICICLETA" accept="image/*" required>
-                                @error('FOTOFRONTAL_BICICLETA')
+                                <input type="file" name="fotofrontal_bicicleta" accept="image/*" required>
+                                @error('fotofrontal_bicicleta')
                                     <br>
                                     <small class="text-danger" >{{'No se admiten otro tipo de archivos que no sean imagenes que tengan un peso máximo de 2mb'}}</small>
                                 @enderror
@@ -108,8 +108,8 @@
                             <div class="form-group">
                                 <label for="especBicicleta" class="form-label">Foto Lateral de la Bicicleta</label>
                                 <br>
-                                <input type="file" name="FOTOCOMPLETA_BICICLETA" accept="image/*" required>
-                                @error('FOTOCOMPLETA_BICICLETA')
+                                <input type="file" name="fotocompleta_bicicleta" accept="image/*" required>
+                                @error('fotocompleta_bicicleta')
                                     <br>
                                     <small class="text-danger" >{{'No se admiten otro tipo de archivos que no sean imagenes que tengan un peso máximo de 2mb'}}</small>
                                 @enderror
@@ -123,8 +123,8 @@
                             <div class="form-group">
                                 <label for="especBicicleta" class="form-label">Foto del Número de serie de la Bicicleta</label>
                                 <br>
-                                <input type="file" name="FOTONUMSERIE_BICICLETA" accept="image/*" required>
-                                @error('FOTONUMSERIE_BICICLETA')
+                                <input type="file" name="fotonumserie_bicicleta" accept="image/*" required>
+                                @error('fotonumserie_bicicleta')
                                     <br>
                                     <small class="text-danger" >{{'No se admiten otro tipo de archivos que no sean imagenes que tengan un peso máximo de 2mb'}}</small>
                                 @enderror
@@ -138,8 +138,8 @@
                             <div class="form-group">
                                 <label for="especBicicleta" class="form-label">Foto de los componentes de la Bicicleta</label>
                                 <br>
-                                <input type="file" name="FOTOCOMP_BICICLETA" accept="image/*" required>
-                                @error('FOTOCOMP_BICICLETA')
+                                <input type="file" name="fotocomp_bicicleta" accept="image/*" required>
+                                @error('fotocomp_bicicleta')
                                     <br>
                                     <small class="text-danger" >{{'No se admiten otro tipo de archivos que no sean imagenes que tengan un peso máximo de 2mb'}}</small>
                                 @enderror
@@ -164,7 +164,7 @@
                 </div>
                 <div class="mb-3" id="nombreDuenio">
                     <label class="form-label">Nombres completos de la Persona</label>
-                    <input id="campoNombreDuenio" placeholder="Ingrese los nombres completos de la persona apoderada de la bicicleta" type="text" class="form-control" name="APODERADO_BICICLETA" minlength="4" maxlength="400">
+                    <input id="campoNombreDuenio" placeholder="Ingrese los nombres completos de la persona apoderada de la bicicleta" type="text" class="form-control" name="apoderado_bicicleta" minlength="4" maxlength="400">
                 </div>
                 <div class="mb-3">
                     <label class="form-label">¿La bicicleta es nueva o usada?</label>
@@ -184,17 +184,17 @@
                 <div id="divNueva">
                     <div class="mb-3">
                         <label class="form-label">Tienda o Establecimiento de la Compra</label>
-                        <input id="tiendaCompra" placeholder="Ingrese el nombre del establecimiento donde la adquirió" type="text" class="form-control" name="TIENDACOMPRA_BICICLETA" minlength="4" maxlength="400">
+                        <input id="tiendaCompra" placeholder="Ingrese el nombre del establecimiento donde la adquirió" type="text" class="form-control" name="tiendacompra_bicicleta" minlength="4" maxlength="400">
                     </div>
                     <div class="mb-3">
                         <label class="form-label">Factura</label>
-                        <input id="factura" placeholder="Factura" type="text" class="form-control" name="FACTURA_BICICLETA" minlength="4" maxlength="400">
+                        <input id="factura" placeholder="Factura" type="text" class="form-control" name="factura_bicicleta" minlength="4" maxlength="400">
                     </div>
                 </div>
                 <div id="divUsada">
                     <div class="mb-3">
-                        <label for="DESCRIPCION_BICICLETA" class="form-label">Descripción</label>
-                        <select class="form-select" id="descripcionBicicleta" name="DESCRIPCION_BICICLETA">
+                        <label for="descripcion_bicicleta" class="form-label">Descripción</label>
+                        <select class="form-select" id="descripcionBicicleta" name="descripcion_bicicleta">
                             <option value="" selected disabled>Seleccione una descripción</option>
                             <option value="prestada">Prestada</option>
                             <option value="regalada">Regalada</option>
@@ -203,7 +203,7 @@
                     </div>
                     <div class="mb-3">
                         <label class="form-label">Nombres completos de la persona que le suministró esta bicicleta</label>
-                        <input id="txtPersonaSumnist" placeholder="Nombres completos de la persona que le suministró la bicicleta" type="text" class="form-control" name="NOMBDUENIOANT_BICICLETA" minlength="4" maxlength="400">
+                        <input id="txtPersonaSumnist" placeholder="Nombres completos de la persona que le suministró la bicicleta" type="text" class="form-control" name="nombduenioant_bicicleta" minlength="4" maxlength="400">
                     </div>
                 </div>
                 <button type="submit" class="btn btn-primary estiloBoton">Registrar</button>

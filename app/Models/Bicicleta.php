@@ -16,21 +16,21 @@ class Bicicleta extends Model
      * @var array
      */
     protected $fillable = [
-        'NUMEROSERIE_BICICLETA',
-        'IDENTIFICACION_USUARIO',
-        'MARCA_BICICLETA',
-        'MODELO_BICICLETA',
-        'CATEGORIA_BICICLETA',
-        'TIPOBICICLETA_BICICLETA',
-        'TAMANIO_BICICLETA',
-        'COMBCOLORES_BICICLETA',
-        'ESPEC_BICICLETA',
-        'FOTOFRONTAL_BICICLETA',
-        'FOTOCOMPLETA_BICICLETA',
-        'FOTONUMSERIE_BICICLETA',
-        'FOTOCOMP_BICICLETA',
-        'APODERADO_BICICLETA',
-        'RUCTIENDA_BICICLETA',
-        'DIRECCIONTIENDA_BICICLETA'
+        'numeroserie_bicicleta',
+        'identificacion_usuario',
+        'marca_bicicleta',
+        'modelo_bicicleta',
+        'categoria_bicicleta',
+        'tipobicicleta_bicicleta',
+        'tamanio_bicicleta',
+        'combcolores_bicicleta',
+        'espec_bicicleta',
+        'fotofrontal_bicicleta',
+        'fotocompleta_bicicleta',
+        'fotonumserie_bicicleta',
+        'fotocomp_bicicleta',
+        'apoderado_bicicleta',
+        'ructienda_bicicleta',
+        'direcciontienda_bicicleta'
     ];
 }
