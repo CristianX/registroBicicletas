@@ -10,6 +10,7 @@ class Bicicleta extends Model
 
     use HasFactory;
     public $timestamps = false;
+    protected $primaryKey = "numeroserie_bicicleta";
     /**
      * The attributes that are mass assignable.
      *
