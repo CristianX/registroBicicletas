@@ -77,7 +77,6 @@ class BicicletaController extends Controller
             
         } catch (\Exception $e) {
             // Storage::deleteDirectory('public/'.$identificacion.'/'.request()->get('numeroserie_bicicleta')); 
-            return $e;
             Storage::delete($urlImgFrontal);
             Storage::delete($imgCompleta);
             Storage::delete($imgNumSerie);
