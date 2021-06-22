@@ -28,16 +28,16 @@
         <tbody>
             @foreach ($usuarios as $usuario)
                   <tr>
-                      <td>{{ $usuario->IDENTIFICACION_USUARIO }}</td>
-                      <td>{{ $usuario->NOMBRES_USUARIO }}</td>
-                      <td>{{ $usuario->APELLIDOS_USUARIO }}</td>
-                      <td>{{ $usuario->EDAD_USUARIO }}</td>
-                      <td>{{ $usuario->EMAIL_USUARIO }}</td>
-                      <td>{{ $usuario->TELFCONVENCIONAL_USUARIO }}</td>
-                      <td>{{ $usuario->TELFCELULAR_USUARIO }}</td>
-                      <td>{{ $usuario->NACIONALIDAD_USUARIO }}</td>
-                      <td>{{ $usuario->PARROQUIARES_USUARIO }}</td>
-                      <td>{{ $usuario->BARRIORES_USUARIO }}</td>
+                      <td>{{ $usuario->identificacion_usuario }}</td>
+                      <td>{{ $usuario->nombres_usuario }}</td>
+                      <td>{{ $usuario->apellidos_usuario }}</td>
+                      <td>{{ $usuario->edad_usuario }}</td>
+                      <td>{{ $usuario->email_usuario }}</td>
+                      <td>{{ $usuario->telfconvencional_usuario }}</td>
+                      <td>{{ $usuario->telfcelular_usuario }}</td>
+                      <td>{{ $usuario->nacionalidad_usuario }}</td>
+                      <td>{{ $usuario->parroquiares_usuario }}</td>
+                      <td>{{ $usuario->barriores_usuario }}</td>
                   </tr>
             @endforeach
             

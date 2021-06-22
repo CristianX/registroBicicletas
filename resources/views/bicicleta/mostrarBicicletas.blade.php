@@ -27,15 +27,15 @@
         <tbody>
             @foreach ($bicicletas as $bicicleta)
                   <tr>
-                      <td>{{ $bicicleta->NUMEROSERIE_BICICLETA }}</td>
-                      <td>{{ $bicicleta->IDENTIFICACION_USUARIO }}</td>
-                      <td>{{ $bicicleta->MARCA_BICICLETA }}</td>
-                      <td>{{ $bicicleta->MODELO_BICICLETA }}</td>
-                      <td>{{ $bicicleta->CATEGORIA_BICICLETA }}</td>
-                      <td>{{ $bicicleta->TIPOBICICLETA_BICICLETA }}</td>
-                      <td>{{ $bicicleta->TAMANIO_BICICLETA }}</td>
-                      <td>{{ $bicicleta->COMBCOLORES_BICICLETA }}</td>
-                      <td>{{ $bicicleta->ESPEC_BICICLETA }}</td>
+                      <td>{{ $bicicleta->numeroserie_bicicleta }}</td>
+                      <td>{{ $bicicleta->identificacion_usuario }}</td>
+                      <td>{{ $bicicleta->marca_bicicleta }}</td>
+                      <td>{{ $bicicleta->modelo_bicicleta }}</td>
+                      <td>{{ $bicicleta->categoria_bicicleta }}</td>
+                      <td>{{ $bicicleta->tipobicicleta_bicicleta }}</td>
+                      <td>{{ $bicicleta->tamanio_bicicleta }}</td>
+                      <td>{{ $bicicleta->combcolores_bicicleta }}</td>
+                      <td>{{ $bicicleta->espec_bicicleta }}</td>
                   </tr>
             @endforeach
             
