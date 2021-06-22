@@ -9,7 +9,7 @@
 </head>
 <body>
     <div class="background_image">
-        <img src="{{ asset('/assets/Cabecera.png') }}" width="100%" height="12%" alt="">
+        <img src="{{ asset('/assets/Cabecera.png') }}" width="100%" height="80px" alt="">
         <div class="container">
             <div class="row">
                 <div class="col-sm-8 imagen">

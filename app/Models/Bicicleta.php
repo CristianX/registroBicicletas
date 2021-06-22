@@ -29,6 +29,7 @@ class Bicicleta extends Model
         'FOTOCOMPLETA_BICICLETA',
         'FOTONUMSERIE_BICICLETA',
         'FOTOCOMP_BICICLETA',
+        'APODERADO_BICICLETA',
         'RUCTIENDA_BICICLETA',
         'DIRECCIONTIENDA_BICICLETA'
     ];

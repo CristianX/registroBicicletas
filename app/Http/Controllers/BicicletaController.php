@@ -29,15 +29,12 @@ class BicicletaController extends Controller
     }
 
     public function store($identificacion) {
-
         //TODO: en caso de aceptar 
-        // $nombre = request()->get('NOMBREDUENIO_BICICLETA');
-        // if($nombre === null) {
-        //     $usuario = usuario::findOrFail($identificacion);
-        //     return $usuario;
-        // }
-
-
+        $nombreApoderado = request()->get('APODERADO_BICICLETA');
+        if(! $nombreApoderado) {
+            $usuario = Usuario::findOrFail($identificacion);
+            $nombreApoderado = $usuario->NOMBRES_USUARIO.' '.$usuario->APELLIDOS_USUARIO;
+        }
 
         request()->validate([
             'FOTOFRONTAL_BICICLETA' => 'required|image|max:2048',
@@ -46,13 +43,13 @@ class BicicletaController extends Controller
             'FOTOCOMP_BICICLETA'=> 'required|image|max:2048',
         ]);
         $imgFrontal = request()->file('FOTOFRONTAL_BICICLETA')
-            ->store('public/'.$identificacion.'/'.request()->get('NUMEROSERIE_BICICLETA'));
+            ->store('public/'.$identificacion.'/'.$nombreApoderado.'/'.request()->get('NUMEROSERIE_BICICLETA'));
         $imgCompleta = request()->file('FOTOCOMPLETA_BICICLETA')
-            ->store('public/'.$identificacion.'/'.request()->get('NUMEROSERIE_BICICLETA'));
+            ->store('public/'.$identificacion.'/'.$nombreApoderado.'/'.request()->get('NUMEROSERIE_BICICLETA'));
         $imgNumSerie = request()->file('FOTONUMSERIE_BICICLETA')
-            ->store('public/'.$identificacion.'/'.request()->get('NUMEROSERIE_BICICLETA'));
+            ->store('public/'.$identificacion.'/'.$nombreApoderado.'/'.request()->get('NUMEROSERIE_BICICLETA'));
         $imgComponentes = request()->file('FOTOCOMP_BICICLETA')
-            ->store('public/'.$identificacion.'/'.request()->get('NUMEROSERIE_BICICLETA'));
+            ->store('public/'.$identificacion.'/'.$nombreApoderado.'/'.request()->get('NUMEROSERIE_BICICLETA'));
 
         $urlImgFrontal = Storage::url($imgFrontal);
         $urlImgCompleta = Storage::url($imgCompleta);
@@ -74,6 +71,7 @@ class BicicletaController extends Controller
                 'FOTOCOMPLETA_BICICLETA' => $urlImgCompleta,
                 'FOTONUMSERIE_BICICLETA' => $urlImgNumSerie,
                 'FOTOCOMP_BICICLETA' => $urlImgComponentes,
+                'APODERADO_BICICLETA' => $nombreApoderado,
             ]);
             
             
