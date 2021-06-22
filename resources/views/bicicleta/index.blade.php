@@ -181,17 +181,30 @@
                         </label>
                     </div>
                 </div>
-                <div class="mb-3" id="divNueva">
-                    <label class="form-label">Tienda o Establecimiento de la Compra</label>
-                    <input id="tiendaCompra" placeholder="Ingrese el nombre del establecimiento donde la adquirió" type="text" class="form-control" name="TIENDACOMPRA_BICICLETA" minlength="4" maxlength="400">
-                    <label class="form-label">Factura</label>
-                    <input id="fotoFactura" placeholder="Factura" type="text" class="form-control" name="FACTURA_BICICLETA" minlength="4" maxlength="400">
+                <div id="divNueva">
+                    <div class="mb-3">
+                        <label class="form-label">Tienda o Establecimiento de la Compra</label>
+                        <input id="tiendaCompra" placeholder="Ingrese el nombre del establecimiento donde la adquirió" type="text" class="form-control" name="TIENDACOMPRA_BICICLETA" minlength="4" maxlength="400">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Factura</label>
+                        <input id="factura" placeholder="Factura" type="text" class="form-control" name="FACTURA_BICICLETA" minlength="4" maxlength="400">
+                    </div>
                 </div>
-                <div class="mb-3" id="divUsada">
-                    <label class="form-label">Descripción</label>
-                    <input id="descripcionUsada" placeholder="Ingrese la forma en la que la adqurió" type="text" class="form-control" name="ADQUSADA_BICICLETA" minlength="4" maxlength="400">
-                    <label class="form-label">Nombres completos de la persona que le suministró esta bicicleta</label>
-                    <input id="fotoFactura" placeholder="Nombres completos de la persona que le suministró la bicicleta" type="text" class="form-control" name="NOMBDUENIOANT_BICICLETA" minlength="4" maxlength="400">
+                <div id="divUsada">
+                    <div class="mb-3">
+                        <label for="DESCRIPCION_BICICLETA" class="form-label">Descripción</label>
+                        <select class="form-select" id="descripcionBicicleta" name="DESCRIPCION_BICICLETA">
+                            <option value="" selected disabled>Seleccione una descripción</option>
+                            <option value="prestada">Prestada</option>
+                            <option value="regalada">Regalada</option>
+                            <option value="vendida">Vendida</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Nombres completos de la persona que le suministró esta bicicleta</label>
+                        <input id="txtPersonaSumnist" placeholder="Nombres completos de la persona que le suministró la bicicleta" type="text" class="form-control" name="NOMBDUENIOANT_BICICLETA" minlength="4" maxlength="400">
+                    </div>
                 </div>
                 <button type="submit" class="btn btn-primary estiloBoton">Registrar</button>
             </form>
@@ -239,9 +252,13 @@
         document.getElementById('nombreDuenio').style.display = 'none';   
     }
     function ocultarCampoNueva() {
+        document.getElementById('tiendaCompra').value = null;
+        document.getElementById('factura').value = null;
         document.getElementById('divNueva').style.display = 'none';
     }
     function ocultarCampoUsada() {
+        document.getElementById('descripcionBicicleta').value = '';
+        document.getElementById('txtPersonaSumnist').value = null;
         document.getElementById('divUsada').style.display = 'none';
     }
     function mostrarCampoNueva() {
