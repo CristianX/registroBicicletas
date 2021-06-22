@@ -37,39 +37,39 @@
                 @csrf
                 <div class="mb-3">
                     <label for="identificacion" class="form-label">Identificación</label>
-                    <input placeholder="Ingrese su identificación" type="text" pattern="\d*" class="form-control"name="IDENTIFICACION_USUARIO" maxlength="10" minlength="10" required>
+                    <input placeholder="Ingrese su identificación" type="text" pattern="\d*" class="form-control"name="identificacion_usuario" maxlength="10" minlength="10" required>
                 </div>
                 <div class="mb-3">
                     <label for="nombres" class="form-label">Nombres</label>
-                    <input placeholder="Ingrese sus Nombres" type="text" class="form-control" name="NOMBRES_USUARIO" minlength="4" maxlength="200" required>
+                    <input placeholder="Ingrese sus Nombres" type="text" class="form-control" name="nombres_usuario" minlength="4" maxlength="200" required>
                 </div>
                 <div class="mb-3">
                     <label for="apellidos" class="form-label">Apellidos</label>
-                    <input placeholder="Ingrese sus Apellidos" type="text" class="form-control" name="APELLIDOS_USUARIO" minlength="4" maxlength="200" required>
+                    <input placeholder="Ingrese sus Apellidos" type="text" class="form-control" name="apellidos_usuario" minlength="4" maxlength="200" required>
                 </div>
                 <div class="mb-3">
                     <label for="edad" class="form-label">Edad</label>
-                    <input placeholder="Ingrese su Edad" type="number" min="18" max="120" step="1" class="form-control" name="EDAD_USUARIO" required>
+                    <input placeholder="Ingrese su Edad" type="number" min="18" max="120" step="1" class="form-control" name="edad_usuario" required>
                 </div>
                 <div class="mb-3">
                   <label for="email" class="form-label">Correo Electrónico</label>
-                  <input placeholder="Ingrese su Correo Electrónico" type="email" class="form-control" name="EMAIL_USUARIO" required>
+                  <input placeholder="Ingrese su Correo Electrónico" type="email" class="form-control" name="email_usuario" required>
                 </div>
                 <div class="mb-3">
                     <label for="telefCelular" class="form-label">Teléfono Celular</label>
-                    <input placeholder="Ingrese su teléfono celular" type="tel" pattern="\d*" class="form-control" minlength="10" maxlength="10" name="TELFCELULAR_USUARIO" required>
+                    <input placeholder="Ingrese su teléfono celular" type="tel" pattern="\d*" class="form-control" minlength="10" maxlength="10" name="telfconvencional_usuario" required>
                 </div>
                 <div class="mb-3">
                     <label for="telefConvencional" class="form-label">Teléfono de Emergencia (Opcional)</label>
-                    <input placeholder="Ingrese su teléfono convencional" type="tel" pattern="\d*" class="form-control" minlength="7" maxlength="9" name="TELFCONVENCIONAL_USUARIO">
+                    <input placeholder="Ingrese su teléfono convencional" type="tel" pattern="\d*" class="form-control" minlength="7" maxlength="9" name="telfcelular_usuario">
                 </div>
                 <div class="mb-3">
                     <label for="nacionalidad" class="form-label">Nacionalidad</label>
-                    <input placeholder="Ingrese su Nacionalidad" type="text" class="form-control" name="NACIONALIDAD_USUARIO" minlength="4" maxlength="200" required>
+                    <input placeholder="Ingrese su Nacionalidad" type="text" class="form-control" name="nacionalidad_usuario" minlength="4" maxlength="200" required>
                 </div>
                 <div class="mb-3">
-                    <label for="PARROQUIARES_USUARIO" class="form-label">Porroquia donde Reside</label>
-                    <select class="form-select" name="PARROQUIARES_USUARIO" required>
+                    <label for="parroquiares_usuario" class="form-label">Porroquia donde Reside</label>
+                    <select class="form-select" name="parroquiares_usuario" required>
                         <option value="" selected disabled>Seleccione una Parróquia</option>
                         @foreach ($parroquias as $parroquia)
                             <option value="{{$parroquia}}">{{$parroquia}}</option>
@@ -78,7 +78,7 @@
                 </div>
                 <div class="mb-3">
                     <label for="barrioDondeReside" class="form-label">Barrio donde Reside</label>
-                    <input placeholder="Ingrese el Barrio donde Reside" type="text" class="form-control" name="BARRIORES_USUARIO" minlength="4" maxlength="600" required>
+                    <input placeholder="Ingrese el Barrio donde Reside" type="text" class="form-control" name="barriores_usuario" minlength="4" maxlength="600" required>
                 </div>
                 <button type="submit" class="btn btn-primary estiloBoton">Registrar</button>
             </form>

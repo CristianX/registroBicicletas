@@ -9,7 +9,7 @@ class Usuario extends Model
 {
     use HasFactory;
     public $timestamps = false;
-    protected $primaryKey = "IDENTIFICACION_USUARIO";
+    protected $primaryKey = "identificacion_usuario";
     
     /**
      * The attributes that are mass assignable.
@@ -17,16 +17,16 @@ class Usuario extends Model
      * @var array
      */
     protected $fillable = [
-        'IDENTIFICACION_USUARIO',
-        'NOMBRES_USUARIO',
-        'APELLIDOS_USUARIO',
-        'EDAD_USUARIO',
-        'EMAIL_USUARIO',
-        'TELFCONVENCIONAL_USUARIO',
-        'TELFCELULAR_USUARIO',
-        'NACIONALIDAD_USUARIO',
-        'PARROQUIARES_USUARIO',
-        'BARRIORES_USUARIO',
+        'identificacion_usuario',
+        'nombres_usuario',
+        'apellidos_usuario',
+        'edad_usuario',
+        'email_usuario',
+        'telfconvencional_usuario',
+        'telfcelular_usuario',
+        'nacionalidad_usuario',
+        'parroquiares_usuario',
+        'bsrriores_usuario',
     ];
     
 }
