@@ -35,7 +35,7 @@
             <form method="POST" action="{{ route('bicicleta.store',['identificacion' => $registroIdentificacion ]) }}" enctype="multipart/form-data" style="padding: 10px" >
                 @csrf
                 <div class="mb-3">
-                    <label for="nserie" class="form-label">Número de Serie</label>
+                    <label for="nserie" class="form-label">Número de Serie o chasis de la Bicicleta</label>
                     <input placeholder="Ingrese el número de serie de su Bicicleta" type="text" class="form-control" name="NUMEROSERIE_BICICLETA" minlength="4" maxlength="40" required>
                 </div>
                 <div class="mb-3">
@@ -121,7 +121,7 @@
                     <div class="card">
                         <div class="card-body">
                             <div class="form-group">
-                                <label for="especBicicleta" class="form-label">Foto del Número de serie de la Bicicleta</label>
+                                <label for="especBicicleta" class="form-label">Foto del Número de serie o chasis de la Bicicleta</label>
                                 <br>
                                 <input type="file" name="FOTONUMSERIE_BICICLETA" accept="image/*" required>
                                 @error('FOTONUMSERIE_BICICLETA')
@@ -136,7 +136,7 @@
                     <div class="card">
                         <div class="card-body">
                             <div class="form-group">
-                                <label for="especBicicleta" class="form-label">Foto de los componentes de la Bicicleta</label>
+                                <label for="especBicicleta" class="form-label">Foto de algún componente personalizado de la Bicicleta</label>
                                 <br>
                                 <input type="file" name="FOTOCOMP_BICICLETA" accept="image/*" required>
                                 @error('FOTOCOMP_BICICLETA')

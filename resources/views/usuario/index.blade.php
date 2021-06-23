@@ -68,7 +68,7 @@
                     <input placeholder="Ingrese su Nacionalidad" type="text" class="form-control" name="NACIONALIDAD_USUARIO" minlength="4" maxlength="200" required>
                 </div>
                 <div class="mb-3">
-                    <label for="PARROQUIARES_USUARIO" class="form-label">Porroquia donde Reside</label>
+                    <label for="PARROQUIARES_USUARIO" class="form-label">Parroquia donde Reside</label>
                     <select class="form-select" name="PARROQUIARES_USUARIO" required>
                         <option value="" selected disabled>Seleccione una Parróquia</option>
                         @foreach ($parroquias as $parroquia)
