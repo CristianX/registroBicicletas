@@ -89,6 +89,20 @@ class BicicletaController extends Controller
         
     }
 
+    public function show($identificacion) {
+        try {
+            return view('bicicleta.bicicletaPorId')->with([
+                'bicicletas' => Bicicleta::where('IDENTIFICACION_USUARIO', $identificacion)->get(),
+                'identificacion' => Usuario::findOrFail($identificacion),
+                // Problema de borrado de 0 a la izquierda
+                'regIdentificacion' => $identificacion,
+            ]);
+        } catch (\Exception $e) {
+            return redirect()->route('usuario.index');
+        }
+    }
+
+
     // Rutas para API
     // TODO: Eliminar código repetido
 
