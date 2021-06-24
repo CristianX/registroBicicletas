@@ -39,51 +39,61 @@
                           <td>{{ $bicicleta->COMBCOLORES_BICICLETA }}</td>
                           <td>{{ $bicicleta->ESPEC_BICICLETA }}</td>
                           <td>
-                              <button type="button" class="btn btn-outline-warning" style="color: black" onclick="editarBicicleta()">Editar</button>
+                              <a type="button" class="btn btn-outline-warning" href="{{ route('bicicletas.edit', ['bicicleta' => $bicicleta->id]) }}" style="color: black" onclick="editarBicicleta(event)">Editar</a>
                           </td>
                       </tr>
                 @endforeach
                 
             </tbody>
         </table>
-        <a type="button" class="btn btn-success float-right" href="{{ route('bicicleta.index', [$regIdentificacion]) }}" >Nuevo Registro</a>
+        <a type="button" class="btn btn-success float-right" href="{{ route('bicicleta.index', [$regIdentificacion]) }}">Nuevo Registro</a>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
     <script src="/js/sorttable.js" ></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script>
-        function editarBicicleta() {
+        function editarBicicleta(e) {
+        
+            e.preventDefault();
+            var url = e.currentTarget.getAttribute('href');
+
             Swal.fire({
                 title: 'Editar',
-                text: 'Editar',
+                text: '¿Está seguro que desea editar la información de esta bicicleta?',
                 icon: 'warning',
                 showCancelButton: true,
-                html: `
-                    <select class="form-select" id="descripcionBicicleta" name="PREGUNTA_SEGURIDAD">
-                        <option value="" selected disabled>Seleccione una PREGUNTA</option>
-                        <option value="pregunta1">Pregunta 1</option>
-                        <option value="pregunta2">Pregunta 2</option>
-                        <option value="pregunta3">Pregunta 3</option>
-                    </select>
-                    <br>
-                    <input type="password" id="password" class="form-control" placeholder="Password">
-                    `,
+                // html: `
+                //     <select class="form-select" id="descripcionBicicleta" name="PREGUNTA_SEGURIDAD">
+                //         <option value="" selected disabled>Seleccione una PREGUNTA</option>
+                //         <option value="pregunta1">Pregunta 1</option>
+                //         <option value="pregunta2">Pregunta 2</option>
+                //         <option value="pregunta3">Pregunta 3</option>
+                //     </select>
+                //     <br>
+                //     <input type="password" id="password" class="form-control" placeholder="Password">
+                //     `,
                 confirmButtonText: 'Editar',
                 confirmButtonColor: '#124176',
                 cancelButtonText: 'Cancelar'
-            }).then((result)=>{
-                if(result.isConfirmed) {
-                    Swal.fire(
-                        document.getElementById('descripcionBicicleta').value,
-                    )
-                } else if (result.dismiss === Swal.DismissReason.cancel) {
-                    Swal.fire(
-                        'Cancelado',
-                        'Your imaginary file is safe',
-                        'error'
-                    )
+                // TODO: SI ES NECESARIO ELIMINAR ;
+            }).then((result) => {
+                if(result.value) {
+                    window.location.href=url;
                 }
             })
+            // .then((result)=>{
+            //     if(result.isConfirmed) {
+            //         Swal.fire(
+            //             document.getElementById('descripcionBicicleta').value,
+            //         )
+            //     } else if (result.dismiss === Swal.DismissReason.cancel) {
+            //         Swal.fire(
+            //             'Cancelado',
+            //             'Your imaginary file is safe',
+            //             'error'
+            //         )
+            //     }
+            // })
         }
     </script>
 </body>

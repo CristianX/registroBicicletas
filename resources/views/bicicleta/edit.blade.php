@@ -5,16 +5,16 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
-        <title>Formulario de Bicicletas</title>
+        <title>Edición de Bicicletas</title>
     </head>
-    <body>
+    <body onload="{{ $bicicleta->APODERADO_BICICLETA == $usuario->NOMBRES_USUARIO.' '.$usuario->APELLIDOS_USUARIO ? 'ocultarCampoHijo()' : 'mostrarCampoHijo()' }}">
         <div class="d-none d-sm-none d-md-block contenedorIzquierda">
             <div class="row" style="background-color: #124176">
                 <div class="col-md-auto">
                     <img class="imagenIzquierda" src="{{ asset('/assets/bicicleta.png') }}" alt="bicicleta">
                 </div>
                 <div class="col contenedorCentro">
-                    <h1 class="estiloTexto" style="text-align: center" >Registro de bicicletas de {{ $identificacion->NOMBRES_USUARIO  }} {{ $identificacion->APELLIDOS_USUARIO }}</h1>
+                    <h1 class="estiloTexto" style="text-align: center" >Edición de bicicleta marca : {{ $bicicleta->MARCA_BICICLETA }} {{ $bicicleta->MODELO_BICICLETA }}</h1>
                 </div>
                 <div class="col-md-auto contenedorDerecha">
                     <img src="{{ asset('/assets/bicicleta.png') }}" width="100px" alt="bicicleta">
@@ -24,7 +24,7 @@
         <div class="d-block d-sm-block d-md-none">
             <div class="row" style="background-color: #124176">
                 <div class="col contenedorCentro">
-                    <h1 class="estiloTexto" style="text-align: center" >Registro de bicicletas de {{ $identificacion->NOMBRES_USUARIO  }} {{ $identificacion->APELLIDOS_USUARIO }}</h1>
+                    <h1 class="estiloTexto" style="text-align: center" >Edición de bicicleta {{ $bicicleta->MARCA_BICICLETA }} {{ $bicicleta->MODELO_BICICLETA }}</h1>
                 </div>
             </div>
         </div>
@@ -32,131 +32,69 @@
             <div class="alert alert-danger">{{ session('error') }}</div>
         @endif
         <div class="container">
-            <form method="POST" action="{{ route('bicicleta.store',['identificacion' => $registroIdentificacion ]) }}" enctype="multipart/form-data" style="padding: 10px" >
+            <form method="POST" action="{{ route('bicicletas.update',['bicicleta' => $bicicleta->NUMEROSERIE_BICICLETA]) }}" enctype="multipart/form-data" style="padding: 10px" >
                 @csrf
+                @method('PUT')
+                <div class="mb-3">
+                    <label for="nserie" class="form-label">Número de Serie o chasis de la Bicicleta</label>
+                    <input value="{{ $bicicleta->NUMEROSERIE_BICICLETA }}" type="text" class="form-control" name="NUMEROSERIE_BICICLETA" minlength="4" maxlength="40" required>
+                </div>
                 <div class="mb-3">
                     <label for="modelo" class="form-label">Marca</label>
-                    <input placeholder="Ingrese la marca de su Bicicleta" type="text" class="form-control" name="MARCA_BICICLETA" minlength="3" maxlength="200" required>
+                    <input value="{{ $bicicleta->MARCA_BICICLETA }}" type="text" class="form-control" name="MARCA_BICICLETA" minlength="3" maxlength="200" required>
                 </div>
                 <div class="mb-3">
                     <label for="modelo" class="form-label">Modelo</label>
-                    <input placeholder="Ingrese el modelo de su Bicicleta" type="text" class="form-control" name="MODELO_BICICLETA" minlength="4" maxlength="200" required>
-                </div>
-                <div class="mb-3">
-                    <label for="nserie" class="form-label">Número de Serie o chasis de la Bicicleta (En caso de no tenerlo registrar como S/N)</label>
-                    <input placeholder="Ingrese el número de serie de su Bicicleta" type="text" class="form-control" name="NUMEROSERIE_BICICLETA" minlength="3" maxlength="40" required>
+                    <input value="{{ $bicicleta->MODELO_BICICLETA }}" type="text" class="form-control" name="MODELO_BICICLETA" minlength="4" maxlength="200" required>
                 </div>
                 <div class="mb-3">
                     <label for="categoria" class="form-label">Gama o Categoría</label>
                     <select class="form-select" name="CATEGORIA_BICICLETA" required>
-                        <option value="" selected disabled>Seleccione una Categoría</option>
-                        <option value="alta">Alta</option>
-                        <option value="media">Media</option>
-                        <option value="baja">Baja</option>
+                        <option {{ $bicicleta->CATEGORIA_BICICLETA == 'alta' ? 'selected' : '' }} value="alta">Alta</option>
+                        <option {{ $bicicleta->CATEGORIA_BICICLETA == 'media' ? 'selected' : '' }} value="media">Media</option>
+                        <option {{ $bicicleta->CATEGORIA_BICICLETA == 'baja' ? 'selected' : '' }} value="baja">Baja</option>
                     </select>
                 </div>
                 <div class="mb-3">
                     <label for="tipoBicicleta" class="form-label">Tipo de Bicicleta</label>
                     <select class="form-select" name="TIPOBICICLETA_BICICLETA" required>
-                        <option value="" selected disabled>Seleccione un Tipo</option>
-                        <option value="montania">Montaña</option>
-                        <option value="urbana">Urbana</option>
-                        <option value="carretera">Carretera</option>
-                        <option value="freestyle">Freestyle</option>
-                        <option value="electrica">Eléctrica</option>
-                        <option value="biciCargo">Bici Cargo</option>
-                        <option value="plegable">Plegable</option>
-                        <option value="nino">Niña/o</option>
-                        <option value="otro">OTRO</option>
+                        <option {{ $bicicleta->TIPOBICICLETA_BICICLETA == 'montania' ? 'selected' : '' }} value="montania">Montaña</option>
+                        <option {{ $bicicleta->TIPOBICICLETA_BICICLETA == 'urbana' ? 'selected' : '' }} value="urbana">Urbana</option>
+                        <option {{ $bicicleta->TIPOBICICLETA_BICICLETA == 'carretera' ? 'selected' : '' }} value="carretera">Carretera</option>
+                        <option {{ $bicicleta->TIPOBICICLETA_BICICLETA == 'freestyle' ? 'selected' : '' }} value="freestyle">Freestyle</option>
+                        <option {{ $bicicleta->TIPOBICICLETA_BICICLETA == 'electrica' ? 'selected' : '' }} value="electrica">Eléctrica</option>
+                        <option {{ $bicicleta->TIPOBICICLETA_BICICLETA == 'biciCargo' ? 'selected' : '' }} value="biciCargo">Bici Cargo</option>
+                        <option {{ $bicicleta->TIPOBICICLETA_BICICLETA == 'plegable' ? 'selected' : '' }} value="plegable">Plegable</option>
+                        <option {{ $bicicleta->TIPOBICICLETA_BICICLETA == 'nino' ? 'selected' : '' }} value="nino">Niña/o</option>
+                        <option {{ $bicicleta->TIPOBICICLETA_BICICLETA == 'otro' ? 'selected' : '' }} value="otro">Otro</option>
                     </select>
                 </div>
                 <div class="mb-3">
                     <label for="tamanio" class="form-label">Tamaño</label>
                     <select class="form-select" name="TAMANIO_BICICLETA" required>
-                        <option value="" selected disabled>Seleccione el Tamaño de Bicicleta</option>
-                        <option value="large">Large</option>
-                        <option value="medium">Medium</option>
-                        <option value="small">Small</option>
+                        <option {{ $bicicleta->TAMANIO_BICICLETA == 'large' ? 'selected' : '' }} value="large">Large</option>
+                        <option {{ $bicicleta->TAMANIO_BICICLETA == 'medium' ? 'selected' : '' }} value="medium">Medium</option>
+                        <option {{ $bicicleta->TAMANIO_BICICLETA == 'small' ? 'selected' : '' }} value="small">Small</option>
                     </select>
                 </div>
                 <div class="mb-3">
                     <label for="combColores" class="form-label">Combinación de Colores</label>
-                    <input placeholder="Ingrese la combinación de colores de su Bicicleta" type="text" class="form-control" name="COMBCOLORES_BICICLETA" minlength="4" maxlength="600" required>
+                    <input value="{{ $bicicleta->COMBCOLORES_BICICLETA }}" type="text" class="form-control" name="COMBCOLORES_BICICLETA" minlength="4" maxlength="600" required>
                 </div>
                 <div class="mb-3">
-                    <label for="especBicicleta" class="form-label">Especificaciónes de la Bicicleta (Componentes o personalización)</label>
-                    <textarea placeholder="Ingrese las Especificaciones de su Bicicleta" type="text" class="form-control" name="ESPEC_BICICLETA" minlength="4" maxlength="600" required></textarea>
+                    <label for="especBicicleta" class="form-label">Especificaciónes de la Bicicleta</label>
+                    <textarea type="text" class="form-control" name="ESPEC_BICICLETA" minlength="4" maxlength="600" required>{{ $bicicleta->ESPEC_BICICLETA }}</textarea>
                 </div>
                 <div class="mb-3">
-                    <div class="card">
-                        <div class="card-body">
-                            <div class="form-group">
-                                <label for="especBicicleta" class="form-label">Foto Frontal de la Bicicleta (Con Usted)</label>
-                                <br>
-                                <input type="file" name="FOTOFRONTAL_BICICLETA" accept="image/*" required>
-                                @error('FOTOFRONTAL_BICICLETA')
-                                    <br>
-                                    <small class="text-danger" >{{'No se admiten otro tipo de archivos que no sean imagenes que tengan un peso máximo de 2mb'}}</small>
-                                @enderror
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="mb-3">
-                    <div class="card">
-                        <div class="card-body">
-                            <div class="form-group">
-                                <label for="especBicicleta" class="form-label">Foto Lateral de la Bicicleta</label>
-                                <br>
-                                <input type="file" name="FOTOCOMPLETA_BICICLETA" accept="image/*" required>
-                                @error('FOTOCOMPLETA_BICICLETA')
-                                    <br>
-                                    <small class="text-danger" >{{'No se admiten otro tipo de archivos que no sean imagenes que tengan un peso máximo de 2mb'}}</small>
-                                @enderror
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="mb-3">
-                    <div class="card">
-                        <div class="card-body">
-                            <div class="form-group">
-                                <label for="especBicicleta" class="form-label">Foto del Número de serie o Chasis de la Bicicleta (Opcional)</label>
-                                <br>
-                                <input type="file" name="FOTONUMSERIE_BICICLETA" accept="image/*">
-                                @error('FOTONUMSERIE_BICICLETA')
-                                    <br>
-                                    <small class="text-danger" >{{'No se admiten otro tipo de archivos que no sean imagenes que tengan un peso máximo de 2mb'}}</small>
-                                @enderror
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="mb-3">
-                    <div class="card">
-                        <div class="card-body">
-                            <div class="form-group">
-                                <label for="especBicicleta" class="form-label">Foto de algún componente personalizado de la Bicicleta (Opcional)</label>
-                                <br>
-                                <input type="file" name="FOTOCOMP_BICICLETA" accept="image/*" required>
-                                @error('FOTOCOMP_BICICLETA')
-                                    <br>
-                                    <small class="text-danger" >{{'No se admiten otro tipo de archivos que no sean imagenes que tengan un peso máximo de 2mb'}}</small>
-                                @enderror
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="mb-3">
-                    <label class="form-label">¿Desea registrar esta bicicleta a nombre de otra persona? (Menor de Edad/Préstamo/Empleado) </label>
+                    <label class="form-label">¿Desea registrar esta bicicleta a nombre de otra persona? (Menor de Edad / Empleado) </label>
                     <div class="form-check">
-                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" onclick="ocultarCampoHijo()" checked>
+                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" onclick="ocultarCampoHijo()" {{ $bicicleta->APODERADO_BICICLETA == $usuario->NOMBRES_USUARIO.' '.$usuario->APELLIDOS_USUARIO ? 'checked' : '' }}>
                         <label class="form-check-label" for="flexRadioDefault2">
                           No
                         </label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" onclick="mostrarCampoHijo()">
+                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" onclick="mostrarCampoHijo()" {{ $bicicleta->APODERADO_BICICLETA != $usuario->NOMBRES_USUARIO.' '.$usuario->APELLIDOS_USUARIO ? 'checked' : '' }}>
                         <label class="form-check-label" for="flexRadioDefault1">
                           Si
                         </label>
@@ -164,7 +102,7 @@
                 </div>
                 <div class="mb-3" id="nombreDuenio">
                     <label class="form-label">Nombres completos de la Persona</label>
-                    <input id="campoNombreDuenio" placeholder="Ingrese los nombres completos de la persona apoderada de la bicicleta" type="text" class="form-control" name="APODERADO_BICICLETA" minlength="4" maxlength="400">
+                    <input id="campoNombreDuenio" value="{{ $bicicleta->APODERADO_BICICLETA }}" type="text" class="form-control" name="APODERADO_BICICLETA" minlength="4" maxlength="400">
                 </div>
                 <div class="mb-3">
                     <label class="form-label">¿La bicicleta es nueva o usada?</label>
@@ -206,7 +144,7 @@
                         <input id="txtPersonaSumnist" placeholder="Nombres completos de la persona que le suministró la bicicleta" type="text" class="form-control" name="NOMBDUENIOANT_BICICLETA" minlength="4" maxlength="400">
                     </div>
                 </div>
-                <button type="submit" class="btn btn-primary estiloBoton">Registrar</button>
+                <button type="submit" class="btn btn-primary estiloBoton">Editar Bicicleta</button>
             </form>
         </div>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
@@ -236,14 +174,12 @@
         width: 100%;
         background-color: #124176;
     }
-    #nombreDuenio{
-        display: none;
-    }
     #divUsada{
         display: none;
     }
 </style>
 <script class="text/javascript">
+
     function mostrarCampoHijo() {
         document.getElementById('nombreDuenio').style.display = 'block';
     }

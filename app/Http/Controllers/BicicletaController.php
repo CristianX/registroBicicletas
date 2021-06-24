@@ -102,6 +102,41 @@ class BicicletaController extends Controller
         }
     }
 
+    public function edit($bicicleta) {
+        // TODO: añadir try catch
+
+        $bicicletaProv = Bicicleta::findOrFail($bicicleta);
+        return view('bicicleta.edit')->with([
+            'bicicleta' => Bicicleta::findOrFail($bicicleta),
+            'usuario' => Usuario::findOrFail($bicicletaProv->IDENTIFICACION_USUARIO),
+        ]);
+    }
+
+    public function update($bicicleta) {
+
+        $bicicletaProv = Bicicleta::findOrFail($bicicleta);
+
+        $nombreApoderado = request()->get('APODERADO_BICICLETA');
+        if(! $nombreApoderado) {
+            $usuario = Usuario::findOrFail($bicicletaProv->IDENTIFICACION_USUARIO);
+            $nombreApoderado = $usuario->NOMBRES_USUARIO.' '.$usuario->APELLIDOS_USUARIO;
+        }
+
+        $bicicleta = Bicicleta::findOrFail($bicicleta);
+        $bicicleta->update([
+                'NUMEROSERIE_BICICLETA' => request()->NUMEROSERIE_BICICLETA,
+                'MARCA_BICICLETA' => request()->MARCA_BICICLETA,
+                'MODELO_BICICLETA' => request()->MODELO_BICICLETA,
+                'CATEGORIA_BICICLETA' => request()->CATEGORIA_BICICLETA,
+                'TIPOBICICLETA_BICICLETA' => request()->TIPOBICICLETA_BICICLETA,
+                'TAMANIO_BICICLETA' => request()->TAMANIO_BICICLETA,
+                'COMBCOLORES_BICICLETA' => request()->COMBCOLORES_BICICLETA,
+                'ESPEC_BICICLETA' => request()->ESPEC_BICICLETA,
+                'APODERADO_BICICLETA' => $nombreApoderado,
+        ]);
+        return redirect()->route('bicicleta.mostrarBicicletasPorId', [$bicicleta->IDENTIFICACION_USUARIO]);
+    }
+
 
     // Rutas para API
     // TODO: Eliminar código repetido

@@ -36,8 +36,8 @@
             <form method="POST" action="{{ route('usuario.store') }}" style="padding: 10px" >
                 @csrf
                 <div class="mb-3">
-                    <label for="identificacion" class="form-label">Identificación</label>
-                    <input placeholder="Ingrese su identificación" type="text" pattern="\d*" class="form-control"name="IDENTIFICACION_USUARIO" maxlength="10" minlength="10" required>
+                    <label for="identificacion" class="form-label">C.I./Pasaporte</label>
+                    <input placeholder="Ingrese su identificación" type="text" pattern="\d*" class="form-control"name="IDENTIFICACION_USUARIO" maxlength="15" minlength="5" required>
                 </div>
                 <div class="mb-3">
                     <label for="nombres" class="form-label">Nombres</label>
@@ -60,8 +60,8 @@
                     <input placeholder="Ingrese su teléfono celular" type="tel" pattern="\d*" class="form-control" minlength="10" maxlength="10" name="TELFCELULAR_USUARIO" required>
                 </div>
                 <div class="mb-3">
-                    <label for="telefConvencional" class="form-label">Teléfono de Emergencia (Opcional)</label>
-                    <input placeholder="Ingrese su teléfono convencional" type="tel" pattern="\d*" class="form-control" minlength="7" maxlength="9" name="TELFCONVENCIONAL_USUARIO">
+                    <label for="telefConvencional" class="form-label">Teléfono de Emergencia</label>
+                    <input placeholder="Ingrese su teléfono convencional" type="tel" pattern="\d*" class="form-control" minlength="7" maxlength="10" name="TELFCONVENCIONAL_USUARIO" required>
                 </div>
                 <div class="mb-3">
                     <label for="nacionalidad" class="form-label">Nacionalidad</label>
