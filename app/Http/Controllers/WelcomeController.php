@@ -12,7 +12,7 @@ class WelcomeController extends Controller
     public function pasarRegBIcicletas() {
         $identificacion = request()->get('identificacion');
         // return $identificacion;
-        return redirect()->route('bicicleta.index', [$identificacion]);
+        return redirect()->route('bicicleta.mostrarBicicletasPorId', [$identificacion]);
     }
 }
 

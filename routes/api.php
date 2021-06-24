@@ -31,3 +31,6 @@ Route::get('usuariosApi', function(){
 });
 
 Route::post('crearUsuarioApi', 'App\Http\Controllers\UsuarioController@storeApi');
+
+// Api para parroquias
+Route::get('parroquiasApi', 'App\Http\Controllers\UsuarioController@parroquasApi');

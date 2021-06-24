@@ -56,20 +56,25 @@
                   <input placeholder="Ingrese su Correo Electrónico" type="email" class="form-control" name="EMAIL_USUARIO" required>
                 </div>
                 <div class="mb-3">
-                    <label for="telefConvencional" class="form-label">Teléfono Convencional</label>
-                    <input placeholder="Ingrese su teléfono convencional" type="tel" pattern="\d*" class="form-control" minlength="7" maxlength="9" name="TELFCONVENCIONAL_USUARIO" required>
-                </div>
-                <div class="mb-3">
                     <label for="telefCelular" class="form-label">Teléfono Celular</label>
                     <input placeholder="Ingrese su teléfono celular" type="tel" pattern="\d*" class="form-control" minlength="10" maxlength="10" name="TELFCELULAR_USUARIO" required>
+                </div>
+                <div class="mb-3">
+                    <label for="telefConvencional" class="form-label">Teléfono de Emergencia (Opcional)</label>
+                    <input placeholder="Ingrese su teléfono convencional" type="tel" pattern="\d*" class="form-control" minlength="7" maxlength="9" name="TELFCONVENCIONAL_USUARIO">
                 </div>
                 <div class="mb-3">
                     <label for="nacionalidad" class="form-label">Nacionalidad</label>
                     <input placeholder="Ingrese su Nacionalidad" type="text" class="form-control" name="NACIONALIDAD_USUARIO" minlength="4" maxlength="200" required>
                 </div>
                 <div class="mb-3">
-                    <label for="parroquiaReside" class="form-label">Parroquia donde Reside</label>
-                    <input placeholder="Ingrese la Parroquia donde Reside" type="text" class="form-control" name="PARROQUIARES_USUARIO" minlength="4" maxlength="600" required>
+                    <label for="PARROQUIARES_USUARIO" class="form-label">Parroquia donde Reside</label>
+                    <select class="form-select" name="PARROQUIARES_USUARIO" required>
+                        <option value="" selected disabled>Seleccione una Parróquia</option>
+                        @foreach ($parroquias as $parroquia)
+                            <option value="{{$parroquia}}">{{$parroquia}}</option>
+                        @endforeach
+                    </select>
                 </div>
                 <div class="mb-3">
                     <label for="barrioDondeReside" class="form-label">Barrio donde Reside</label>
