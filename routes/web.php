@@ -26,6 +26,8 @@ Route::get('mostrarBicicletas', 'App\Http\Controllers\BicicletaController@index'
 Route::get('bicicleta/{identificacion}', 'App\Http\Controllers\BicicletaController@create')->name('bicicleta.index');
 Route::post('bicicleta/{identificacion}', 'App\Http\Controllers\BicicletaController@store')->name('bicicleta.store');
 Route::get('mostrarBicicletas/{identificacion}', 'App\Http\Controllers\BicicletaController@show')->name('bicicleta.mostrarBicicletasPorId');
+Route::get('bicicletas/{bicicleta}/edit', 'App\Http\Controllers\BicicletaController@edit')->name('bicicletas.edit');
+Route::match(['put', 'patch'], '/bicicletas/{bicicleta}', 'App\Http\Controllers\BicicletaController@update')->name('bicicletas.update');
 
 
 // Registro completado
