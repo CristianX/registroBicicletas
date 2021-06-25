@@ -52,4 +52,4 @@ Route::get('regCompletado/{identificacion}', 'App\Http\Controllers\RegCompContro
 //         echo '<br>'.$fault;
 //     }
 // });
-Route::get('webService', 'App\Http\Controllers\Soap\SoapController@datosRucEstablecimiento')->name('webservice');
+// Route::get('webService', 'App\Http\Controllers\Soap\SoapController@datosRucEstablecimiento')->name('webservice');

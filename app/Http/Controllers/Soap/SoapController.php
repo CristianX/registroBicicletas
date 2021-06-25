@@ -7,16 +7,16 @@ class SoapController extends BaseSoapController
 {
     private $service;
 
-    public function datosRucEstablecimiento() {
+    public function datosRucEstablecimiento($ruc) {
         try {
             self::setWsdl('http://172.20.47.219/MDMQ_CrecimientoTributario_WS/WS_SRI_PER.asmx?WSDL');
             $this->service = InstanceSoapClient::init();
 
-            $persons = $this->service->InformacionContribuyente(['ruc' => '0503297079001' ]);
+            $persons = $this->service->InformacionContribuyente(['ruc' => $ruc ]);
             $personas = $this->loadXmlStringAsArray($persons->InformacionContribuyenteResult->any);
             // dd($personas);
             if(!$personas) {
-                return 'No Hay Personas';
+                return null;
             } else {
                 return $personas['NewDataSet']['Table'];
             }

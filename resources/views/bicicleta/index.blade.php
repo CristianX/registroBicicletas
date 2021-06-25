@@ -7,7 +7,7 @@
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
         <title>Formulario de Bicicletas</title>
     </head>
-    <body>
+    <body onload="cargaInicial()" >
         <div class="d-none d-sm-none d-md-block contenedorIzquierda">
             <div class="row" style="background-color: #124176">
                 <div class="col-md-auto">
@@ -183,30 +183,50 @@
                 </div>
                 <div id="divNueva">
                     <div class="mb-3">
-                        <label class="form-label">Tienda o Establecimiento de la Compra</label>
-                        <input id="tiendaCompra" placeholder="Ingrese el nombre del establecimiento donde la adquirió" type="text" class="form-control" name="TIENDACOMPRA_BICICLETA" minlength="4" maxlength="400">
+                        <label class="form-label">RUC Indicado en la Factura</label>
+                        <input id="razonSocial" placeholder="Ingrese el RUC indicado en la factura" type="text" class="form-control" name="RAZONSOCIAL_BICICLETA" minlength="4" maxlength="400">
                     </div>
                     <div class="mb-3">
-                        <label class="form-label">Factura</label>
-                        <input id="factura" placeholder="Factura" type="text" class="form-control" name="FACTURA_BICICLETA" minlength="4" maxlength="400">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="form-group">
+                                    <label for="especBicicleta" class="form-label">Foto de la Factura de la Bicicleta</label>
+                                    <br>
+                                    <input type="file" name="FOTOFACTURA_BICICLETA" id="fotoFactura" accept="image/*" required>
+                                    @error('FOTOFACTURA_BICICLETA')
+                                        <br>
+                                        <small class="text-danger" >{{'No se admiten otro tipo de archivos que no sean imagenes que tengan un peso máximo de 2mb'}}</small>
+                                    @enderror
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div id="divUsada">
                     <div class="mb-3">
-                        <label for="DESCRIPCION_BICICLETA" class="form-label">Descripción</label>
-                        <select class="form-select" id="descripcionBicicleta" name="DESCRIPCION_BICICLETA">
+                        <label for="DESCUSADA_BICICLETA" class="form-label">Descripción</label>
+                        <select class="form-select" id="descripcionBicicleta" name="DESCUSADA_BICICLETA">
                             <option value="" selected disabled>Seleccione una descripción</option>
                             <option value="prestada">Prestada</option>
                             <option value="regalada">Regalada</option>
-                            <option value="vendida">Vendida</option>
+                            <option value="comprada">Comprada</option>
                         </select>
                     </div>
                     <div class="mb-3">
                         <label class="form-label">Nombres completos de la persona que le suministró esta bicicleta</label>
-                        <input id="txtPersonaSumnist" placeholder="Nombres completos de la persona que le suministró la bicicleta" type="text" class="form-control" name="NOMBDUENIOANT_BICICLETA" minlength="4" maxlength="400">
+                        <input id="txtPersonaSumnist" placeholder="Nombres completos de la persona que le suministró la bicicleta" type="text" class="form-control" name="NOMBUSADA_BICICLETA" minlength="4" maxlength="400">
                     </div>
                 </div>
-                <button type="submit" class="btn btn-primary estiloBoton">Registrar</button>
+                <div class="mb-3">
+                    <div class="form-check form-switch">
+                        <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault"  >
+                        <label class="form-check-label" for="flexSwitchCheckDefault">
+                            <span id="activa">Activa</span>
+                            <span id="robada">Robada</span>
+                        </label>
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-primary estiloBoton">Registrar Bicicleta</button>
             </form>
         </div>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
@@ -239,7 +259,7 @@
     #nombreDuenio{
         display: none;
     }
-    #divUsada{
+    #robada {
         display: none;
     }
 </style>
@@ -252,19 +272,54 @@
         document.getElementById('nombreDuenio').style.display = 'none';   
     }
     function ocultarCampoNueva() {
-        document.getElementById('tiendaCompra').value = null;
-        document.getElementById('factura').value = null;
+        document.getElementById('razonSocial').value = null;
+        document.getElementById('fotoFactura').value = null;
         document.getElementById('divNueva').style.display = 'none';
+        document.getElementById('razonSocial').required = false;
+        document.getElementById('fotoFactura').required = false;
     }
     function ocultarCampoUsada() {
         document.getElementById('descripcionBicicleta').value = '';
         document.getElementById('txtPersonaSumnist').value = null;
         document.getElementById('divUsada').style.display = 'none';
+        document.getElementById('descripcionBicicleta').required = false;
+        document.getElementById('txtPersonaSumnist').required = false;
+        
     }
     function mostrarCampoNueva() {
         document.getElementById('divNueva').style.display = 'block';
+        document.getElementById('razonSocial').required = true;
+        document.getElementById('fotoFactura').required = true;
     }
     function mostrarCampoUsada() {
         document.getElementById('divUsada').style.display = 'block';
+        document.getElementById('descripcionBicicleta').required = true;
+        document.getElementById('txtPersonaSumnist').required = true;
     }
+
+    function switchActiva() {
+        document.getElementById('activa').style.display = 'block';
+        document.getElementById('robada').style.display = 'none';
+    }
+    
+    // Evento del Checkbox
+    var switchCheckbox = document.getElementById('flexSwitchCheckDefault');
+
+    switchCheckbox.addEventListener("change", comprueba, false);
+
+    function comprueba() {
+        if( switchCheckbox.checked ){
+            document.getElementById('activa').style.display = 'none';
+            document.getElementById('robada').style.display = 'block';
+        } else {
+            document.getElementById('robada').style.display = 'none';
+            document.getElementById('activa').style.display = 'block';
+        }
+    }
+
+    function cargaInicial() {
+        mostrarCampoNueva();
+        ocultarCampoUsada();
+    }
+
 </script>

@@ -15,7 +15,6 @@
             <thead style="background-color: #124176">
               <tr>
                   <th style="color: white">Apoderado</th>
-                  <th style="color: white">Numero de Serie</th>
                   <th style="color: white">Marca</th>
                   <th style="color: white">Modelo</th>
                   <th style="color: white">Categoría</th>
@@ -23,6 +22,7 @@
                   <th style="color: white">Tamaño</th>
                   <th style="color: white">Colores</th>
                   <th style="color: white">Especificaciones</th>
+                  <th style="color: white">Activa/Robada</th>
                   <th style="color: white"></th>
               </tr> 
             </thead>
@@ -30,7 +30,6 @@
                 @foreach ($bicicletas as $bicicleta)
                       <tr>
                           <td>{{ $bicicleta->APODERADO_BICICLETA }}</td>
-                          <td>{{ $bicicleta->NUMEROSERIE_BICICLETA }}</td>
                           <td>{{ $bicicleta->MARCA_BICICLETA }}</td>
                           <td>{{ $bicicleta->MODELO_BICICLETA }}</td>
                           <td>{{ $bicicleta->CATEGORIA_BICICLETA }}</td>
@@ -38,6 +37,13 @@
                           <td>{{ $bicicleta->TAMANIO_BICICLETA }}</td>
                           <td>{{ $bicicleta->COMBCOLORES_BICICLETA }}</td>
                           <td>{{ $bicicleta->ESPEC_BICICLETA }}</td>
+                          <td>
+                              @if ($bicicleta->ACTIVAROBADA_BICICLETA == 0)
+                                  <span style="color: green" >Activa</span>
+                              @else
+                                  <span style="color: red" >Robada</span>
+                              @endif
+                          </td>
                           <td>
                               <a type="button" class="btn btn-outline-warning" href="{{ route('bicicletas.edit', ['bicicleta' => $bicicleta->id]) }}" style="color: black" onclick="editarBicicleta(event)">Editar</a>
                           </td>

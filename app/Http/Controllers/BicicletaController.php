@@ -2,12 +2,17 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Controllers\Soap\SoapController;
 use App\Models\Bicicleta;
 use App\Models\Usuario;
 use Illuminate\Support\Facades\Storage;
 
+use function PHPUnit\Framework\isEmpty;
+
 class BicicletaController extends Controller
 {
+
+
     public function index() {
         return view('bicicleta.mostrarBicicletas')->with([
             'bicicletas' => Bicicleta::all(),
@@ -15,7 +20,6 @@ class BicicletaController extends Controller
     }
 
     public function create($identificacion) {
-        // dd($identificacion);
         try {
             return view('bicicleta.index')->with([
                 'identificacion' => Usuario::findOrFail($identificacion),
@@ -29,7 +33,24 @@ class BicicletaController extends Controller
     }
 
     public function store($identificacion) {
-        //TODO: en caso de aceptar 
+
+        $razonSocial = null;
+
+        $ruc = request()->get('RAZONSOCIAL_BICICLETA');
+
+        // Datos ruc del web service
+        $soapController = new SoapController();
+        // return $datosEstablecimiento['NUMERO_RUC'];
+        if($ruc != null) {
+            $datosEstablecimiento = $soapController->datosRucEstablecimiento($ruc);
+            if(!$datosEstablecimiento) {
+                return back()->withError("No Existe un establecimiento con el ruc indicado")->withInput();;
+            } else {
+                $razonSocial = $datosEstablecimiento['RAZON_SOCIAL'];
+            }
+        }
+
+
         $nombreApoderado = request()->get('APODERADO_BICICLETA');
         if(! $nombreApoderado) {
             $usuario = Usuario::findOrFail($identificacion);
@@ -41,7 +62,18 @@ class BicicletaController extends Controller
             'FOTOCOMPLETA_BICICLETA' => 'required|image|max:2048',
             'FOTONUMSERIE_BICICLETA'=> 'required|image|max:2048',
             'FOTOCOMP_BICICLETA'=> 'required|image|max:2048',
+            'FOTOFACTURA_BICICLETA' => 'image|max:2048'
         ]);
+
+        $imgFotoFactura = request()->file('FOTOFACTURA_BICICLETA');
+        if( $imgFotoFactura != null ) {
+            $imgFotoFactura = request()->file('FOTOFRONTAL_BICICLETA')
+            ->store('public/'.$identificacion.'/'.$nombreApoderado.'/'.request()->get('NUMEROSERIE_BICICLETA').'/'.'Factura');
+            $urlImgFotoFactura = Storage::url($imgFotoFactura);
+        } else {
+            $urlImgFotoFactura = null;
+        }
+
         $imgFrontal = request()->file('FOTOFRONTAL_BICICLETA')
             ->store('public/'.$identificacion.'/'.$nombreApoderado.'/'.request()->get('NUMEROSERIE_BICICLETA'));
         $imgCompleta = request()->file('FOTOCOMPLETA_BICICLETA')
@@ -72,11 +104,17 @@ class BicicletaController extends Controller
                 'FOTONUMSERIE_BICICLETA' => $urlImgNumSerie,
                 'FOTOCOMP_BICICLETA' => $urlImgComponentes,
                 'APODERADO_BICICLETA' => $nombreApoderado,
+                'RAZONSOCIAL_BICICLETA' => $razonSocial,
+                'FOTOFACTURA_BICICLETA' => $urlImgFotoFactura,
+                'DESCUSADA_BICICLETA' => request()->DESCUSADA_BICICLETA,
+                'NOMBUSADA_BICICLETA' => request()->NOMBUSADA_BICICLETA,
+                
             ]);
             
             
         } catch (\Exception $e) {
             // Storage::deleteDirectory('public/'.$identificacion.'/'.request()->get('NUMEROSERIE_BICICLETA')); 
+            Storage::delete($urlImgFotoFactura);
             Storage::delete($urlImgFrontal);
             Storage::delete($imgCompleta);
             Storage::delete($imgNumSerie);
