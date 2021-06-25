@@ -84,7 +84,7 @@ class BicicletaController extends Controller
             return back()->withError("Bicicleta registrada anteriormente")->withInput();
         }
 
-        return redirect()->route('registro.index');
+        return redirect()->route('registro.index', ['identificacion' => $identificacion]);
 
         
     }

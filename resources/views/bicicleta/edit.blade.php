@@ -32,7 +32,7 @@
             <div class="alert alert-danger">{{ session('error') }}</div>
         @endif
         <div class="container">
-            <form method="POST" action="{{ route('bicicletas.update',['bicicleta' => $bicicleta->NUMEROSERIE_BICICLETA]) }}" enctype="multipart/form-data" style="padding: 10px" >
+            <form method="POST" action="{{ route('bicicletas.update',['bicicleta' => $bicicleta->id]) }}" enctype="multipart/form-data" style="padding: 10px" >
                 @csrf
                 @method('PUT')
                 <div class="mb-3">

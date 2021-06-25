@@ -31,4 +31,24 @@ Route::match(['put', 'patch'], '/bicicletas/{bicicleta}', 'App\Http\Controllers\
 
 
 // Registro completado
-Route::get('regCompletado', 'App\Http\Controllers\RegCompController@index')->name('registro.index');
+Route::get('regCompletado/{identificacion}', 'App\Http\Controllers\RegCompController@index')->name('registro.index');
+
+// Web Service
+Route::get('webService', function () {
+
+    $opts = array(
+        'ssl' => array('ciphers'=>'RC4-SHA', 'verify_peer'=>false, 'verify_peer_name'=>false)
+    );
+
+    $params = array ('encoding' => 'UTF-8', 'verifypeer' => false, 'verifyhost' => false, 'soap_version' => SOAP_1_2, 'trace' => 1, 'exceptions' => 1, "connection_timeout" => 180, 'stream_context' => stream_context_create($opts) );
+
+
+    $url = "http://172.20.47.219/MDMQ_CrecimientoTributario_WS/WS_SRI_PER.asmx?WSDL";
+    try {
+        $client = new SoapClient($url, $params);
+        // dd($client->__getTypes());
+        dd($client->InformacionContribuyente(['ruc' => '0503297079001'])->InformacionContribuyenteResult);
+    } catch(SoapFault $fault) {
+        echo '<br>'.$fault;
+    }
+});

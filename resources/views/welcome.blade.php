@@ -32,6 +32,18 @@
                                     </div>
                                     <button class="btn btn-primary" type="submit" >Registrar Bicicleta</button>
                                 </form>
+                                <br>
+                                <label style="text-align: start" for="notificacion" class="form-label">Consultar datos de Registro</label>
+                                <form method="GET" action="">
+                                    <div class="form-floating mb-3">
+                                        <input name="identificacion" id="identificacion" placeholder="Ingrese su Identificación" type="text" pattern="\d*" class="form-control" maxlength="10" minlength="10" required>
+                                        <label for="identificacion" style="color: #bdbdbd">N° de Registro</label>
+                                        @if (session('error'))
+                                            <small class="text-danger">{{ session('error') }}</small>
+                                        @endif
+                                    </div>
+                                    <button class="btn btn-primary" type="submit" >Consultar</button>
+                                </form>
                             </div>
                         </div>
                     </div>
