@@ -9,7 +9,7 @@ class SoapController extends BaseSoapController
 
     public function datosRucEstablecimiento($ruc) {
         try {
-            self::setWsdl('http://172.20.47.219/MDMQ_CrecimientoTributario_WS/WS_SRI_PER.asmx?WSDL');
+            self::setWsdl(Config::get('app.urlwebservice'));
             $this->service = InstanceSoapClient::init();
 
             $persons = $this->service->InformacionContribuyente(['ruc' => $ruc ]);
