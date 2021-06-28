@@ -21,8 +21,8 @@
                   <th style="color: white">Tipo</th>
                   <th style="color: white">Tamaño</th>
                   <th style="color: white">Colores</th>
-                  <th style="color: white">Especificaciones</th>
-                  <th style="color: white">Activa/Robada</th>
+                  <th style="color: white">Registro</th>
+                  <th style="color: white">Estado</th>
                   <th style="color: white"></th>
               </tr> 
             </thead>
@@ -36,7 +36,7 @@
                           <td>{{ $bicicleta->TIPOBICICLETA_BICICLETA }}</td>
                           <td>{{ $bicicleta->TAMANIO_BICICLETA }}</td>
                           <td>{{ $bicicleta->COMBCOLORES_BICICLETA }}</td>
-                          <td>{{ $bicicleta->ESPEC_BICICLETA }}</td>
+                          <td>{{ $bicicleta->CODREGISTRO_BICICLETA }}</td>
                           <td>
                               @if ($bicicleta->ACTIVAROBADA_BICICLETA == 0)
                                   <span style="color: green" >Activa</span>

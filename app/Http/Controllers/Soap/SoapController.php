@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Soap;
 
+use Illuminate\Support\Facades\Config;
 
 class SoapController extends BaseSoapController
 {

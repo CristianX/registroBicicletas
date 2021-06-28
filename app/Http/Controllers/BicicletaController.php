@@ -62,7 +62,8 @@ class BicicletaController extends Controller
             'FOTOCOMPLETA_BICICLETA' => 'required|image|max:2048',
             'FOTONUMSERIE_BICICLETA'=> 'required|image|max:2048',
             'FOTOCOMP_BICICLETA'=> 'required|image|max:2048',
-            'FOTOFACTURA_BICICLETA' => 'image|max:2048'
+            'FOTOFACTURA_BICICLETA' => 'image|max:2048',
+            'FOTODENUNCIA_BICICLETA' => 'image|max:2048',
         ]);
 
         $imgFotoFactura = request()->file('FOTOFACTURA_BICICLETA');
@@ -73,6 +74,16 @@ class BicicletaController extends Controller
         } else {
             $urlImgFotoFactura = null;
         }
+
+        $imgFotoDenuncia = request()->file('FOTODENUNCIA_BICICLETA');
+        if ($imgFotoDenuncia != null) {
+            $imgFotoDenuncia = request()->file('FOTODENUNCIA_BICICLETA')
+            ->store('public/'.$identificacion.'/'.$nombreApoderado.'/'.request()->get('NUMEROSERIE_BICICLETA').'/'.'Denuncia');
+            $urlImgFotoDenuncia = Storage::url($imgFotoDenuncia);
+        } else {
+            $urlImgFotoDenuncia = null;
+        }
+        
 
         $imgFrontal = request()->file('FOTOFRONTAL_BICICLETA')
             ->store('public/'.$identificacion.'/'.$nombreApoderado.'/'.request()->get('NUMEROSERIE_BICICLETA'));
@@ -113,6 +124,8 @@ class BicicletaController extends Controller
                 'DESCUSADA_BICICLETA' => request()->DESCUSADA_BICICLETA,
                 'NOMBUSADA_BICICLETA' => request()->NOMBUSADA_BICICLETA,
                 'ACTIVAROBADA_BICICLETA' => $valorCheckBox,
+                'FOTODENUNCIA_BICICLETA' => $urlImgFotoDenuncia,
+                'CODREGISTRO_BICICLETA' => substr(str_shuffle('0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'), 0, 10),
                 
             ]);
             
@@ -120,6 +133,7 @@ class BicicletaController extends Controller
         } catch (\Exception $e) {
             // Storage::deleteDirectory('public/'.$identificacion.'/'.request()->get('NUMEROSERIE_BICICLETA')); 
             Storage::delete($urlImgFotoFactura);
+            Storage::delete($urlImgFotoDenuncia);
             Storage::delete($urlImgFrontal);
             Storage::delete($imgCompleta);
             Storage::delete($imgNumSerie);
@@ -157,15 +171,34 @@ class BicicletaController extends Controller
 
     public function update($bicicleta) {
 
-        $bicicletaProv = Bicicleta::findOrFail($bicicleta);
+        $bicicleta = Bicicleta::findOrFail($bicicleta);
 
         $nombreApoderado = request()->get('APODERADO_BICICLETA');
         if(! $nombreApoderado) {
-            $usuario = Usuario::findOrFail($bicicletaProv->IDENTIFICACION_USUARIO);
+            $usuario = Usuario::findOrFail($bicicleta->IDENTIFICACION_USUARIO);
             $nombreApoderado = $usuario->NOMBRES_USUARIO.' '.$usuario->APELLIDOS_USUARIO;
         }
 
-        $bicicleta = Bicicleta::findOrFail($bicicleta);
+        $imgFotoDenuncia = request()->file('FOTODENUNCIA_BICICLETA');
+        if ($imgFotoDenuncia != null) {
+            $imgFotoDenuncia = request()->file('FOTODENUNCIA_BICICLETA')
+            ->store('public/'.$bicicleta->IDENTIFICACION_USUARIO .'/'.$nombreApoderado.'/'.request()->get('NUMEROSERIE_BICICLETA').'/'.'Denuncia');
+            $urlImgFotoDenuncia = Storage::url($imgFotoDenuncia);
+        } else {
+            $urlImgFotoDenuncia = null;
+        }
+        
+        if( $bicicleta->FOTODENUNCIA_BICICLETA != null && !$urlImgFotoDenuncia ) {
+            $urlElimiar = str_replace('storage', 'public', $bicicleta->FOTODENUNCIA_BICICLETA);
+            Storage::delete($urlElimiar);
+        }
+
+        // Valor checkbox
+        $valorCheckBox = (request()->get('ACTIVAROBADA_BICICLETA') == 'on' ? 1 : 0 );
+        if($bicicleta->FOTODENUNCIA_BICICLETA != null && $valorCheckBox != 0) {
+            $urlImgFotoDenuncia = $bicicleta->FOTODENUNCIA_BICICLETA;
+        }
+
         $bicicleta->update([
                 'NUMEROSERIE_BICICLETA' => request()->NUMEROSERIE_BICICLETA,
                 'MARCA_BICICLETA' => request()->MARCA_BICICLETA,
@@ -176,8 +209,19 @@ class BicicletaController extends Controller
                 'COMBCOLORES_BICICLETA' => request()->COMBCOLORES_BICICLETA,
                 'ESPEC_BICICLETA' => request()->ESPEC_BICICLETA,
                 'APODERADO_BICICLETA' => $nombreApoderado,
+                'ACTIVAROBADA_BICICLETA' => $valorCheckBox,
+                'FOTODENUNCIA_BICICLETA' => $urlImgFotoDenuncia,
         ]);
         return redirect()->route('bicicleta.mostrarBicicletasPorId', [$bicicleta->IDENTIFICACION_USUARIO]);
+    }
+
+    public function mostrarPorCodigo($codRegistro) {
+        $bicicleta = Bicicleta::where('CODREGISTRO_BICICLETA', $codRegistro)->firstOrFail();
+        $usuario = Usuario::findOrFail($bicicleta->IDENTIFICACION_USUARIO);
+        return view('bicicleta.consulta')->with([
+            'bicicleta' => $bicicleta,
+            'usuario' => $usuario,
+        ]);
     }
 
 

@@ -14,5 +14,10 @@ class WelcomeController extends Controller
         // return $identificacion;
         return redirect()->route('bicicleta.mostrarBicicletasPorId', [$identificacion]);
     }
+
+    public function consultaBicicleta() {
+        $codRegistro = request()->get('codRegistro');
+        return redirect()->route('bicicleta.consulta', ['codRegistro' => $codRegistro]);
+    }
 }
 

@@ -36,6 +36,8 @@ class Bicicleta extends Model
         'FOTOFACTURA_BICICLETA',
         'DESCUSADA_BICICLETA',
         'NOMBUSADA_BICICLETA',
-        'ACTIVAROBADA_BICICLETA'
+        'ACTIVAROBADA_BICICLETA',
+        'FOTODENUNCIA_BICICLETA',
+        'CODREGISTRO_BICICLETA'
     ];
 }

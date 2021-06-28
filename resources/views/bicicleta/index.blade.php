@@ -43,7 +43,7 @@
                     <input placeholder="Ingrese el modelo de su Bicicleta" type="text" class="form-control" name="MODELO_BICICLETA" minlength="4" maxlength="200" required>
                 </div>
                 <div class="mb-3">
-                    <label for="nserie" class="form-label">Número de Serie o chasis de la Bicicleta (En caso de no tenerlo registrar como S/N)</label>
+                    <label for="nserie" class="form-label">Número de Serie o chasis de la Bicicleta (En caso de no tenerlo registrar como SN)</label>
                     <input placeholder="Ingrese el número de serie de su Bicicleta" type="text" class="form-control" name="NUMEROSERIE_BICICLETA" minlength="3" maxlength="40" required>
                 </div>
                 <div class="mb-3">
@@ -226,6 +226,23 @@
                         </label>
                     </div>
                 </div>
+                <div id="divDenuncia">
+                    <div class="mb-3">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="form-group">
+                                    <label for="fotoDenuncia" class="form-label">Notificación de la denuncia (Opcional)</label>
+                                    <br>
+                                    <input type="file" name="FOTODENUNCIA_BICICLETA" id="fotoDenuncia" accept="image/*">
+                                    @error('FOTODENUNCIA_BICICLETA')
+                                        <br>
+                                        <small class="text-danger" >{{'No se admiten otro tipo de archivos que no sean imagenes que tengan un peso máximo de 2mb'}}</small>
+                                    @enderror
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
                 <button type="submit" class="btn btn-primary estiloBoton">Registrar Bicicleta</button>
             </form>
         </div>
@@ -260,6 +277,9 @@
         display: none;
     }
     #robada {
+        display: none;
+    }
+    #divDenuncia {
         display: none;
     }
 </style>
@@ -311,9 +331,12 @@
         if( switchCheckbox.checked ){
             document.getElementById('activa').style.display = 'none';
             document.getElementById('robada').style.display = 'block';
+            document.getElementById('divDenuncia').style.display = 'block';
         } else {
             document.getElementById('robada').style.display = 'none';
             document.getElementById('activa').style.display = 'block';
+            document.getElementById('divDenuncia').style.display = 'none';
+            document.getElementById('fotoDenuncia').value = null;
         }
     }
 

@@ -15,6 +15,7 @@ use Illuminate\Support\Facades\Route;
 // Inicio
 Route::get('/', 'App\Http\Controllers\WelcomeController@index')->name('welcome');
 Route::get('mostrarFormBicicleta', 'App\Http\Controllers\WelcomeController@pasarRegBIcicletas')->name('welcome.pasarRegBIcicletas');
+Route::get('consultaBicicleta', 'App\Http\Controllers\WelcomeController@consultaBicicleta')->name('welcome.consulta');
 
 // Rutas usuario
 Route::get('mostrarUsuarios', 'App\Http\Controllers\UsuarioController@index')->name('usuario.mostrarUsuarios');
@@ -53,3 +54,5 @@ Route::get('regCompletado/{identificacion}', 'App\Http\Controllers\RegCompContro
 //     }
 // });
 // Route::get('webService', 'App\Http\Controllers\Soap\SoapController@datosRucEstablecimiento')->name('webservice');
+
+Route::get('consulta/{codRegistro}', 'App\Http\Controllers\BicicletaController@mostrarPorCodigo')->name('bicicleta.consulta');

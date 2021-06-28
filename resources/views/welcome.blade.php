@@ -24,7 +24,7 @@
                                 <br>
                                 <form method="GET" action="{{ route('welcome.pasarRegBIcicletas') }}">
                                     <div class="form-floating mb-3">
-                                        <input name="identificacion" id="identificacion" placeholder="Ingrese su Identificación" type="text" pattern="\d*" class="form-control" maxlength="10" minlength="10" required>
+                                        <input name="identificacion" id="identificacion" placeholder="Ingrese su Identificación" type="text" pattern="\d*" class="form-control" maxlength="15" minlength="5" required>
                                         <label for="identificacion" style="color: #bdbdbd">C.I./Pasaporte</label>
                                         @if (session('error'))
                                             <small class="text-danger">{{ session('error') }}</small>
@@ -33,11 +33,11 @@
                                     <button class="btn btn-primary" type="submit" >Registrar Bicicleta</button>
                                 </form>
                                 <br>
-                                <label style="text-align: start" for="notificacion" class="form-label">Consultar datos de Registro</label>
-                                <form method="GET" action="">
+                                <label style="text-align: start" for="notificacionCodRegistro" class="form-label">Consulta por Código de Registro</label>
+                                <form method="GET" action="{{ route('welcome.consulta') }}">
                                     <div class="form-floating mb-3">
-                                        <input name="identificacion" id="identificacion" placeholder="Ingrese su Identificación" type="text" pattern="\d*" class="form-control" maxlength="10" minlength="10" required>
-                                        <label for="identificacion" style="color: #bdbdbd">N° de Registro</label>
+                                        <input name="codRegistro" id="codRegistro" placeholder="Ingrese su Identificación" type="text" class="form-control" maxlength="10" minlength="10" required>
+                                        <label for="codRegistro" style="color: #bdbdbd">Código de Registro</label>
                                         @if (session('error'))
                                             <small class="text-danger">{{ session('error') }}</small>
                                         @endif

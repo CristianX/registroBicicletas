@@ -7,7 +7,7 @@
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
         <title>Edición de Bicicletas</title>
     </head>
-    <body onload="{{ $bicicleta->APODERADO_BICICLETA == $usuario->NOMBRES_USUARIO.' '.$usuario->APELLIDOS_USUARIO ? 'ocultarCampoHijo()' : 'mostrarCampoHijo()' }}">
+    <body>
         <div class="d-none d-sm-none d-md-block contenedorIzquierda">
             <div class="row" style="background-color: #124176">
                 <div class="col-md-auto">
@@ -36,16 +36,16 @@
                 @csrf
                 @method('PUT')
                 <div class="mb-3">
-                    <label for="nserie" class="form-label">Número de Serie o chasis de la Bicicleta</label>
-                    <input value="{{ $bicicleta->NUMEROSERIE_BICICLETA }}" type="text" class="form-control" name="NUMEROSERIE_BICICLETA" minlength="4" maxlength="40" required>
-                </div>
-                <div class="mb-3">
-                    <label for="modelo" class="form-label">Marca</label>
+                    <label for="marca" class="form-label">Marca</label>
                     <input value="{{ $bicicleta->MARCA_BICICLETA }}" type="text" class="form-control" name="MARCA_BICICLETA" minlength="3" maxlength="200" required>
                 </div>
                 <div class="mb-3">
                     <label for="modelo" class="form-label">Modelo</label>
                     <input value="{{ $bicicleta->MODELO_BICICLETA }}" type="text" class="form-control" name="MODELO_BICICLETA" minlength="4" maxlength="200" required>
+                </div>
+                <div class="mb-3">
+                    <label for="nserie" class="form-label">Número de Serie o chasis de la Bicicleta</label>
+                    <input value="{{ $bicicleta->NUMEROSERIE_BICICLETA }}" type="text" class="form-control" name="NUMEROSERIE_BICICLETA" minlength="4" maxlength="40" required>
                 </div>
                 <div class="mb-3">
                     <label for="categoria" class="form-label">Gama o Categoría</label>
@@ -105,43 +105,29 @@
                     <input id="campoNombreDuenio" value="{{ $bicicleta->APODERADO_BICICLETA }}" type="text" class="form-control" name="APODERADO_BICICLETA" minlength="4" maxlength="400">
                 </div>
                 <div class="mb-3">
-                    <label class="form-label">¿La bicicleta es nueva o usada?</label>
-                    <div class="form-check">
-                        <input class="form-check-input" type="radio" name="flexRadioDefault1" id="flexRadioDefault2" onclick="ocultarCampoUsada(); mostrarCampoNueva()" checked>
-                        <label class="form-check-label" for="flexRadioDefault3">
-                          Nueva
-                        </label>
-                    </div>
-                    <div class="form-check">
-                        <input class="form-check-input" type="radio" name="flexRadioDefault1" id="flexRadioDefault1" onclick="mostrarCampoUsada(); ocultarCampoNueva()">
-                        <label class="form-check-label" for="flexRadioDefault4">
-                          Usada
+                    <div class="form-check form-switch">
+                        <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault" name="ACTIVAROBADA_BICICLETA" {{ $bicicleta->ACTIVAROBADA_BICICLETA == 1 ? 'checked' : '' }}  >
+                        <label class="form-check-label" for="flexSwitchCheckDefault">
+                            <span id="activa">Activa</span>
+                            <span id="robada">Robada</span>
                         </label>
                     </div>
                 </div>
-                <div id="divNueva">
+                <div id="divDenuncia">
                     <div class="mb-3">
-                        <label class="form-label">Tienda o Establecimiento de la Compra</label>
-                        <input id="tiendaCompra" placeholder="Ingrese el nombre del establecimiento donde la adquirió" type="text" class="form-control" name="TIENDACOMPRA_BICICLETA" minlength="4" maxlength="400">
-                    </div>
-                    <div class="mb-3">
-                        <label class="form-label">Factura</label>
-                        <input id="factura" placeholder="Factura" type="text" class="form-control" name="FACTURA_BICICLETA" minlength="4" maxlength="400">
-                    </div>
-                </div>
-                <div id="divUsada">
-                    <div class="mb-3">
-                        <label for="DESCRIPCION_BICICLETA" class="form-label">Descripción</label>
-                        <select class="form-select" id="descripcionBicicleta" name="DESCRIPCION_BICICLETA">
-                            <option value="" selected disabled>Seleccione una descripción</option>
-                            <option value="prestada">Prestada</option>
-                            <option value="regalada">Regalada</option>
-                            <option value="vendida">Vendida</option>
-                        </select>
-                    </div>
-                    <div class="mb-3">
-                        <label class="form-label">Nombres completos de la persona que le suministró esta bicicleta</label>
-                        <input id="txtPersonaSumnist" placeholder="Nombres completos de la persona que le suministró la bicicleta" type="text" class="form-control" name="NOMBDUENIOANT_BICICLETA" minlength="4" maxlength="400">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="form-group">
+                                    <label for="fotoDenuncia" class="form-label">Notificación de la denuncia (Opcional)</label>
+                                    <br>
+                                    <input type="file" name="FOTODENUNCIA_BICICLETA" id="fotoDenuncia" accept="image/*">
+                                    @error('FOTODENUNCIA_BICICLETA')
+                                        <br>
+                                        <small class="text-danger" >{{'No se admiten otro tipo de archivos que no sean imagenes que tengan un peso máximo de 2mb'}}</small>
+                                    @enderror
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <button type="submit" class="btn btn-primary estiloBoton">Editar Bicicleta</button>
@@ -177,6 +163,12 @@
     #divUsada{
         display: none;
     }
+    #robada {
+        display: none;
+    }
+    #divDenuncia {
+        display: none;
+    }
 </style>
 <script class="text/javascript">
 
@@ -203,4 +195,46 @@
     function mostrarCampoUsada() {
         document.getElementById('divUsada').style.display = 'block';
     }
+
+    //Evento checkbox Nombre Apoderado
+    var switchNombreApoderadoOcultar = document.getElementById('flexRadioDefault2');
+    switchNombreApoderadoOcultar.addEventListener("change", comprueba, false);
+    function comprobarChbApoderado() {
+        if(switchNombreApoderadoOcultar.checked) {
+            ocultarCampoHijo()
+        } else {
+            mostrarCampoHijo()
+        }
+    }
+
+    // Evento del Checkbox Nueva/Usada
+    var switchCheckbox = document.getElementById('flexSwitchCheckDefault');
+
+    switchCheckbox.addEventListener("change", comprueba, false);
+
+    function comprueba() {
+        if( switchCheckbox.checked ){
+            mostrarRobada();
+        } else {
+            mostrarActiva();
+        }
+    }
+
+    function mostrarActiva() {
+        document.getElementById('robada').style.display = 'none';
+        document.getElementById('activa').style.display = 'block';
+        document.getElementById('divDenuncia').style.display = 'none';
+    }
+
+    function mostrarRobada() {
+        document.getElementById('activa').style.display = 'none';
+        document.getElementById('robada').style.display = 'block';
+        document.getElementById('divDenuncia').style.display = 'block';
+    }
+
+    window.onload = function() {
+        comprueba();
+        comprobarChbApoderado();
+    }
+
 </script>
