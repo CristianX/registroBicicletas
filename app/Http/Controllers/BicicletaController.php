@@ -88,6 +88,10 @@ class BicicletaController extends Controller
         $urlImgNumSerie = Storage::url($imgNumSerie);
         $urlImgComponentes = Storage::url($imgComponentes);
 
+        // Valor checkbox
+        $valorCheckBox = (request()->get('ACTIVAROBADA_BICICLETA') == 'on' ? 1 : 0 );
+        
+
         try {
             Bicicleta::create([
                 'NUMEROSERIE_BICICLETA' => request()->NUMEROSERIE_BICICLETA,
@@ -108,6 +112,7 @@ class BicicletaController extends Controller
                 'FOTOFACTURA_BICICLETA' => $urlImgFotoFactura,
                 'DESCUSADA_BICICLETA' => request()->DESCUSADA_BICICLETA,
                 'NOMBUSADA_BICICLETA' => request()->NOMBUSADA_BICICLETA,
+                'ACTIVAROBADA_BICICLETA' => $valorCheckBox,
                 
             ]);
             

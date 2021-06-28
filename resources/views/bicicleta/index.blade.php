@@ -219,7 +219,7 @@
                 </div>
                 <div class="mb-3">
                     <div class="form-check form-switch">
-                        <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault"  >
+                        <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault" name="ACTIVAROBADA_BICICLETA"  >
                         <label class="form-check-label" for="flexSwitchCheckDefault">
                             <span id="activa">Activa</span>
                             <span id="robada">Robada</span>
