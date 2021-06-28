@@ -233,10 +233,10 @@
                                 <div class="form-group">
                                     <label for="fotoDenuncia" class="form-label">Notificación de la denuncia (Opcional)</label>
                                     <br>
-                                    <input type="file" name="FOTODENUNCIA_BICICLETA" id="fotoDenuncia" accept="image/*">
+                                    <input type="file" name="FOTODENUNCIA_BICICLETA" id="fotoDenuncia" accept="image/*,application/pdf">
                                     @error('FOTODENUNCIA_BICICLETA')
                                         <br>
-                                        <small class="text-danger" >{{'No se admiten otro tipo de archivos que no sean imagenes que tengan un peso máximo de 2mb'}}</small>
+                                        <small class="text-danger" >{{'Solo archivos con formato de imagen o pdf que tengan un peso máximo de 2mb'}}</small>
                                     @enderror
                                 </div>
                             </div>

@@ -63,7 +63,7 @@ class BicicletaController extends Controller
             'FOTONUMSERIE_BICICLETA'=> 'required|image|max:2048',
             'FOTOCOMP_BICICLETA'=> 'required|image|max:2048',
             'FOTOFACTURA_BICICLETA' => 'image|max:2048',
-            'FOTODENUNCIA_BICICLETA' => 'image|max:2048',
+            'FOTODENUNCIA_BICICLETA' => 'mimes:jpeg,bmp,png,gif,svg,pdf|max:2048',
         ]);
 
         $imgFotoFactura = request()->file('FOTOFACTURA_BICICLETA');
@@ -173,6 +173,10 @@ class BicicletaController extends Controller
 
         $bicicleta = Bicicleta::findOrFail($bicicleta);
 
+        request()->validate([
+            'FOTODENUNCIA_BICICLETA' => 'mimes:jpeg,bmp,png,gif,svg,pdf|max:2048',
+        ]);
+
         $nombreApoderado = request()->get('APODERADO_BICICLETA');
         if(! $nombreApoderado) {
             $usuario = Usuario::findOrFail($bicicleta->IDENTIFICACION_USUARIO);
@@ -199,7 +203,8 @@ class BicicletaController extends Controller
             $urlImgFotoDenuncia = $bicicleta->FOTODENUNCIA_BICICLETA;
         }
 
-        $bicicleta->update([
+        try {
+            $bicicleta->update([
                 'NUMEROSERIE_BICICLETA' => request()->NUMEROSERIE_BICICLETA,
                 'MARCA_BICICLETA' => request()->MARCA_BICICLETA,
                 'MODELO_BICICLETA' => request()->MODELO_BICICLETA,
@@ -211,7 +216,13 @@ class BicicletaController extends Controller
                 'APODERADO_BICICLETA' => $nombreApoderado,
                 'ACTIVAROBADA_BICICLETA' => $valorCheckBox,
                 'FOTODENUNCIA_BICICLETA' => $urlImgFotoDenuncia,
-        ]);
+            ]);
+        } catch (\Exception $e) {
+            Storage::delete($urlImgFotoDenuncia);
+            return back()->withError("Error al actualizar el registro")->withInput();
+        }
+
+        
         return redirect()->route('bicicleta.mostrarBicicletasPorId', [$bicicleta->IDENTIFICACION_USUARIO]);
     }
 
