@@ -43,7 +43,7 @@ class BicicletaController extends Controller
         if($ruc != null) {
             $datosEstablecimiento = $soapController->datosRucEstablecimiento($ruc);
             if(!$datosEstablecimiento) {
-                return back()->withError("No Existe un establecimiento con el ruc indicado")->withInput();;
+                return back()->withError("No Existe un establecimiento con el RUC indicado")->withInput();;
             } else {
                 $razonSocial = $datosEstablecimiento['RAZON_SOCIAL'];
             }

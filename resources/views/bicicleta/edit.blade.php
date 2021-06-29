@@ -50,31 +50,31 @@
                 <div class="mb-3">
                     <label for="categoria" class="form-label">Gama o Categoría</label>
                     <select class="form-select" name="CATEGORIA_BICICLETA" required>
-                        <option {{ $bicicleta->CATEGORIA_BICICLETA == 'alta' ? 'selected' : '' }} value="alta">Alta</option>
-                        <option {{ $bicicleta->CATEGORIA_BICICLETA == 'media' ? 'selected' : '' }} value="media">Media</option>
-                        <option {{ $bicicleta->CATEGORIA_BICICLETA == 'baja' ? 'selected' : '' }} value="baja">Baja</option>
+                        <option {{ $bicicleta->CATEGORIA_BICICLETA == 'Alta' ? 'selected' : '' }} value="Alta">Alta</option>
+                        <option {{ $bicicleta->CATEGORIA_BICICLETA == 'Media' ? 'selected' : '' }} value="Media">Media</option>
+                        <option {{ $bicicleta->CATEGORIA_BICICLETA == 'Baja' ? 'selected' : '' }} value="Baja">Baja</option>
                     </select>
                 </div>
                 <div class="mb-3">
                     <label for="tipoBicicleta" class="form-label">Tipo de Bicicleta</label>
                     <select class="form-select" name="TIPOBICICLETA_BICICLETA" required>
-                        <option {{ $bicicleta->TIPOBICICLETA_BICICLETA == 'montania' ? 'selected' : '' }} value="montania">Montaña</option>
-                        <option {{ $bicicleta->TIPOBICICLETA_BICICLETA == 'urbana' ? 'selected' : '' }} value="urbana">Urbana</option>
-                        <option {{ $bicicleta->TIPOBICICLETA_BICICLETA == 'carretera' ? 'selected' : '' }} value="carretera">Carretera</option>
-                        <option {{ $bicicleta->TIPOBICICLETA_BICICLETA == 'freestyle' ? 'selected' : '' }} value="freestyle">Freestyle</option>
-                        <option {{ $bicicleta->TIPOBICICLETA_BICICLETA == 'electrica' ? 'selected' : '' }} value="electrica">Eléctrica</option>
-                        <option {{ $bicicleta->TIPOBICICLETA_BICICLETA == 'biciCargo' ? 'selected' : '' }} value="biciCargo">Bici Cargo</option>
-                        <option {{ $bicicleta->TIPOBICICLETA_BICICLETA == 'plegable' ? 'selected' : '' }} value="plegable">Plegable</option>
-                        <option {{ $bicicleta->TIPOBICICLETA_BICICLETA == 'nino' ? 'selected' : '' }} value="nino">Niña/o</option>
-                        <option {{ $bicicleta->TIPOBICICLETA_BICICLETA == 'otro' ? 'selected' : '' }} value="otro">Otro</option>
+                        <option {{ $bicicleta->TIPOBICICLETA_BICICLETA == 'Montaña' ? 'selected' : '' }} value="Montaña">Montaña</option>
+                        <option {{ $bicicleta->TIPOBICICLETA_BICICLETA == 'Urbana' ? 'selected' : '' }} value="Urbana">Urbana</option>
+                        <option {{ $bicicleta->TIPOBICICLETA_BICICLETA == 'Carretera' ? 'selected' : '' }} value="Carretera">Carretera</option>
+                        <option {{ $bicicleta->TIPOBICICLETA_BICICLETA == 'Freestyle' ? 'selected' : '' }} value="Freestyle">Freestyle</option>
+                        <option {{ $bicicleta->TIPOBICICLETA_BICICLETA == 'Eléctrica' ? 'selected' : '' }} value="Eléctrica">Eléctrica</option>
+                        <option {{ $bicicleta->TIPOBICICLETA_BICICLETA == 'Bici Cargo' ? 'selected' : '' }} value="Bici Cargo">Bici Cargo</option>
+                        <option {{ $bicicleta->TIPOBICICLETA_BICICLETA == 'Plegable' ? 'selected' : '' }} value="Plegable">Plegable</option>
+                        <option {{ $bicicleta->TIPOBICICLETA_BICICLETA == 'Niña/o' ? 'selected' : '' }} value="Niña/o">Niña/o</option>
+                        <option {{ $bicicleta->TIPOBICICLETA_BICICLETA == 'Otro' ? 'selected' : '' }} value="Otro">Otro</option>
                     </select>
                 </div>
                 <div class="mb-3">
                     <label for="tamanio" class="form-label">Tamaño</label>
                     <select class="form-select" name="TAMANIO_BICICLETA" required>
-                        <option {{ $bicicleta->TAMANIO_BICICLETA == 'large' ? 'selected' : '' }} value="large">Large</option>
-                        <option {{ $bicicleta->TAMANIO_BICICLETA == 'medium' ? 'selected' : '' }} value="medium">Medium</option>
-                        <option {{ $bicicleta->TAMANIO_BICICLETA == 'small' ? 'selected' : '' }} value="small">Small</option>
+                        <option {{ $bicicleta->TAMANIO_BICICLETA == 'Large' ? 'selected' : '' }} value="Large">Large</option>
+                        <option {{ $bicicleta->TAMANIO_BICICLETA == 'Medium' ? 'selected' : '' }} value="Medium">Medium</option>
+                        <option {{ $bicicleta->TAMANIO_BICICLETA == 'Small' ? 'selected' : '' }} value="Small">Small</option>
                     </select>
                 </div>
                 <div class="mb-3">

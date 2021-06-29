@@ -50,33 +50,33 @@
                     <label for="categoria" class="form-label">Gama o Categoría</label>
                     <select class="form-select" name="CATEGORIA_BICICLETA" required>
                         <option value="" selected disabled>Seleccione una Categoría</option>
-                        <option value="alta">Alta</option>
-                        <option value="media">Media</option>
-                        <option value="baja">Baja</option>
+                        <option value="Alta">Alta</option>
+                        <option value="Media">Media</option>
+                        <option value="Baja">Baja</option>
                     </select>
                 </div>
                 <div class="mb-3">
                     <label for="tipoBicicleta" class="form-label">Tipo de Bicicleta</label>
                     <select class="form-select" name="TIPOBICICLETA_BICICLETA" required>
                         <option value="" selected disabled>Seleccione un Tipo</option>
-                        <option value="montania">Montaña</option>
-                        <option value="urbana">Urbana</option>
-                        <option value="carretera">Carretera</option>
-                        <option value="freestyle">Freestyle</option>
-                        <option value="electrica">Eléctrica</option>
-                        <option value="biciCargo">Bici Cargo</option>
-                        <option value="plegable">Plegable</option>
-                        <option value="nino">Niña/o</option>
-                        <option value="otro">OTRO</option>
+                        <option value="Montaña">Montaña</option>
+                        <option value="Urbana">Urbana</option>
+                        <option value="Carretera">Carretera</option>
+                        <option value="Freestyle">Freestyle</option>
+                        <option value="Eléctrica">Eléctrica</option>
+                        <option value="Bici Cargo">Bici Cargo</option>
+                        <option value="Plegable">Plegable</option>
+                        <option value="Niña/o">Niña/o</option>
+                        <option value="OTRO">OTRO</option>
                     </select>
                 </div>
                 <div class="mb-3">
                     <label for="tamanio" class="form-label">Tamaño</label>
                     <select class="form-select" name="TAMANIO_BICICLETA" required>
                         <option value="" selected disabled>Seleccione el Tamaño de Bicicleta</option>
-                        <option value="large">Large</option>
-                        <option value="medium">Medium</option>
-                        <option value="small">Small</option>
+                        <option value="Large">Large</option>
+                        <option value="Medium">Medium</option>
+                        <option value="Small">Small</option>
                     </select>
                 </div>
                 <div class="mb-3">
@@ -184,7 +184,7 @@
                 <div id="divNueva">
                     <div class="mb-3">
                         <label class="form-label">RUC Indicado en la Factura</label>
-                        <input id="razonSocial" placeholder="Ingrese el RUC indicado en la factura" type="text" class="form-control" name="RAZONSOCIAL_BICICLETA" minlength="4" maxlength="400">
+                        <input id="razonSocial" placeholder="Ingrese el RUC indicado en la factura" type="text" class="form-control" pattern="\d*" name="RAZONSOCIAL_BICICLETA" minlength="13" maxlength="13">
                     </div>
                     <div class="mb-3">
                         <div class="card">
@@ -207,9 +207,9 @@
                         <label for="DESCUSADA_BICICLETA" class="form-label">Descripción</label>
                         <select class="form-select" id="descripcionBicicleta" name="DESCUSADA_BICICLETA">
                             <option value="" selected disabled>Seleccione una descripción</option>
-                            <option value="prestada">Prestada</option>
-                            <option value="regalada">Regalada</option>
-                            <option value="comprada">Comprada</option>
+                            <option value="Prestada">Prestada</option>
+                            <option value="Regalada">Regalada</option>
+                            <option value="Comprada">Comprada</option>
                         </select>
                     </div>
                     <div class="mb-3">
