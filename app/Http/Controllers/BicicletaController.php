@@ -60,8 +60,8 @@ class BicicletaController extends Controller
         request()->validate([
             'FOTOFRONTAL_BICICLETA' => 'required|image|max:2048',
             'FOTOCOMPLETA_BICICLETA' => 'required|image|max:2048',
-            'FOTONUMSERIE_BICICLETA'=> 'required|image|max:2048',
-            'FOTOCOMP_BICICLETA'=> 'required|image|max:2048',
+            'FOTONUMSERIE_BICICLETA'=> 'image|max:2048',
+            'FOTOCOMP_BICICLETA'=> 'image|max:2048',
             'FOTOFACTURA_BICICLETA' => 'image|max:2048',
             'FOTODENUNCIA_BICICLETA' => 'mimes:jpeg,bmp,png,gif,svg,pdf|max:2048',
         ]);

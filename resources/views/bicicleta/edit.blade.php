@@ -86,7 +86,7 @@
                     <textarea type="text" class="form-control" name="ESPEC_BICICLETA" minlength="4" maxlength="600" required>{{ $bicicleta->ESPEC_BICICLETA }}</textarea>
                 </div>
                 <div class="mb-3">
-                    <label class="form-label">¿Desea registrar esta bicicleta a nombre de otra persona? (Menor de Edad / Empleado) </label>
+                    <label class="form-label">¿Desea registrar esta bicicleta a nombre de otra persona? (Menor de Edad/Préstamo/Empleado) </label>
                     <div class="form-check">
                         <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" onclick="ocultarCampoHijo()" {{ $bicicleta->APODERADO_BICICLETA == $usuario->NOMBRES_USUARIO.' '.$usuario->APELLIDOS_USUARIO ? 'checked' : '' }}>
                         <label class="form-check-label" for="flexRadioDefault2">

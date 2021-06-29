@@ -91,7 +91,7 @@
                     <div class="card">
                         <div class="card-body">
                             <div class="form-group">
-                                <label for="especBicicleta" class="form-label">Foto Frontal de la Bicicleta (Con Usted)</label>
+                                <label for="especBicicleta" class="form-label">Fotografía Frontal de la Bicicleta (Con Usted)</label>
                                 <br>
                                 <input type="file" name="FOTOFRONTAL_BICICLETA" accept="image/*" required>
                                 @error('FOTOFRONTAL_BICICLETA')
@@ -106,7 +106,7 @@
                     <div class="card">
                         <div class="card-body">
                             <div class="form-group">
-                                <label for="especBicicleta" class="form-label">Foto Lateral de la Bicicleta</label>
+                                <label for="especBicicleta" class="form-label">Fotografía Lateral de la Bicicleta</label>
                                 <br>
                                 <input type="file" name="FOTOCOMPLETA_BICICLETA" accept="image/*" required>
                                 @error('FOTOCOMPLETA_BICICLETA')
@@ -121,7 +121,7 @@
                     <div class="card">
                         <div class="card-body">
                             <div class="form-group">
-                                <label for="especBicicleta" class="form-label">Foto del Número de serie o Chasis de la Bicicleta (Opcional)</label>
+                                <label for="especBicicleta" class="form-label">Fotografía del Número de serie o Chasis de la Bicicleta (Opcional)</label>
                                 <br>
                                 <input type="file" name="FOTONUMSERIE_BICICLETA" accept="image/*">
                                 @error('FOTONUMSERIE_BICICLETA')
@@ -136,7 +136,7 @@
                     <div class="card">
                         <div class="card-body">
                             <div class="form-group">
-                                <label for="especBicicleta" class="form-label">Foto de algún componente personalizado de la Bicicleta (Opcional)</label>
+                                <label for="especBicicleta" class="form-label">Fotografía de algún componente o detalle personalizado (Opcional)</label>
                                 <br>
                                 <input type="file" name="FOTOCOMP_BICICLETA" accept="image/*" required>
                                 @error('FOTOCOMP_BICICLETA')
@@ -190,7 +190,7 @@
                         <div class="card">
                             <div class="card-body">
                                 <div class="form-group">
-                                    <label for="especBicicleta" class="form-label">Foto de la Factura de la Bicicleta</label>
+                                    <label for="especBicicleta" class="form-label">Fotografía de la Factura de la Bicicleta</label>
                                     <br>
                                     <input type="file" name="FOTOFACTURA_BICICLETA" id="fotoFactura" accept="image/*" required>
                                     @error('FOTOFACTURA_BICICLETA')
