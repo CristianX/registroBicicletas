@@ -19,18 +19,17 @@ use Illuminate\Support\Facades\Route;
 //     return $request->user();
 // });
 
-// Api para Bicicletas
-Route::get('bicicletasApi', function(){
-    return Bicicleta::all();
-});
-Route::post('crearBicicletaApi/{identificacion}', 'App\Http\Controllers\BicicletaController@storeApi');
+// EndPoints para Bicicletas
+Route::get('bicicletas', 'App\Http\Controllers\BicicletaAPIController@mostrarTodo');
+Route::post('crearBicicletaApi/{identificacion}', 'App\Http\Controllers\BicicletaAPIController@storeApi');
+Route::put('bicicletas/{bicicleta}', 'App\Http\Controllers\BicicletaAPIController@update');
 
-// Api para usuarios
+// EndPoints para usuarios
 Route::get('usuariosApi', function(){
     return Usuario::all();
 });
 
-Route::post('crearUsuarioApi', 'App\Http\Controllers\UsuarioController@storeApi');
+Route::post('crearUsuarioApi', 'App\Http\Controllers\UsuarioAPIController@storeApi');
 
-// Api para parroquias
-Route::get('parroquiasApi', 'App\Http\Controllers\UsuarioController@parroquasApi');
+// EndPoints para parroquias
+Route::get('parroquiasApi', 'App\Http\Controllers\UsuarioAPIController@parroquasApi');

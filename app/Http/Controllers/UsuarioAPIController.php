@@ -2,20 +2,23 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Http\Request;
 use App\Models\Usuario;
 
-class UsuarioController extends Controller
+class UsuarioAPIController extends Controller
 {
-    public function index() {
-        // $usuarios = Usuario::all();
-        // // dd($usuarios);
-        return view('usuario.mostrarUsuarios')->with([
-            'usuarios' => Usuario::all(),
-        ]);
+    // Backend de Api
+
+    public function storeApi() {
+        try {
+            $usuario = Usuario::create(request()->all());
+            return response()->json($usuario, 201);
+        } catch (\Exception $e) {
+            return response()->json($e, 400);
+        }
     }
 
-    public function create() {
-        
+    public function parroquasApi() {
         $parroquias = [
             'Belisario Quevedo',
             'El Inca',
@@ -83,24 +86,6 @@ class UsuarioController extends Controller
             'Yaruquí',
             'Zámbisa',
         ];
-
-        return view('usuario.index')->with([
-            'parroquias' => $parroquias,
-        ]);
+        return response()->json($parroquias, 201);
     }
-
-    public function store() {
-
-        try {
-            Usuario::create(request()->all());
-            //TODO: Checar la línea 27
-            $identificacion = request()->get('IDENTIFICACION_USUARIO');
-        } catch (\Exception $e) {
-            return back()->withError("Usuario Registrado Anteriormente")->withInput();
-        }
-        
-        return redirect()->route('bicicleta.index', [$identificacion]);
-        
-    } 
-
 }

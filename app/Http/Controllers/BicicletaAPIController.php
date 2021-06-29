@@ -7,31 +7,20 @@ use App\Models\Bicicleta;
 use App\Models\Usuario;
 use Illuminate\Support\Facades\Storage;
 
-
-class BicicletaController extends Controller
+class BicicletaAPIController extends Controller
 {
+    // Rutas para API
 
-
-    public function index() {
-        return view('bicicleta.mostrarBicicletas')->with([
-            'bicicletas' => Bicicleta::all(),
-        ]);
-    }
-
-    public function create($identificacion) {
+    public function mostrarTodo() {
         try {
-            return view('bicicleta.index')->with([
-                'identificacion' => Usuario::findOrFail($identificacion),
-                // Problema de 0 a la izquierda
-                'registroIdentificacion' => $identificacion
-            ]);
+            $bicicleta = Bicicleta::all();
+            return response()->json($bicicleta, 201);
         } catch (\Exception $e) {
-            return redirect()->route('usuario.index');
+            return response()->json($e, 400);
         }
-        
     }
 
-    public function store($identificacion) {
+    public function storeApi($identificacion) {
 
         $razonSocial = null;
 
@@ -43,7 +32,7 @@ class BicicletaController extends Controller
         if($ruc != null) {
             $datosEstablecimiento = $soapController->datosRucEstablecimiento($ruc);
             if(!$datosEstablecimiento) {
-                return back()->withError("No Existe un establecimiento con el ruc indicado")->withInput();;
+                return response()->json('No Existe un establecimiento con el RUC indicado', 400);
             } else {
                 $razonSocial = $datosEstablecimiento['RAZON_SOCIAL'];
             }
@@ -103,7 +92,7 @@ class BicicletaController extends Controller
         
 
         try {
-            Bicicleta::create([
+            $bicicleta = Bicicleta::create([
                 'NUMEROSERIE_BICICLETA' => request()->NUMEROSERIE_BICICLETA,
                 'IDENTIFICACION_USUARIO' => $identificacion,
                 'MARCA_BICICLETA' => request()->MARCA_BICICLETA,
@@ -128,48 +117,20 @@ class BicicletaController extends Controller
                 
             ]);
             
-            
+            return response()->json($bicicleta, 201);
         } catch (\Exception $e) {
-            // Storage::deleteDirectory('public/'.$identificacion.'/'.request()->get('NUMEROSERIE_BICICLETA')); 
             Storage::delete($urlImgFotoFactura);
             Storage::delete($urlImgFotoDenuncia);
             Storage::delete($urlImgFrontal);
             Storage::delete($imgCompleta);
             Storage::delete($imgNumSerie);
             Storage::delete($imgComponentes);
-            return back()->withError("Bicicleta registrada anteriormente")->withInput();
+            return response()->json($e, 400);
         }
 
-        return redirect()->route('registro.index', ['identificacion' => $identificacion]);
-
-        
-    }
-
-    public function show($identificacion) {
-        try {
-            return view('bicicleta.bicicletaPorId')->with([
-                'bicicletas' => Bicicleta::where('IDENTIFICACION_USUARIO', $identificacion)->get(),
-                'identificacion' => Usuario::findOrFail($identificacion),
-                // Problema de borrado de 0 a la izquierda
-                'regIdentificacion' => $identificacion,
-            ]);
-        } catch (\Exception $e) {
-            return redirect()->route('usuario.index');
-        }
-    }
-
-    public function edit($bicicleta) {
-        // TODO: añadir try catch
-
-        $bicicletaProv = Bicicleta::findOrFail($bicicleta);
-        return view('bicicleta.edit')->with([
-            'bicicleta' => Bicicleta::findOrFail($bicicleta),
-            'usuario' => Usuario::findOrFail($bicicletaProv->IDENTIFICACION_USUARIO),
-        ]);
     }
 
     public function update($bicicleta) {
-
         $bicicleta = Bicicleta::findOrFail($bicicleta);
 
         request()->validate([
@@ -216,21 +177,10 @@ class BicicletaController extends Controller
                 'ACTIVAROBADA_BICICLETA' => $valorCheckBox,
                 'FOTODENUNCIA_BICICLETA' => $urlImgFotoDenuncia,
             ]);
+            return response()->json($bicicleta, 200);
         } catch (\Exception $e) {
             Storage::delete($urlImgFotoDenuncia);
-            return back()->withError("Error al actualizar el registro")->withInput();
+            return response()->json($e, 400);
         }
-
-        
-        return redirect()->route('bicicleta.mostrarBicicletasPorId', [$bicicleta->IDENTIFICACION_USUARIO]);
-    }
-
-    public function mostrarPorCodigo($codRegistro) {
-        $bicicleta = Bicicleta::where('CODREGISTRO_BICICLETA', $codRegistro)->firstOrFail();
-        $usuario = Usuario::findOrFail($bicicleta->IDENTIFICACION_USUARIO);
-        return view('bicicleta.consulta')->with([
-            'bicicleta' => $bicicleta,
-            'usuario' => $usuario,
-        ]);
     }
 }
