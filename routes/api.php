@@ -1,6 +1,5 @@
 <?php
 
-use App\Models\Bicicleta;
 use App\Models\Usuario;
 use Illuminate\Support\Facades\Route;
 
