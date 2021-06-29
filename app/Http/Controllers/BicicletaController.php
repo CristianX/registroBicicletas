@@ -6,6 +6,7 @@ use App\Http\Controllers\Soap\SoapController;
 use App\Models\Bicicleta;
 use App\Models\Usuario;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Config;
 
 
 class BicicletaController extends Controller
@@ -43,7 +44,7 @@ class BicicletaController extends Controller
         if($ruc != null) {
             $datosEstablecimiento = $soapController->datosRucEstablecimiento($ruc);
             if(!$datosEstablecimiento) {
-                return back()->withError("No Existe un establecimiento con el RUC indicado")->withInput();;
+                return back()->withError(Config::get('errormessages.ERROR_RUC'))->withInput();;
             } else {
                 $razonSocial = $datosEstablecimiento['RAZON_SOCIAL'];
             }
@@ -137,7 +138,7 @@ class BicicletaController extends Controller
             Storage::delete($imgCompleta);
             Storage::delete($imgNumSerie);
             Storage::delete($imgComponentes);
-            return back()->withError("Bicicleta registrada anteriormente")->withInput();
+            return back()->withError(Config::get('errormessages.POSTERROR_BICICLETA'))->withInput();
         }
 
         return redirect()->route('registro.index', ['identificacion' => $identificacion]);
@@ -218,7 +219,7 @@ class BicicletaController extends Controller
             ]);
         } catch (\Exception $e) {
             Storage::delete($urlImgFotoDenuncia);
-            return back()->withError("Error al actualizar el registro")->withInput();
+            return back()->withError(Config::get('errormessages.PUTERROR_BICICLETA'))->withInput();
         }
 
         

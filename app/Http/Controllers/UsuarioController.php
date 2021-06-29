@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Usuario;
+use Illuminate\Support\Facades\Config;
 
 class UsuarioController extends Controller
 {
@@ -96,7 +97,7 @@ class UsuarioController extends Controller
             //TODO: Checar la línea 27
             $identificacion = request()->get('IDENTIFICACION_USUARIO');
         } catch (\Exception $e) {
-            return back()->withError("Usuario Registrado Anteriormente")->withInput();
+            return back()->withError(Config::get('errormessages.POSTERROR_USUARIO'))->withInput();
         }
         
         return redirect()->route('bicicleta.index', [$identificacion]);

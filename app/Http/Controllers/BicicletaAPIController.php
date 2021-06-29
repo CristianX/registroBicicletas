@@ -183,4 +183,17 @@ class BicicletaAPIController extends Controller
             return response()->json($e, 400);
         }
     }
+
+    public function mostrarPorCodigo($codRegistro) {
+        $bicicleta = Bicicleta::where('CODREGISTRO_BICICLETA', $codRegistro)->firstOrFail();
+        $usuario = Usuario::findOrFail($bicicleta->IDENTIFICACION_USUARIO);
+        return response()->json([
+            'ACTIVAROBADA_BICICLETA' => $bicicleta->ACTIVAROBADA_BICICLETA,
+            'NOMBRES_USUARIO' => $usuario->NOMBRES_USUARIO,
+            'APELLIDOS_USUARIO' => $usuario->APELLIDOS_USUARIO,
+            'APODERADO_BICICLETA' => $bicicleta->APODERADO_BICICLETA,
+            'TELFCELULAR_USUARIO' => $usuario->TELFCELULAR_USUARIO,
+            'EMAIL_USUARIO' => $usuario->EMAIL_USUARIO,
+        ], 200);
+    }
 }

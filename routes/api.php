@@ -32,3 +32,6 @@ Route::post('crearUsuarioApi', 'App\Http\Controllers\UsuarioAPIController@storeA
 
 // EndPoints para parroquias
 Route::get('parroquiasApi', 'App\Http\Controllers\UsuarioAPIController@parroquasApi');
+
+// EndPint de consulta por código
+Route::get('consulta/{codRegistro}', 'App\Http\Controllers\BicicletaAPIController@mostrarPorCodigo');
