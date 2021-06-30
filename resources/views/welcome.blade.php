@@ -30,7 +30,7 @@
                                             <small class="text-danger">{{ session('error') }}</small>
                                         @endif
                                     </div>
-                                    <button class="btn btn-primary" type="submit" >Registrar Bicicleta</button>
+                                    <button class="btn btn-primary" type="submit" >Registrarse</button>
                                 </form>
                                 <br>
                                 <label style="text-align: start" for="notificacionCodRegistro" class="form-label">Consulta por Código de Registro</label>

@@ -332,17 +332,23 @@
             document.getElementById('activa').style.display = 'none';
             document.getElementById('robada').style.display = 'block';
             document.getElementById('divDenuncia').style.display = 'block';
+            document.getElementById('flexSwitchCheckDefault').style.backgroundColor= 'red';
+            document.getElementById('flexSwitchCheckDefault').style.borderColor= 'red';
         } else {
             document.getElementById('robada').style.display = 'none';
             document.getElementById('activa').style.display = 'block';
             document.getElementById('divDenuncia').style.display = 'none';
             document.getElementById('fotoDenuncia').value = null;
+            document.getElementById('flexSwitchCheckDefault').style.backgroundColor= 'green';
+            document.getElementById('flexSwitchCheckDefault').style.borderColor= 'green';
         }
     }
 
     function cargaInicial() {
         mostrarCampoNueva();
         ocultarCampoUsada();
+        document.getElementById('flexSwitchCheckDefault').style.backgroundColor= 'green';
+        document.getElementById('flexSwitchCheckDefault').style.borderColor= 'green';
     }
 
 </script>

@@ -130,7 +130,7 @@
                         </div>
                     </div>
                 </div>
-                <button type="submit" class="btn btn-primary estiloBoton">Editar Bicicleta</button>
+                <button type="submit" class="btn btn-primary estiloBoton">Guardar Cambios</button>
             </form>
         </div>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
@@ -224,12 +224,16 @@
         document.getElementById('robada').style.display = 'none';
         document.getElementById('activa').style.display = 'block';
         document.getElementById('divDenuncia').style.display = 'none';
+        document.getElementById('flexSwitchCheckDefault').style.backgroundColor= 'green';
+            document.getElementById('flexSwitchCheckDefault').style.borderColor= 'green';
     }
 
     function mostrarRobada() {
         document.getElementById('activa').style.display = 'none';
         document.getElementById('robada').style.display = 'block';
         document.getElementById('divDenuncia').style.display = 'block';
+        document.getElementById('flexSwitchCheckDefault').style.backgroundColor= 'red';
+            document.getElementById('flexSwitchCheckDefault').style.borderColor= 'red';
     }
 
     window.onload = function() {
