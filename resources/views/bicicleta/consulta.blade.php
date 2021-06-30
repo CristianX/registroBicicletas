@@ -11,7 +11,13 @@
     <div class="centrado">
         <h1 style="color: #3C763D">Bicicleta marca {{ $bicicleta->MARCA_BICICLETA }}</h1>
       <div class="cabecera">
-        <h3 style="color: #31708F">Estado: {{ $bicicleta->ACTIVAROBADA_BICICLETA == 1 ? 'Robada' : 'Activa' }}</h3>
+        <h3 style="color: #31708F">Estado:
+          @if ($bicicleta->ACTIVAROBADA_BICICLETA == 1)
+            <span style="color: red" >Robada</span>
+          @else
+            <span style="color: green" >Activa</span>
+          @endif
+        </h3>
         <h3 style="color: #31708F">Registrada con identificación de: {{ $usuario->NOMBRES_USUARIO }} {{ $usuario->APELLIDOS_USUARIO }} </h3>
         <h3 style="color: #31708F">Nombre del Apoderado: {{ $bicicleta->APODERADO_BICICLETA }} </h3>
         <h3 style="color: #31708F">Número de Celular: {{ $usuario->TELFCELULAR_USUARIO }} </h3>

@@ -16,7 +16,7 @@
       <div class="container">
         <div class="row">
           <div class="col">        
-            <a class="btn btn-primary btn-block" style="width: 100%" href="{{ route('bicicleta.mostrarBicicletasPorId', ['identificacion' => $identificacion]) }}">Inicio</a>
+            <a class="btn btn-primary btn-block" style="width: 100%" href="{{ route('bicicleta.mostrarBicicletasPorId', ['identificacion' => $identificacion]) }}">Regresar</a>
           </div>
         </div>
       </div>

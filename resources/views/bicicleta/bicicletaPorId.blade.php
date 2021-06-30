@@ -8,9 +8,11 @@
     <title>Bicicletas</title>
 </head>
 <body>
-    <div class="container">
+    <div class="container" style="padding-bottom: 20px">
         <h1>Bicicletas con indentificación de {{ $identificacion->NOMBRES_USUARIO }} {{ $identificacion->APELLIDOS_USUARIO }}</h1>
         <hr>
+        <a href="{{ route('welcome') }}" type="button" class="btn btn-danger" style="float: right">Salir</a>
+        <br><br>
         <table class="table table table-bordered table-hover sortable">
             <thead style="background-color: #124176">
               <tr>
@@ -54,55 +56,41 @@
         </table>
         <a type="button" class="btn btn-success float-right" href="{{ route('bicicleta.index', [$regIdentificacion]) }}">Nuevo Registro</a>
     </div>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
-    <script src="/js/sorttable.js" ></script>
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script>
-        function editarBicicleta(e) {
-        
-            e.preventDefault();
-            var url = e.currentTarget.getAttribute('href');
-
-            Swal.fire({
-                title: 'Editar',
-                text: '¿Está seguro que desea editar la información de esta bicicleta?',
-                icon: 'warning',
-                showCancelButton: true,
-                // html: `
-                //     <select class="form-select" id="descripcionBicicleta" name="PREGUNTA_SEGURIDAD">
-                //         <option value="" selected disabled>Seleccione una PREGUNTA</option>
-                //         <option value="pregunta1">Pregunta 1</option>
-                //         <option value="pregunta2">Pregunta 2</option>
-                //         <option value="pregunta3">Pregunta 3</option>
-                //     </select>
-                //     <br>
-                //     <input type="password" id="password" class="form-control" placeholder="Password">
-                //     `,
-                confirmButtonText: 'Editar',
-                confirmButtonColor: '#124176',
-                cancelButtonText: 'Cancelar'
-                // TODO: SI ES NECESARIO ELIMINAR ;
-            }).then((result) => {
-                if(result.value) {
-                    window.location.href=url;
-                }
-            })
-            // .then((result)=>{
-            //     if(result.isConfirmed) {
-            //         Swal.fire(
-            //             document.getElementById('descripcionBicicleta').value,
-            //         )
-            //     } else if (result.dismiss === Swal.DismissReason.cancel) {
-            //         Swal.fire(
-            //             'Cancelado',
-            //             'Your imaginary file is safe',
-            //             'error'
-            //         )
-            //     }
-            // })
-        }
-    </script>
+    <footer style="background-color: #124176">
+        <div class="row">
+            <div class="col-1">
+                <img src="{{ asset('/assets/LogoSecretaria.png') }}" width="150px" style="padding-left: 10px" alt="bicicleta">
+            </div>
+            <div class="col-11 contenedorCentro">
+                <span>En caso de necesitar mayor información comunicarse al: xxxxx@xxxxx.com</span>
+            </div>
+        </div>
+    </footer>
 </body>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
+<script src="/js/sorttable.js" ></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script>
+    function editarBicicleta(e) {
+    
+        e.preventDefault();
+        var url = e.currentTarget.getAttribute('href');
+
+        Swal.fire({
+            title: 'Editar',
+            text: '¿Está seguro que desea editar la información de esta bicicleta?',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonText: 'Editar',
+            confirmButtonColor: '#124176',
+            cancelButtonText: 'Cancelar'
+        }).then((result) => {
+            if(result.value) {
+                window.location.href=url;
+            }
+        })
+    }
+</script>
 </html>
 
 <style class="text/css">
@@ -110,4 +98,16 @@
         color: #212529;
         text-decoration: none;
     }
+    .estiloFooter {
+        align-items: flex-start;
+        text-align: center
+    }
+    .contenedorCentro{
+        justify-content: center;
+        text-align: center;
+        padding-top: 12px;
+        color: white;
+
+    }
+
 </style>
