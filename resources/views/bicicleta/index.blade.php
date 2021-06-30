@@ -44,7 +44,7 @@
                 </div>
                 <div class="mb-3">
                     <label for="nserie" class="form-label">Número de Serie o chasis de la Bicicleta (En caso de no tenerlo registrar como SN)</label>
-                    <input placeholder="Ingrese el número de serie de su Bicicleta" type="text" class="form-control" name="NUMEROSERIE_BICICLETA" minlength="3" maxlength="40" required>
+                    <input placeholder="Ingrese el número de serie de su Bicicleta" type="text" class="form-control" name="NUMEROSERIE_BICICLETA" minlength="2" maxlength="40" required>
                 </div>
                 <div class="mb-3">
                     <label for="categoria" class="form-label">Gama o Categoría</label>
