@@ -56,7 +56,7 @@
         </table>
         <a type="button" class="btn btn-success float-right" href="{{ route('bicicleta.index', [$regIdentificacion]) }}">Nuevo Registro</a>
     </div>
-    <footer style="background-color: #124176">
+    <footer>
         <div class="d-none d-sm-none d-md-block">
             <div class="row">
                 <div class="col-1">
@@ -111,6 +111,24 @@
         padding-top: 12px;
         color: white;
 
+    }
+
+    html {
+      min-height: 100%;
+      position: relative;
+    }
+
+    body {
+      margin: 0;
+      margin-bottom: 40px;
+    }
+
+    footer {
+        background-color: #124176;
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+        color: white;
     }
 
 </style>
