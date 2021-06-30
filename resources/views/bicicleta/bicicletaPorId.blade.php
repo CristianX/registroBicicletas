@@ -57,14 +57,17 @@
         <a type="button" class="btn btn-success float-right" href="{{ route('bicicleta.index', [$regIdentificacion]) }}">Nuevo Registro</a>
     </div>
     <footer style="background-color: #124176">
-        <div class="row">
-            <div class="col-1">
-                <img src="{{ asset('/assets/LogoSecretaria.png') }}" width="150px" style="padding-left: 10px" alt="bicicleta">
-            </div>
-            <div class="col-11 contenedorCentro">
-                <span>En caso de necesitar mayor información comunicarse al: xxxxx@xxxxx.com</span>
+        <div class="d-none d-sm-none d-md-block">
+            <div class="row">
+                <div class="col-1">
+                    <img src="{{ asset('/assets/LogoSecretaria.png') }}" width="150px" style="padding-left: 10px" alt="bicicleta">
+                </div>
+                <div class="col-11 contenedorCentro">
+                    <span>En caso de necesitar mayor información comunicarse al: xxxxx@xxxxx.com</span>
+                </div>
             </div>
         </div>
+        
     </footer>
 </body>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
