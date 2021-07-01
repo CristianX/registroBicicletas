@@ -13,9 +13,9 @@ class SoapController extends BaseSoapController
             self::setWsdl(Config::get('app.urlwebservice'));
             $this->service = InstanceSoapClient::init();
 
-            $persons = $this->service->InformacionContribuyente(['ruc' => $ruc ]);
-            $personas = $this->loadXmlStringAsArray($persons->InformacionContribuyenteResult->any);
-            // dd($personas);
+            $persons = $this->service->InformacionEstablecimiento(['ruc' => $ruc ]);
+            $personas = $this->loadXmlStringAsArray($persons->InformacionEstablecimientoResult->any);
+            // dd($personas['NewDataSet']['Table']);
             if(!$personas) {
                 return null;
             } else {

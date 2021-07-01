@@ -35,18 +35,28 @@ class BicicletaController extends Controller
     public function store($identificacion) {
 
         $razonSocial = null;
+        $rucEstablecimiento = null;
 
-        $ruc = request()->get('RAZONSOCIAL_BICICLETA');
+        $ruc = request()->get('RUC_BICICLETA');
+        $razS = request()->get('RAZONSOCIAL_BICICLETA');
 
         // Datos ruc del web service
         $soapController = new SoapController();
         // return $datosEstablecimiento['NUMERO_RUC'];
         if($ruc != null) {
             $datosEstablecimiento = $soapController->datosRucEstablecimiento($ruc);
-            if(!$datosEstablecimiento) {
-                return back()->withError(Config::get('errormessages.ERROR_RUC'))->withInput();;
+            if(!$datosEstablecimiento && !$razS) {
+                return back()->with('rucManual', 1)->withInput();
             } else {
-                $razonSocial = $datosEstablecimiento['RAZON_SOCIAL'];
+                if($datosEstablecimiento) {
+                    $razonSocial = $datosEstablecimiento['RAZON_SOCIAL'];
+                    $rucEstablecimiento = $datosEstablecimiento['NUMERO_RUC'];
+                } else {
+                    $rucEstablecimiento = $ruc;
+                    $razonSocial = $razS;
+                }
+                //TODO: añadir condicional para evaluar si existe datos de establecimiento (se modifico por el if primario)
+                //TODO: poner ruc tambíen campurado del web service
             }
         }
 
@@ -120,6 +130,7 @@ class BicicletaController extends Controller
                 'FOTOCOMP_BICICLETA' => $urlImgComponentes,
                 'APODERADO_BICICLETA' => $nombreApoderado,
                 'RAZONSOCIAL_BICICLETA' => $razonSocial,
+                'RUC_BICICLETA' => $rucEstablecimiento,
                 'FOTOFACTURA_BICICLETA' => $urlImgFotoFactura,
                 'DESCUSADA_BICICLETA' => request()->DESCUSADA_BICICLETA,
                 'NOMBUSADA_BICICLETA' => request()->NOMBUSADA_BICICLETA,
