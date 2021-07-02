@@ -330,6 +330,17 @@
         document.getElementById('activa').style.display = 'block';
         document.getElementById('robada').style.display = 'none';
     }
+
+    //Evento checkbox Nombre Apoderado
+    var switchNombreApoderadoOcultar = document.getElementById('flexRadioDefault2');
+    switchNombreApoderadoOcultar.addEventListener("change", comprueba, false);
+    function comprobarChbApoderado() {
+        if(switchNombreApoderadoOcultar.checked) {
+            ocultarCampoHijo()
+        } else {
+            mostrarCampoHijo()
+        }
+    }
     
     // Evento del Checkbox
     var switchCheckbox = document.getElementById('flexSwitchCheckDefault');
@@ -354,6 +365,7 @@
     }
 
     function cargaInicial() {
+        comprobarChbApoderado();
         mostrarCampoNueva();
         ocultarCampoUsada();
         document.getElementById('flexSwitchCheckDefault').style.backgroundColor= 'green';

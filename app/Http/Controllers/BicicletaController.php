@@ -79,7 +79,7 @@ class BicicletaController extends Controller
         $imgFotoFactura = request()->file('FOTOFACTURA_BICICLETA');
         if( $imgFotoFactura != null ) {
             $imgFotoFactura = request()->file('FOTOFRONTAL_BICICLETA')
-            ->store('public/'.$identificacion.'/'.$nombreApoderado.'/'.request()->get('NUMEROSERIE_BICICLETA').'/'.'Factura');
+                ->store('public/'.$identificacion.'/'.$nombreApoderado.'/'.'Factura');
             $urlImgFotoFactura = Storage::url($imgFotoFactura);
         } else {
             $urlImgFotoFactura = null;
@@ -88,7 +88,7 @@ class BicicletaController extends Controller
         $imgFotoDenuncia = request()->file('FOTODENUNCIA_BICICLETA');
         if ($imgFotoDenuncia != null) {
             $imgFotoDenuncia = request()->file('FOTODENUNCIA_BICICLETA')
-            ->store('public/'.$identificacion.'/'.$nombreApoderado.'/'.request()->get('NUMEROSERIE_BICICLETA').'/'.'Denuncia');
+                ->store('public/'.$identificacion.'/'.$nombreApoderado.'/'.'Denuncia');
             $urlImgFotoDenuncia = Storage::url($imgFotoDenuncia);
         } else {
             $urlImgFotoDenuncia = null;
@@ -96,19 +96,32 @@ class BicicletaController extends Controller
         
 
         $imgFrontal = request()->file('FOTOFRONTAL_BICICLETA')
-            ->store('public/'.$identificacion.'/'.$nombreApoderado.'/'.request()->get('NUMEROSERIE_BICICLETA'));
-        $imgCompleta = request()->file('FOTOCOMPLETA_BICICLETA')
-            ->store('public/'.$identificacion.'/'.$nombreApoderado.'/'.request()->get('NUMEROSERIE_BICICLETA'));
-        $imgNumSerie = request()->file('FOTONUMSERIE_BICICLETA')
-            ->store('public/'.$identificacion.'/'.$nombreApoderado.'/'.request()->get('NUMEROSERIE_BICICLETA'));
-        $imgComponentes = request()->file('FOTOCOMP_BICICLETA')
-            ->store('public/'.$identificacion.'/'.$nombreApoderado.'/'.request()->get('NUMEROSERIE_BICICLETA'));
-
+            ->store('public/'.$identificacion.'/'.$nombreApoderado);
         $urlImgFrontal = Storage::url($imgFrontal);
-        $urlImgCompleta = Storage::url($imgCompleta);
-        $urlImgNumSerie = Storage::url($imgNumSerie);
-        $urlImgComponentes = Storage::url($imgComponentes);
 
+        $imgCompleta = request()->file('FOTOCOMPLETA_BICICLETA')
+            ->store('public/'.$identificacion.'/'.$nombreApoderado);
+        $urlImgCompleta = Storage::url($imgCompleta);
+        
+        $imgNumSerie = request()->file('FOTONUMSERIE_BICICLETA');
+        if($imgNumSerie != null) {
+            $imgNumSerie = request()->file('FOTONUMSERIE_BICICLETA')
+                ->store('public/'.$identificacion.'/'.$nombreApoderado);
+            $urlImgNumSerie = Storage::url($imgNumSerie);
+        } else {
+            $urlImgNumSerie = null;
+        }
+        
+        $imgComponentes = request()->file('FOTOCOMP_BICICLETA');
+        if($imgComponentes != null) {
+            $imgComponentes = request()->file('FOTOCOMP_BICICLETA')
+                ->store('public/'.$identificacion.'/'.$nombreApoderado);
+            $urlImgComponentes = Storage::url($imgComponentes);
+        } else {
+            $urlImgComponentes = null;
+        }
+
+        
         // Valor checkbox
         $valorCheckBox = (request()->get('ACTIVAROBADA_BICICLETA') == 'on' ? 1 : 0 );
         
@@ -197,7 +210,7 @@ class BicicletaController extends Controller
         $imgFotoDenuncia = request()->file('FOTODENUNCIA_BICICLETA');
         if ($imgFotoDenuncia != null) {
             $imgFotoDenuncia = request()->file('FOTODENUNCIA_BICICLETA')
-            ->store('public/'.$bicicleta->IDENTIFICACION_USUARIO .'/'.$nombreApoderado.'/'.request()->get('NUMEROSERIE_BICICLETA').'/'.'Denuncia');
+            ->store('public/'.$bicicleta->IDENTIFICACION_USUARIO .'/'.$nombreApoderado.'/'.'Denuncia');
             $urlImgFotoDenuncia = Storage::url($imgFotoDenuncia);
         } else {
             $urlImgFotoDenuncia = null;
