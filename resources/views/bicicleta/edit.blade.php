@@ -106,6 +106,7 @@
                 </div>
                 <div class="mb-3">
                     <div class="form-check form-switch">
+                        <label class="form-label">Indique el estado actual de la bicicleta (En caso de estar en uso o robada)</label>
                         <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault" name="ACTIVAROBADA_BICICLETA" {{ $bicicleta->ACTIVAROBADA_BICICLETA == 1 ? 'checked' : '' }}  >
                         <label class="form-check-label" for="flexSwitchCheckDefault">
                             <span id="activa">Activa</span>
