@@ -45,7 +45,7 @@ class BicicletaController extends Controller
         // return $datosEstablecimiento['NUMERO_RUC'];
         if($ruc != null) {
             $datosEstablecimiento = $soapController->datosRucEstablecimiento($ruc);
-            if(!$datosEstablecimiento || strpos($datosEstablecimiento, 'Undefined') == 0 && !$razS) {
+            if(!$datosEstablecimiento && !$razS) {
                 return back()->with('rucManual', 1)->withInput();
             } else {
                 if($datosEstablecimiento) {
