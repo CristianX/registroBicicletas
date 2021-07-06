@@ -9,7 +9,17 @@
 </head>
 <body>
     <div class="container" style="padding-bottom: 20px">
-        <h1>Bicicletas con indentificación de {{ $identificacion->NOMBRES_USUARIO }} {{ $identificacion->APELLIDOS_USUARIO }}</h1>
+        <div class="row">
+            <div class="col-11">
+                <h2 style="padding: 5px">
+                    Indentificación: {{ $identificacion->NOMBRES_USUARIO }} {{ $identificacion->APELLIDOS_USUARIO }}
+                </h2>
+                <h2>Bicicletas Registradas: </h2>
+            </div>
+            <div class="col-1" style="padding-top: 40px" >
+                <a class="btn btn-warning" href="">Editar</a>
+            </div>
+        </div>
         <hr>
         <a href="{{ route('welcome') }}" type="button" class="btn btn-danger" style="float: right">Salir</a>
         <br><br>

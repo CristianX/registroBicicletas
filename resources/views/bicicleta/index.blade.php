@@ -227,7 +227,7 @@
                     </div>
                 </div>
                 <div class="mb-3">
-                    <label class="form-label">Indique el estado actual de la bicicleta (En caso de estar actualmente en uso o robada)</label>
+                    <label class="form-label">Indique el estado actual de la bicicleta (En caso de estar en uso o robada)</label>
                     <div class="form-check form-switch">
                         <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault" name="ACTIVAROBADA_BICICLETA">
                         <label class="form-check-label" for="flexSwitchCheckDefault">
