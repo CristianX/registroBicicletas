@@ -22,7 +22,7 @@
         <h3 style="color: #31708F">Nombre del Apoderado: {{ $bicicleta->APODERADO_BICICLETA }} </h3>
         <h3 style="color: #31708F">Número de Celular: {{ $usuario->TELFCELULAR_USUARIO }} </h3>
         <h3 style="color: #31708F">Correo Electrónico: {{ $usuario->EMAIL_USUARIO }} </h3>
-        <h3 style="color: #31708F">Mensaje: </h3>
+        <h3 style="color: #FA8500">En caso de requerir mayor información, contactarse al correo xxxxxx@xxxxx.com o llamar al 3952300 ext. 14013</h3>
       </div>
       <div class="container">
         <div class="row">
@@ -41,7 +41,7 @@
   .centrado {
     flex-direction: column;
     background: #DFF0D8;
-    height: 250px;
+    height: 300px;
     display: flex;
     justify-content: center;
     align-items: center;

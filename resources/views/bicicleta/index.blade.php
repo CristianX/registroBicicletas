@@ -94,7 +94,7 @@
                     <div class="card">
                         <div class="card-body">
                             <div class="form-group">
-                                <label for="especBicicleta" class="form-label">Fotografía Frontal de la Bicicleta (Con Usted)</label>
+                                <label for="especBicicleta" class="form-label">Fotografía Frontal de la Bicicleta (Con El Usuario)</label>
                                 <br>
                                 <input type="file" name="FOTOFRONTAL_BICICLETA" accept="image/*" required>
                                 @error('FOTOFRONTAL_BICICLETA')
@@ -227,6 +227,7 @@
                     </div>
                 </div>
                 <div class="mb-3">
+                    <label class="form-label">Indique el estado actual de la bicicleta (En caso de estar actualmente en uso o robada)</label>
                     <div class="form-check form-switch">
                         <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault" name="ACTIVAROBADA_BICICLETA">
                         <label class="form-check-label" for="flexSwitchCheckDefault">
@@ -260,6 +261,10 @@
 </html>
 
 <style class="text/css">
+
+    input:invalid {
+        color: red;
+    }
     .contenedorIzquierda {
         justify-content: left;
     }

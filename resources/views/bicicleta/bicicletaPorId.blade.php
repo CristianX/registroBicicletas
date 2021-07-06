@@ -63,7 +63,7 @@
                     <img src="{{ asset('/assets/LogoSecretaria.png') }}" width="150px" style="padding-left: 10px" alt="bicicleta">
                 </div>
                 <div class="col-11 contenedorCentro">
-                    <span>En caso de necesitar mayor información comunicarse al: xxxxx@xxxxx.com</span>
+                    <span>En caso de requerir mayor información, contactarse al correo xxxxxx@xxxxx.com o llamar al 3952300 ext. 14013</span>
                 </div>
             </div>
         </div>

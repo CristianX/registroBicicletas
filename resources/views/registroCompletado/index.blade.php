@@ -10,13 +10,18 @@
 <body>
     <div class="centrado">
       <div class="cabecera">
-        <h1 style="color: #3C763D">Registro realizado correctamente</h1>
-        <h3 style="color: #31708F">Desea realizar otro registro?</h3>
+        <h1 style="color: #3C763D">Su registro ha entrado en fase de validación.</h1>
+        <h3 style="color: #31708F">Pronto nos contactaremos con usted.</h3>
+        <br>
+        <h3 style="color: #31708F">¿Desea ingresar otra bicicleta?</h3>
       </div>
       <div class="container">
         <div class="row">
-          <div class="col">        
-            <a class="btn btn-primary btn-block" style="width: 100%" href="{{ route('bicicleta.mostrarBicicletasPorId', ['identificacion' => $identificacion]) }}">Regresar</a>
+          <div class="col-6">        
+            <a class="btn btn-primary btn-block" style="width: 100%" href="{{ route('bicicleta.index', ['identificacion' => $identificacion]) }}">Si</a>
+          </div>
+          <div class="col-6">
+            <a class="btn btn-danger btn-block" style="width: 100%" href="{{ route('bicicleta.mostrarBicicletasPorId', ['identificacion' => $identificacion]) }}">No</a>
           </div>
         </div>
       </div>

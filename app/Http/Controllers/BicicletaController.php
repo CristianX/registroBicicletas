@@ -45,7 +45,7 @@ class BicicletaController extends Controller
         // return $datosEstablecimiento['NUMERO_RUC'];
         if($ruc != null) {
             $datosEstablecimiento = $soapController->datosRucEstablecimiento($ruc);
-            if(!$datosEstablecimiento && !$razS) {
+            if(!$datosEstablecimiento || strpos($datosEstablecimiento, 'Undefined') == 0 && !$razS) {
                 return back()->with('rucManual', 1)->withInput();
             } else {
                 if($datosEstablecimiento) {
@@ -149,7 +149,7 @@ class BicicletaController extends Controller
                 'NOMBUSADA_BICICLETA' => request()->NOMBUSADA_BICICLETA,
                 'ACTIVAROBADA_BICICLETA' => $valorCheckBox,
                 'FOTODENUNCIA_BICICLETA' => $urlImgFotoDenuncia,
-                'CODREGISTRO_BICICLETA' => substr(str_shuffle('0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'), 0, 10),
+                'CODREGISTRO_BICICLETA' => 'Pendiente',
                 
             ]);
             
@@ -251,11 +251,18 @@ class BicicletaController extends Controller
     }
 
     public function mostrarPorCodigo($codRegistro) {
-        $bicicleta = Bicicleta::where('CODREGISTRO_BICICLETA', $codRegistro)->firstOrFail();
-        $usuario = Usuario::findOrFail($bicicleta->IDENTIFICACION_USUARIO);
-        return view('bicicleta.consulta')->with([
+
+        try {
+            $bicicleta = Bicicleta::where('CODREGISTRO_BICICLETA', $codRegistro)->firstOrFail();
+            $usuario = Usuario::findOrFail($bicicleta->IDENTIFICACION_USUARIO);
+            return view('bicicleta.consulta')->with([
             'bicicleta' => $bicicleta,
             'usuario' => $usuario,
         ]);
+        } catch (\Exception $e) {
+            return back()->withError('No existe el código ingresado')->withInput();
+        }
+
+        
     }
 }

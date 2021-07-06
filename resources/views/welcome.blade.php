@@ -26,11 +26,8 @@
                                     <div class="form-floating mb-3">
                                         <input name="identificacion" id="identificacion" placeholder="Ingrese su Identificación" type="text" pattern="\d*" class="form-control" maxlength="15" minlength="5" required>
                                         <label for="identificacion" style="color: #bdbdbd">C.I./Pasaporte</label>
-                                        @if (session('error'))
-                                            <small class="text-danger">{{ session('error') }}</small>
-                                        @endif
                                     </div>
-                                    <button class="btn btn-primary" type="submit" >Registrarse</button>
+                                    <button class="btn btn-primary" type="submit" >Registrarse/Ingresar</button>
                                 </form>
                                 <br>
                                 <label style="text-align: start" for="notificacionCodRegistro" class="form-label">Consulta por Código de Registro</label>

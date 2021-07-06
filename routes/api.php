@@ -20,6 +20,7 @@ use Illuminate\Support\Facades\Route;
 
 // EndPoints para Bicicletas
 Route::get('bicicletas', 'App\Http\Controllers\BicicletaAPIController@mostrarTodo');
+Route::get('bicicletas/{identificacion}', 'App\Http\Controllers\BicicletaAPIController@mostrarPorId');
 Route::post('crearBicicletaApi/{identificacion}', 'App\Http\Controllers\BicicletaAPIController@storeApi');
 Route::put('bicicletas/{bicicleta}', 'App\Http\Controllers\BicicletaAPIController@update');
 
