@@ -35,24 +35,25 @@ Route::match(['put', 'patch'], '/bicicletas/{bicicleta}', 'App\Http\Controllers\
 Route::get('regCompletado/{identificacion}', 'App\Http\Controllers\RegCompController@index')->name('registro.index');
 
 // Web Service
-Route::get('web', function () {
+// Route::get('web', function () {
 
-    $opts = array(
-        'ssl' => array('ciphers'=>'RC4-SHA', 'verify_peer'=>false, 'verify_peer_name'=>false)
-    );
+//     $opts = array(
+//         'ssl' => array('ciphers'=>'RC4-SHA', 'verify_peer'=>false, 'verify_peer_name'=>false)
+//     );
 
-    $params = array ('encoding' => 'UTF-8', 'verifypeer' => false, 'verifyhost' => false, 'soap_version' => SOAP_1_2, 'trace' => 1, 'exceptions' => 1, "connection_timeout" => 180, 'stream_context' => stream_context_create($opts) );
+//     $params = array ('encoding' => 'UTF-8', 'verifypeer' => false, 'verifyhost' => false, 'soap_version' => SOAP_1_2, 'trace' => 1, 'exceptions' => 1, "connection_timeout" => 180, 'stream_context' => stream_context_create($opts) );
 
 
-    $url = "http://172.20.47.219/MDMQ_CrecimientoTributario_WS/WS_SRI_PER.asmx?WSDL";
-    try {
-        $client = new SoapClient($url, $params);
-        // dd($client->__getTypes());
-        dd($client->InformacionContribuyente(['ruc' => '0503297079001']));
-    } catch(SoapFault $fault) {
-        echo '<br>'.$fault;
-    }
-});
+//     $url = "http://172.20.47.219/MDMQ_CrecimientoTributario_WS/WS_SRI_PER.asmx?WSDL";
+//     try {
+//         $client = new SoapClient($url, $params);
+//         // dd($client->__getTypes());
+//         dd($client->InformacionContribuyente(['ruc' => '0503297079001']));
+//     } catch(SoapFault $fault) {
+//         echo '<br>'.$fault;
+//     }
+// });
+
 Route::get('webService', 'App\Http\Controllers\Soap\SoapController@datosRucEstablecimiento')->name('webservice');
 
 Route::get('consulta/{codRegistro}', 'App\Http\Controllers\BicicletaController@mostrarPorCodigo')->name('bicicleta.consulta');
