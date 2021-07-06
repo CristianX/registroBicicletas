@@ -41,11 +41,11 @@
                 </div>
                 <div class="mb-3">
                     <label for="modelo" class="form-label">Modelo</label>
-                    <input value="{{ $bicicleta->MODELO_BICICLETA }}" type="text" class="form-control" name="MODELO_BICICLETA" minlength="4" maxlength="200" required>
+                    <input value="{{ $bicicleta->MODELO_BICICLETA }}" type="text" class="form-control" name="MODELO_BICICLETA" minlength="3" maxlength="200" required>
                 </div>
                 <div class="mb-3">
                     <label for="nserie" class="form-label">Número de Serie o chasis de la Bicicleta</label>
-                    <input value="{{ $bicicleta->NUMEROSERIE_BICICLETA }}" type="text" class="form-control" name="NUMEROSERIE_BICICLETA" minlength="4" maxlength="40" required>
+                    <input value="{{ $bicicleta->NUMEROSERIE_BICICLETA }}" type="text" class="form-control" name="NUMEROSERIE_BICICLETA" minlength="2" maxlength="40" required>
                 </div>
                 <div class="mb-3">
                     <label for="categoria" class="form-label">Gama o Categoría</label>

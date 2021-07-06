@@ -43,7 +43,7 @@
                 </div>
                 <div class="mb-3">
                     <label for="modelo" class="form-label">Modelo</label>
-                    <input value="{{ old('MODELO_BICICLETA') }}" placeholder="Ingrese el modelo de su Bicicleta" type="text" class="form-control" name="MODELO_BICICLETA" minlength="4" maxlength="200" required>
+                    <input value="{{ old('MODELO_BICICLETA') }}" placeholder="Ingrese el modelo de su Bicicleta" type="text" class="form-control" name="MODELO_BICICLETA" minlength="3" maxlength="200" required>
                 </div>
                 <div class="mb-3">
                     <label for="nserie" class="form-label">Número de Serie o chasis de la Bicicleta (En caso de no tenerlo registrar como SN)</label>
