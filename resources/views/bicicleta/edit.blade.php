@@ -44,7 +44,7 @@
                     <input value="{{ $bicicleta->MODELO_BICICLETA }}" type="text" class="form-control" name="MODELO_BICICLETA" minlength="3" maxlength="200" required>
                 </div>
                 <div class="mb-3">
-                    <label for="nserie" class="form-label">Número de Serie o chasis de la Bicicleta</label>
+                    <label for="nserie" class="form-label">Número de Serie o chasis de la Bicicleta (En caso de no tenerlo registrar como SN)</label>
                     <input value="{{ $bicicleta->NUMEROSERIE_BICICLETA }}" type="text" class="form-control" name="NUMEROSERIE_BICICLETA" minlength="2" maxlength="40" required>
                 </div>
                 <div class="mb-3">
@@ -105,8 +105,8 @@
                     <input id="campoNombreDuenio" value="{{ $bicicleta->APODERADO_BICICLETA }}" type="text" class="form-control" name="APODERADO_BICICLETA" minlength="4" maxlength="400">
                 </div>
                 <div class="mb-3">
+                    <label class="form-label">Indique el estado actual de la bicicleta (En caso de estar en uso o robada)</label>
                     <div class="form-check form-switch">
-                        <label class="form-label">Indique el estado actual de la bicicleta (En caso de estar en uso o robada)</label>
                         <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault" name="ACTIVAROBADA_BICICLETA" {{ $bicicleta->ACTIVAROBADA_BICICLETA == 1 ? 'checked' : '' }}  >
                         <label class="form-check-label" for="flexSwitchCheckDefault">
                             <span id="activa">Activa</span>
@@ -139,6 +139,10 @@
 </html>
 
 <style class="text/css">
+
+    input:invalid {
+        color: red;
+    }
     .contenedorIzquierda {
         justify-content: left;
     }
