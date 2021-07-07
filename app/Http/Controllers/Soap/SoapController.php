@@ -23,7 +23,7 @@ class SoapController extends BaseSoapController
             }
 
         } catch (\Exception $e) {
-            return $e;
+            return null;
         }
     }
 }
