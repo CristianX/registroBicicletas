@@ -21,6 +21,7 @@ class Usuario extends Model
         'NOMBRES_USUARIO',
         'APELLIDOS_USUARIO',
         'EDAD_USUARIO',
+        'FECHANACIMIENTO_USUARIO',
         'EMAIL_USUARIO',
         'TELFCONVENCIONAL_USUARIO',
         'TELFCELULAR_USUARIO',

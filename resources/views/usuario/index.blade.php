@@ -52,6 +52,10 @@
                     <input placeholder="Ingrese su Edad" type="number" min="18" max="120" step="1" class="form-control" name="EDAD_USUARIO" required>
                 </div>
                 <div class="mb-3">
+                    <label for="FECHANACIMIENTO_USUARIO" class="form-label">Fecha de Nacimiento</label>
+                    <input type="date" class="form-control" id="txtDate" name="FECHANACIMIENTO_USUARIO" required>
+                </div>
+                <div class="mb-3">
                   <label for="email" class="form-label">Correo Electrónico</label>
                   <input placeholder="Ingrese su Correo Electrónico" type="email" class="form-control" name="EMAIL_USUARIO" required>
                 </div>
@@ -112,3 +116,27 @@
         background-color: #124176;
     }
 </style>
+
+<script class="text/javascript">
+
+    // Restriccion fecha
+    var dtToday = new Date();
+    var month = dtToday.getMonth() + 1;
+    var day = dtToday.getDate();
+    var year = dtToday.getFullYear();
+    var maxYear = year - 18;
+    if(month < 10) {
+        month = "0" + month.toString();
+    }
+    if(day < 10) {
+        day = "0" + day.toString();
+    }
+
+    var maxDate = maxYear + "-" + month + "-" + day;
+    var minYear = year - 120;
+    var minDate = minYear + "-" + month + "-" + day;
+    document.querySelectorAll("#txtDate")[0].setAttribute("max", maxDate);
+    document.querySelectorAll("#txtDate")[0].setAttribute("min", minDate);
+
+
+</script>
