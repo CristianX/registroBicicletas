@@ -184,8 +184,6 @@ class BicicletaController extends Controller
     }
 
     public function edit($bicicleta) {
-        // TODO: añadir try catch
-
         $bicicletaProv = Bicicleta::findOrFail($bicicleta);
         return view('bicicleta.edit')->with([
             'bicicleta' => Bicicleta::findOrFail($bicicleta),
@@ -260,7 +258,7 @@ class BicicletaController extends Controller
             'usuario' => $usuario,
         ]);
         } catch (\Exception $e) {
-            return back()->withError('No existe el código ingresado')->withInput();
+            return back()->withError(Config::get('errormessages.CONSULTAERROR_BICICLETA'))->withInput();
         }
 
         

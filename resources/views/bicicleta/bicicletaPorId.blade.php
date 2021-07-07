@@ -15,7 +15,7 @@
                 <h2>Bicicletas Registradas:</h2>
             </div>
             <div class="col-md-1" style="padding-top: 40px">
-                <a href="" type="button" class="btn btn-warning" style="float: right">Editar</a>
+                <a href="{{ route('usuarios.edit', [$regIdentificacion]) }}" type="button" class="btn btn-warning" style="float: right">Editar</a>
             </div>
         </div>
         <hr>

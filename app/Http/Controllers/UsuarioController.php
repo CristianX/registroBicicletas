@@ -15,8 +15,7 @@ class UsuarioController extends Controller
         ]);
     }
 
-    public function create() {
-        
+    public function parroquias() {
         $parroquias = [
             'Belisario Quevedo',
             'El Inca',
@@ -85,8 +84,14 @@ class UsuarioController extends Controller
             'Zámbisa',
         ];
 
+        return $parroquias;
+    }
+
+    
+
+    public function create() {
         return view('usuario.index')->with([
-            'parroquias' => $parroquias,
+            'parroquias' => $this->parroquias(),
         ]);
     }
 
@@ -102,6 +107,37 @@ class UsuarioController extends Controller
         
         return redirect()->route('bicicleta.index', [$identificacion]);
         
-    } 
+    }
+    
+    public function edit($usuario) {
+        // TODO: añadir try catch
+
+        $usuarioProv = Usuario::findOrFail($usuario);
+        return view('usuario.edit')->with([
+            'identificacion' => $usuario,
+            'usuario' => Usuario::findOrFail($usuario),
+            'parroquias' => $this->parroquias(),
+        ]);
+    }
+
+    public function update($usuario) {
+
+        $usuarioProv = Usuario::findOrFail($usuario);
+
+        try {
+            $usuarioProv->update([
+                'EDAD_USUARIO' => request()->EDAD_USUARIO,
+                'EMAIL_USUARIO' => request()->EMAIL_USUARIO,
+                'TELFCELULAR_USUARIO' => request()->TELFCELULAR_USUARIO,
+                'PARROQUIARES_USUARIO' => request()->PARROQUIARES_USUARIO,
+                'BARRIORES_USUARIO' => request()->BARRIORES_USUARIO,
+            ]);
+        } catch (\Exception $e) {
+            return back()->withError(Config::get('errormessages.PUTERROR_USUARIO'))->withInput();
+        }
+
+        
+        return redirect()->route('bicicleta.mostrarBicicletasPorId', [$usuario]);
+    }
 
 }

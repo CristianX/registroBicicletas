@@ -21,6 +21,8 @@ Route::get('consultaBicicleta', 'App\Http\Controllers\WelcomeController@consulta
 Route::get('mostrarUsuarios', 'App\Http\Controllers\UsuarioController@index')->name('usuario.mostrarUsuarios');
 Route::get('usuario', 'App\Http\Controllers\UsuarioController@create')->name('usuario.index');
 Route::post('usuario', 'App\Http\Controllers\UsuarioController@store')->name('usuario.store');
+Route::get('usuarios/{usuario}/edit', 'App\Http\Controllers\UsuarioController@edit')->name('usuarios.edit');
+Route::match(['put', 'patch'], 'usuarios/{usuario}', 'App\Http\Controllers\UsuarioController@update')->name('usuarios.update');
 
 // Rutas bicicleta
 Route::get('mostrarBicicletas', 'App\Http\Controllers\BicicletaController@index')->name('bicicleta.mostrarBicicletas');
