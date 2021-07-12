@@ -263,4 +263,10 @@ class BicicletaController extends Controller
 
         
     }
+
+    public function delete($id) {
+        return $id;
+        $fechanacimiento = request()->get('FECHANACIMIENTO_USUARIO');
+        Usuario::findOrFail($fechanacimiento);
+    }
 }

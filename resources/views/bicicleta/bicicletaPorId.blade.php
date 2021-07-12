@@ -65,7 +65,7 @@
                             </a>
                           </td>
                           <td>
-                            <a type="button" class="btn btn-outline-danger" href="{{ route('bicicletas.edit', ['bicicleta' => $bicicleta->id]) }}" style="color: black" onclick="eliminarBicicleta(event)">
+                            <a type="button" class="btn btn-outline-danger" style="color: black" onclick="eliminarBicicleta({{$bicicleta->id}})">
                                 <i class="fas fa-trash-alt" style="color:#515054"></i>
                             </a>
                           </td>
@@ -114,25 +114,48 @@
         })
     }
 
-    function eliminarBicicleta(e) {
-    
-    e.preventDefault();
-    var url = e.currentTarget.getAttribute('href');
+    function eliminarBicicleta(id) {
+        var url = "{{ route('bicicletas.delete', ['id' => 'idTemp']) }}";
+        console.log(url);
+        Swal.fire({
+            title: 'Eliminar',
+            icon: 'error',
+            showCancelButton: true,
+            confirmButtonText: 'Eliminar',
+            confirmButtonColor: '#FF0000',
+            cancelButtonText: 'Cancelar',
+            // showLoaderOnConfirm: true,
+            html: `
+                <form name="formularioEliminar">
+                    <label for="FECHANACIMIENTO_USUARIO" class="form-label">Ingrese su fecha de Nacimiento</label>
+                    <input type="date" class="form-control" id="txtDate" name="FECHANACIMIENTO_USUARIO">
+                </form>
+            `,
+            didOpen: function() {
 
-    Swal.fire({
-        title: 'Eliminar',
-        text: '¿Está seguro que desea eliminar la información de esta bicicleta?',
-        icon: 'error',
-        showCancelButton: true,
-        confirmButtonText: 'Eliminar',
-        confirmButtonColor: '#FF0000',
-        cancelButtonText: 'Cancelar'
-    }).then((result) => {
-        if(result.value) {
-            window.location.href=url;
-        }
-    })
-}
+                var dtToday = new Date();
+                var month = dtToday.getMonth() + 1;
+                var day = dtToday.getDate();
+                var year = dtToday.getFullYear();
+                if(month < 10) {
+                    month = "0" + month.toString();
+                }
+                if(day < 10) {
+                    day = "0" + day.toString();
+                }
+                var date = year + "-" + month + "-" + day;
+                document.getElementById('txtDate').value = date;
+
+            },
+        }).then((result)=>{
+            document.getElementById("formularioEliminar").action = url;
+            //TODO: mandar form action
+            if(result.isConfirmed) {
+                document.formularioEliminar.submit();
+            }
+        })
+    }
+
 </script>
 </html>
 
