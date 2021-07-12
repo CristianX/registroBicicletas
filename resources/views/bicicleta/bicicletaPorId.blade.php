@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+    <link rel = "stylesheet" href = "{{mix ('css/style.css')}}">
     <title>Bicicletas</title>
 </head>
 <body>
@@ -15,11 +16,15 @@
                 <h2>Bicicletas Registradas:</h2>
             </div>
             <div class="col-md-1" style="padding-top: 40px">
-                <a href="{{ route('usuarios.edit', [$regIdentificacion]) }}" type="button" class="btn btn-warning" style="float: right">Editar</a>
+                <a href="{{ route('usuarios.edit', [$regIdentificacion]) }}" type="button" class="btn btn-warning" style="float: right">
+                    <i style="color:#515054 " class="fas fa-edit"></i>
+                </a>
             </div>
         </div>
         <hr>
-        <a href="{{ route('welcome') }}" type="button" class="btn btn-danger" style="float: right">Salir</a>
+        <a href="{{ route('welcome') }}" type="button" class="btn btn-danger" style="float: right">
+            <i class="fas fa-sign-out-alt"></i>
+        </a>
         <br><br>
         <table class="table table table-bordered table-hover sortable">
             <thead style="background-color: #124176">
@@ -33,7 +38,7 @@
                   <th style="color: white">Colores</th>
                   <th style="color: white">Registro</th>
                   <th style="color: white">Estado</th>
-                  <th style="color: white"></th>
+                  <th style="color: white" colspan="2"></th>
               </tr> 
             </thead>
             <tbody>
@@ -55,7 +60,14 @@
                               @endif
                           </td>
                           <td>
-                              <a type="button" class="btn btn-outline-warning" href="{{ route('bicicletas.edit', ['bicicleta' => $bicicleta->id]) }}" style="color: black" onclick="editarBicicleta(event)">Editar</a>
+                            <a type="button" class="btn btn-outline-warning" href="{{ route('bicicletas.edit', ['bicicleta' => $bicicleta->id]) }}" style="color: black" onclick="editarBicicleta(event)">
+                                <i class="fas fa-edit" style="color:#515054"></i>
+                            </a>
+                          </td>
+                          <td>
+                            <a type="button" class="btn btn-outline-danger" href="{{ route('bicicletas.edit', ['bicicleta' => $bicicleta->id]) }}" style="color: black" onclick="eliminarBicicleta(event)">
+                                <i class="fas fa-trash-alt" style="color:#515054"></i>
+                            </a>
                           </td>
                       </tr>
                 @endforeach
@@ -101,6 +113,26 @@
             }
         })
     }
+
+    function eliminarBicicleta(e) {
+    
+    e.preventDefault();
+    var url = e.currentTarget.getAttribute('href');
+
+    Swal.fire({
+        title: 'Eliminar',
+        text: '¿Está seguro que desea eliminar la información de esta bicicleta?',
+        icon: 'error',
+        showCancelButton: true,
+        confirmButtonText: 'Eliminar',
+        confirmButtonColor: '#FF0000',
+        cancelButtonText: 'Cancelar'
+    }).then((result) => {
+        if(result.value) {
+            window.location.href=url;
+        }
+    })
+}
 </script>
 </html>
 
