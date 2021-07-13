@@ -9,6 +9,9 @@
     <title>Bicicletas</title>
 </head>
 <body>
+    @if (session('error'))
+        <div class="alert alert-danger">{{ session('error') }}</div>
+    @endif
     <div class="container" style="padding-bottom: 20px">
         <div class="row">
             <div class="col-md-11">
@@ -22,9 +25,6 @@
             </div>
         </div>
         <hr>
-        @if (session('error'))
-            <div class="alert alert-danger">{{ session('error') }}</div>
-        @endif
         <a href="{{ route('welcome') }}" type="button" class="btn btn-danger" style="float: right">
             <i class="fas fa-sign-out-alt"></i>
         </a>
@@ -46,35 +46,33 @@
             </thead>
             <tbody>
                 @foreach ($bicicletas as $bicicleta)
-                    @if ($bicicleta->ESTADO_BICICLETA != 0)
-                        <tr>
-                            <td>{{ $bicicleta->APODERADO_BICICLETA }}</td>
-                            <td>{{ $bicicleta->MARCA_BICICLETA }}</td>
-                            <td>{{ $bicicleta->MODELO_BICICLETA }}</td>
-                            <td>{{ $bicicleta->CATEGORIA_BICICLETA }}</td>
-                            <td>{{ $bicicleta->TIPOBICICLETA_BICICLETA }}</td>
-                            <td>{{ $bicicleta->TAMANIO_BICICLETA }}</td>
-                            <td>{{ $bicicleta->COMBCOLORES_BICICLETA }}</td>
-                            <td>{{ $bicicleta->CODREGISTRO_BICICLETA }}</td>
-                            <td>
-                                @if ($bicicleta->ACTIVAROBADA_BICICLETA == 0)
-                                    <span style="color: green" >Activa</span>
-                                @else
-                                    <span style="color: red" >Robada</span>
-                                @endif
-                            </td>
-                            <td>
-                              <a type="button" class="btn btn-outline-warning" href="{{ route('bicicletas.edit', ['bicicleta' => $bicicleta->id]) }}" style="color: black" onclick="editarBicicleta(event)">
-                                  <i class="fas fa-edit" style="color:#515054"></i>
-                              </a>
-                            </td>
-                            <td>
-                              <a type="button" class="btn btn-outline-danger" style="color: black" onclick="eliminarBicicleta({{$bicicleta->id}})">
-                                  <i class="fas fa-trash-alt" style="color:#515054"></i>
-                              </a>
-                            </td>
-                        </tr>
-                    @endif
+                    <tr>
+                        <td>{{ $bicicleta->APODERADO_BICICLETA }}</td>
+                        <td>{{ $bicicleta->MARCA_BICICLETA }}</td>
+                        <td>{{ $bicicleta->MODELO_BICICLETA }}</td>
+                        <td>{{ $bicicleta->CATEGORIA_BICICLETA }}</td>
+                        <td>{{ $bicicleta->TIPOBICICLETA_BICICLETA }}</td>
+                        <td>{{ $bicicleta->TAMANIO_BICICLETA }}</td>
+                        <td>{{ $bicicleta->COMBCOLORES_BICICLETA }}</td>
+                        <td>{{ $bicicleta->CODREGISTRO_BICICLETA }}</td>
+                        <td>
+                            @if ($bicicleta->ACTIVAROBADA_BICICLETA == 0)
+                                <span style="color: green" >Activa</span>
+                            @else
+                                <span style="color: red" >Robada</span>
+                            @endif
+                        </td>
+                        <td>
+                            <a type="button" class="btn btn-outline-warning" href="{{ route('bicicletas.edit', ['bicicleta' => $bicicleta->id]) }}" style="color: black" onclick="editarBicicleta(event)">
+                                <i class="fas fa-edit" style="color:#515054"></i>
+                            </a>
+                        </td>
+                        <td>
+                            <a type="button" class="btn btn-outline-danger" style="color: black" onclick="eliminarBicicleta({{$bicicleta->id}})">
+                                <i class="fas fa-trash-alt" style="color:#515054"></i>
+                            </a>
+                        </td>
+                    </tr>
                 @endforeach
                 
             </tbody>

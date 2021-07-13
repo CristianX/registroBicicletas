@@ -173,7 +173,9 @@ class BicicletaController extends Controller
     public function show($identificacion) {
         try {
             return view('bicicleta.bicicletaPorId')->with([
-                'bicicletas' => Bicicleta::where('IDENTIFICACION_USUARIO', $identificacion)->get(),
+                'bicicletas' => 
+                    Bicicleta::where('IDENTIFICACION_USUARIO', $identificacion)
+                    ->where('ESTADO_BICICLETA', 1)->get(),
                 'identificacion' => Usuario::findOrFail($identificacion),
                 // Problema de borrado de 0 a la izquierda
                 'regIdentificacion' => $identificacion,
@@ -275,11 +277,11 @@ class BicicletaController extends Controller
                     'ESTADO_BICICLETA' => 0
                 ]);
             } catch (\Exception $e) {
-                return back()->withError('ERROR: No se pudo eliminar el registro de está bicicleta')->withInput();
+                return back()->withError(Config::get('errormessages.DELETE_ERROR'))->withInput();
             }
             return redirect()->route('bicicleta.mostrarBicicletasPorId', [$bicicleta->IDENTIFICACION_USUARIO]);
         } else {
-            return back()->withError('ERROR: La fecha que usted especificó no coincide con la registrada')->withInput();
+            return back()->withError(Config::get('errormessages.FECHADELETE_BICICLETA'))->withInput();
         }
     }
 }

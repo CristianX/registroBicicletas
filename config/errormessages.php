@@ -3,13 +3,15 @@
 return[
 
     // Usuarios
-    'POSTERROR_USUARIO' => 'Usuario Registrado Anteriormente',
-    'PUTERROR_USUARIO' => 'Error al actualizar datos de usuario',
+    'POSTERROR_USUARIO'         =>  'ERROR: Usuario Registrado Anteriormente',
+    'PUTERROR_USUARIO'          =>  'ERROR: No se actualizaron los datos de usuario',
 
     // Bicicletas
-    'ERROR_RUC' => 'No Existe un establecimiento con el RUC indicado',
-    'POSTERROR_BICICLETA' => 'Error en el registro de Bicicleta',
-    'PUTERROR_BICICLETA' => 'Error al actualizar el registro',
-    'CONSULTAERROR_BICICLETA' => 'No existe el código ingresado',
+    'ERROR_RUC'                 =>  'ERROR: No Existe un establecimiento con el RUC indicado',
+    'POSTERROR_BICICLETA'       =>  'ERROR: No se pudo registrar está Bicicleta',
+    'PUTERROR_BICICLETA'        =>  'ERROR: No se realizó el registro',
+    'CONSULTAERROR_BICICLETA'   =>  'ERROR: No existe el código ingresado',
+    'DELETE_ERROR'              =>  'ERROR: No se pudo eliminar el registro de está bicicleta',
+    'FECHADELETE_BICICLETA'     =>  'ERROR: La fecha que usted especificó no coincide con la registrada',
 
 ];
