@@ -22,6 +22,9 @@
             </div>
         </div>
         <hr>
+        @if (session('error'))
+            <div class="alert alert-danger">{{ session('error') }}</div>
+        @endif
         <a href="{{ route('welcome') }}" type="button" class="btn btn-danger" style="float: right">
             <i class="fas fa-sign-out-alt"></i>
         </a>
@@ -43,33 +46,35 @@
             </thead>
             <tbody>
                 @foreach ($bicicletas as $bicicleta)
-                      <tr>
-                          <td>{{ $bicicleta->APODERADO_BICICLETA }}</td>
-                          <td>{{ $bicicleta->MARCA_BICICLETA }}</td>
-                          <td>{{ $bicicleta->MODELO_BICICLETA }}</td>
-                          <td>{{ $bicicleta->CATEGORIA_BICICLETA }}</td>
-                          <td>{{ $bicicleta->TIPOBICICLETA_BICICLETA }}</td>
-                          <td>{{ $bicicleta->TAMANIO_BICICLETA }}</td>
-                          <td>{{ $bicicleta->COMBCOLORES_BICICLETA }}</td>
-                          <td>{{ $bicicleta->CODREGISTRO_BICICLETA }}</td>
-                          <td>
-                              @if ($bicicleta->ACTIVAROBADA_BICICLETA == 0)
-                                  <span style="color: green" >Activa</span>
-                              @else
-                                  <span style="color: red" >Robada</span>
-                              @endif
-                          </td>
-                          <td>
-                            <a type="button" class="btn btn-outline-warning" href="{{ route('bicicletas.edit', ['bicicleta' => $bicicleta->id]) }}" style="color: black" onclick="editarBicicleta(event)">
-                                <i class="fas fa-edit" style="color:#515054"></i>
-                            </a>
-                          </td>
-                          <td>
-                            <a type="button" class="btn btn-outline-danger" style="color: black" onclick="eliminarBicicleta({{$bicicleta->id}})">
-                                <i class="fas fa-trash-alt" style="color:#515054"></i>
-                            </a>
-                          </td>
-                      </tr>
+                    @if ($bicicleta->ESTADO_BICICLETA != 0)
+                        <tr>
+                            <td>{{ $bicicleta->APODERADO_BICICLETA }}</td>
+                            <td>{{ $bicicleta->MARCA_BICICLETA }}</td>
+                            <td>{{ $bicicleta->MODELO_BICICLETA }}</td>
+                            <td>{{ $bicicleta->CATEGORIA_BICICLETA }}</td>
+                            <td>{{ $bicicleta->TIPOBICICLETA_BICICLETA }}</td>
+                            <td>{{ $bicicleta->TAMANIO_BICICLETA }}</td>
+                            <td>{{ $bicicleta->COMBCOLORES_BICICLETA }}</td>
+                            <td>{{ $bicicleta->CODREGISTRO_BICICLETA }}</td>
+                            <td>
+                                @if ($bicicleta->ACTIVAROBADA_BICICLETA == 0)
+                                    <span style="color: green" >Activa</span>
+                                @else
+                                    <span style="color: red" >Robada</span>
+                                @endif
+                            </td>
+                            <td>
+                              <a type="button" class="btn btn-outline-warning" href="{{ route('bicicletas.edit', ['bicicleta' => $bicicleta->id]) }}" style="color: black" onclick="editarBicicleta(event)">
+                                  <i class="fas fa-edit" style="color:#515054"></i>
+                              </a>
+                            </td>
+                            <td>
+                              <a type="button" class="btn btn-outline-danger" style="color: black" onclick="eliminarBicicleta({{$bicicleta->id}})">
+                                  <i class="fas fa-trash-alt" style="color:#515054"></i>
+                              </a>
+                            </td>
+                        </tr>
+                    @endif
                 @endforeach
                 
             </tbody>
@@ -87,7 +92,6 @@
                 </div>
             </div>
         </div>
-        
     </footer>
 </body>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
@@ -115,8 +119,9 @@
     }
 
     function eliminarBicicleta(id) {
-        var url = "{{ route('bicicletas.delete', ['id' => 'idTemp']) }}";
-        console.log(url);
+        var url = "{{ route('bicicletas.delete', ['bicicleta' => 'idTemp']) }}";
+        url = url.replace('idTemp', id);
+        console.log(url)
         Swal.fire({
             title: 'Eliminar',
             icon: 'error',
@@ -126,7 +131,9 @@
             cancelButtonText: 'Cancelar',
             // showLoaderOnConfirm: true,
             html: `
-                <form name="formularioEliminar">
+                <form method="POST" name="formularioEliminar" enctype="multipart/form-data">
+                    @csrf
+                    @method('PUT')
                     <label for="FECHANACIMIENTO_USUARIO" class="form-label">Ingrese su fecha de Nacimiento</label>
                     <input type="date" class="form-control" id="txtDate" name="FECHANACIMIENTO_USUARIO">
                 </form>
@@ -148,8 +155,7 @@
 
             },
         }).then((result)=>{
-            document.getElementById("formularioEliminar").action = url;
-            //TODO: mandar form action
+            document.formularioEliminar.action = url;
             if(result.isConfirmed) {
                 document.formularioEliminar.submit();
             }

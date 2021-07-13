@@ -265,8 +265,21 @@ class BicicletaController extends Controller
     }
 
     public function delete($id) {
-        return $id;
+        $bicicleta = Bicicleta::findOrFail($id);
+        $usuario = Usuario::findOrFail($bicicleta->IDENTIFICACION_USUARIO);
         $fechanacimiento = request()->get('FECHANACIMIENTO_USUARIO');
-        Usuario::findOrFail($fechanacimiento);
+        if($usuario->FECHANACIMIENTO_USUARIO === $fechanacimiento) {
+            try {
+                $bicicleta->update([
+                    'CODREGISTRO_BICICLETA' => null,
+                    'ESTADO_BICICLETA' => 0
+                ]);
+            } catch (\Exception $e) {
+                return back()->withError('ERROR: No se pudo eliminar el registro de está bicicleta')->withInput();
+            }
+            return redirect()->route('bicicleta.mostrarBicicletasPorId', [$bicicleta->IDENTIFICACION_USUARIO]);
+        } else {
+            return back()->withError('ERROR: La fecha que usted especificó no coincide con la registrada')->withInput();
+        }
     }
 }

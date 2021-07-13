@@ -31,9 +31,7 @@ Route::post('bicicleta/{identificacion}', 'App\Http\Controllers\BicicletaControl
 Route::get('mostrarBicicletas/{identificacion}', 'App\Http\Controllers\BicicletaController@show')->name('bicicleta.mostrarBicicletasPorId');
 Route::get('bicicletas/{bicicleta}/edit', 'App\Http\Controllers\BicicletaController@edit')->name('bicicletas.edit');
 Route::match(['put', 'patch'], '/bicicletas/{bicicleta}', 'App\Http\Controllers\BicicletaController@update')->name('bicicletas.update');
-// Route::match(['put', 'patch'], '/bicicletas/{id}', 'App\Http\Controllers\BicicletaController@delete')->name('bicicletas.delete');
-Route::get('/bicicletas/{id}', 'App\Http\Controllers\BicicletaController@delete')->name('bicicletas.delete');
-
+Route::match(['put', 'patch'], '/delete/{bicicleta}', 'App\Http\Controllers\BicicletaController@delete')->name('bicicletas.delete');
 
 // Registro completado
 Route::get('regCompletado/{identificacion}', 'App\Http\Controllers\RegCompController@index')->name('registro.index');

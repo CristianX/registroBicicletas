@@ -40,5 +40,6 @@ class Bicicleta extends Model
         'ACTIVAROBADA_BICICLETA',
         'FOTODENUNCIA_BICICLETA',
         'CODREGISTRO_BICICLETA',
+        'ESTADO_BICICLETA',
     ];
 }
