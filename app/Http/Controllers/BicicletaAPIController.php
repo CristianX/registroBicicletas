@@ -198,11 +198,12 @@ class BicicletaAPIController extends Controller
 
     public function mostrarPorId($identificacion) {
         try {
-            $bicicletas = Bicicleta::where('IDENTIFICACION_USUARIO', $identificacion)->get();
             $usuario = Usuario::findOrFail($identificacion);
             return response()->json([
-                'Bicicletas' => $bicicletas, 
-                'Usuario' => $usuario,
+                'Bicicletas' => 
+                    Bicicleta::where('IDENTIFICACION_USUARIO', $identificacion)
+                    ->where('ESTADO_BICICLETA', 1)->get(),
+                'Usuario' => Usuario::findOrFail($identificacion),
                 'regIdentificacion' => $identificacion
             ], 200);
         } catch (\Exception $e) {
