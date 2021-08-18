@@ -73,6 +73,14 @@ class BicicletaAPIController extends Controller
         }
         
 
+        // Prueba campo foto frontal
+        // $imgFrontal = request()->FOTOFRONTAL_BICICLETA;
+        // $imgFrontal = str_replace('data:image;base64,', '', $imgFrontal);
+        // $imgFrontal = str_replace(' ', '+', $imgFrontal);
+        // $imgFrontal->store('public/'.$identificacion.'/'.$nombreApoderado);
+        // $urlImgFrontal = Storage::url($imgFrontal);
+
+
         $imgFrontal = request()->file('FOTOFRONTAL_BICICLETA')
             ->store('public/'.$identificacion.'/'.$nombreApoderado);
         $urlImgFrontal = Storage::url($imgFrontal);
