@@ -253,7 +253,9 @@ class BicicletaController extends Controller
     public function mostrarPorCodigo($codRegistro) {
 
         try {
-            $bicicleta = Bicicleta::where('CODREGISTRO_BICICLETA', $codRegistro)->firstOrFail();
+            $bicicleta = Bicicleta::where('CODREGISTRO_BICICLETA', $codRegistro)
+            ->orWhere('NUMEROSERIE_BICICLETA', $codRegistro)
+            ->where('ESTADO_BICICLETA', 1)->firstOrFail();
             $usuario = Usuario::findOrFail($bicicleta->IDENTIFICACION_USUARIO);
             return view('bicicleta.consulta')->with([
             'bicicleta' => $bicicleta,
