@@ -34,7 +34,7 @@
                                 <label style="text-align: start" for="notificacionCodRegistro" class="form-label">O Número de Serie</label>
                                 <form method="GET" action="{{ route('welcome.consulta') }}">
                                     <div class="form-floating mb-3">
-                                        <input name="codRegistro" id="codRegistro" placeholder="Ingrese su Identificación" type="text" class="form-control" maxlength="10" minlength="10" required>
+                                        <input name="codRegistro" id="codRegistro" placeholder="Ingrese su Identificación" type="text" class="form-control" maxlength="40" minlength="10" required>
                                         <label for="codRegistro" style="color: #bdbdbd">Código de Registro</label>
                                         @if (session('error'))
                                             <small class="text-danger">{{ session('error') }}</small>
