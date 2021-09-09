@@ -46,4 +46,13 @@ Route::post('login', 'App\Http\Controllers\AuthController@login');
 // Route::post('register', 'App\Http\Controllers\AuthController@create');
 
 // Rutas de Panel de admin
+// Usuaios
+Route::get('usuarios', 'App\Http\Controllers\AdministradorAPIController@getUsuarios');
+// Bicicletas
 Route::get('bicicletas', 'App\Http\Controllers\AdministradorAPIController@getBicicletas');
+Route::get('bicicletasPendientes', 'App\Http\Controllers\AdministradorAPIController@getBicicletasPendientes');
+Route::get('bicicletasEliminadas', 'App\Http\Controllers\AdministradorAPIController@getBicicletasEliminadas');
+Route::get('bicicleta/{bicicleta}', 'App\Http\Controllers\AdministradorAPIController@getBicicletaPorId');
+
+Route::put('bicicletaCodigo/{bicicleta}', 'App\Http\Controllers\AdministradorAPIController@putBicicletaPendiente');
+Route::put('bicicletaRestaurar/{bicicleta}', 'App\Http\Controllers\AdministradorAPIController@putRestaurarBicicleta');
