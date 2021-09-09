@@ -56,22 +56,23 @@ Route::get('regCompletado/{identificacion}', 'App\Http\Controllers\RegCompContro
 //     }
 // });
 
+// Posiblemente ruta quemada de webService (Eliminar si es el caso)
 Route::get('webService', 'App\Http\Controllers\Soap\SoapController@datosRucEstablecimiento')->name('webservice');
 
 Route::get('consulta/{codRegistro}', 'App\Http\Controllers\BicicletaController@mostrarPorCodigo')->name('bicicleta.consulta');
 
 // Email
-Route::get('send-mail', function() {
+// Route::get('send-mail', function() {
 
-    try {
+//     try {
 
-        Mail::to('thecristianx@hotmail.com')->send(new \App\Mail\CorreoVerificacion);
-        dd('Email ha sido enviado');
+//         Mail::to('thecristianx@hotmail.com')->send(new \App\Mail\CorreoVerificacion);
+//         dd('Email ha sido enviado');
 
-    } catch (\Exception $e) {
+//     } catch (\Exception $e) {
 
-        dd($e->getMessage());
+//         dd($e->getMessage());
         
-    }
+//     }
     
-});
+// });
