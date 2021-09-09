@@ -14,12 +14,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// Route::middleware('auth:api')->get('/user', function (Request $request) {
-//     return $request->user();
-// });
+Route::middleware('auth:api')->get('/user', function (Request $request) {
+    return $request->user();
+});
 
 // EndPoints para Bicicletas
-Route::get('bicicletas', 'App\Http\Controllers\BicicletaAPIController@mostrarTodo');
+// Route::get('bicicletas', 'App\Http\Controllers\BicicletaAPIController@mostrarTodo');
 Route::get('bicicletas/{identificacion}', 'App\Http\Controllers\BicicletaAPIController@mostrarPorId');
 Route::post('crearBicicletaApi/{identificacion}', 'App\Http\Controllers\BicicletaAPIController@storeApi');
 Route::put('bicicletas/{bicicleta}', 'App\Http\Controllers\BicicletaAPIController@update');
@@ -36,3 +36,14 @@ Route::get('parroquiasApi', 'App\Http\Controllers\UsuarioAPIController@parroquas
 
 // EndPint de consulta por código
 Route::get('consulta/{codRegistro}', 'App\Http\Controllers\BicicletaAPIController@mostrarPorCodigo');
+
+
+
+// **********  Rutas Protegidas **********
+// Rutas de usuario
+Route::post('login', 'App\Http\Controllers\AuthController@login');
+// Borrar despúes de crear un usuario
+// Route::post('register', 'App\Http\Controllers\AuthController@create');
+
+// Rutas de Panel de admin
+Route::get('bicicletas', 'App\Http\Controllers\AdministradorAPIController@getBicicletas');
