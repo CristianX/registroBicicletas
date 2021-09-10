@@ -258,9 +258,9 @@ class BicicletaController extends Controller
             ->where('ESTADO_BICICLETA', 1)->firstOrFail();
             $usuario = Usuario::findOrFail($bicicleta->IDENTIFICACION_USUARIO);
             return view('bicicleta.consulta')->with([
-            'bicicleta' => $bicicleta,
-            'usuario' => $usuario,
-        ]);
+                'bicicleta' => $bicicleta,
+                'usuario' => $usuario,
+            ]);
         } catch (\Exception $e) {
             return back()->withError(Config::get('errormessages.CONSULTAERROR_BICICLETA'))->withInput();
         }
