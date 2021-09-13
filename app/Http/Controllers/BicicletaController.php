@@ -127,7 +127,7 @@ class BicicletaController extends Controller
         
 
         try {
-            Bicicleta::create([
+            $bicicleta = Bicicleta::create([
                 'NUMEROSERIE_BICICLETA' => request()->NUMEROSERIE_BICICLETA,
                 'IDENTIFICACION_USUARIO' => $identificacion,
                 'MARCA_BICICLETA' => request()->MARCA_BICICLETA,
@@ -165,7 +165,7 @@ class BicicletaController extends Controller
             return back()->withError(Config::get('errormessages.POSTERROR_BICICLETA'))->withInput();
         }
 
-        return redirect()->route('registro.index', ['identificacion' => $identificacion]);
+        return redirect()->route('registro.index', ['bicicleta' => $bicicleta->id]);
 
         
     }

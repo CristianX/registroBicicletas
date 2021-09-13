@@ -34,7 +34,7 @@ Route::match(['put', 'patch'], '/bicicletas/{bicicleta}', 'App\Http\Controllers\
 Route::match(['put', 'patch'], '/delete/{bicicleta}', 'App\Http\Controllers\BicicletaController@delete')->name('bicicletas.delete');
 
 // Registro completado
-Route::get('regCompletado/{identificacion}', 'App\Http\Controllers\RegCompController@index')->name('registro.index');
+Route::get('regCompletado/{bicicleta}', 'App\Http\Controllers\RegCompController@index')->name('registro.index');
 
 // Web Service
 Route::get('web', function () {
