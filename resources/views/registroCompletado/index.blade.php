@@ -15,7 +15,7 @@
         <div class="card">
           <div class="visible-print text-center">
             {!! 
-              QrCode::size(150)->generate(
+              QrCode::format('png')->merge("\public\assets\bicicletaQR.png", .3)->size(150)->generate(
                 'Marca Bicicleta: '.$bicicleta->MARCA_BICICLETA."\n".
                 'Número de Serie: '.$bicicleta->NUMEROSERIE_BICICLETA."\n".
                 'Modelo Bicicleta: '.$bicicleta->MODELO_BICICLETA."\n".
