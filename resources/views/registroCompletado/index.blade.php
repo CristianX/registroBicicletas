@@ -14,8 +14,21 @@
         <h3 style="color: #31708F">Pronto nos contactaremos con usted.</h3>
         <div class="card">
           <div class="visible-print text-center">
-            {!! 
-              QrCode::format('png')->merge("\public\assets\bicicletaQR.png", .3)->size(150)->generate(
+            <img src="data:image/png;base64, {!! base64_encode(
+              QrCode::format('png')->errorCorrection('H')->merge('\public\assets\bicicletaQR.png', .4)->size(200)
+              ->generate(
+                'Marca Bicicleta: '.$bicicleta->MARCA_BICICLETA."\n".
+                'Número de Serie: '.$bicicleta->NUMEROSERIE_BICICLETA."\n".
+                'Modelo Bicicleta: '.$bicicleta->MODELO_BICICLETA."\n".
+                'Categoría Bicicleta: '.$bicicleta->CATEGORIA_BICICLETA."\n".
+                'Tipo de Bicicleta:' .$bicicleta->TIPOBICICLETA_BICICLETA."\n".
+                'Tamaño de la Bicicleta: '.$bicicleta->TAMANIO_BICICLETA."\n".
+                'Combinación de Colores: '.$bicicleta->COMBCOLORES_BICICLETA."\n".
+                'Especificaciones: '.$bicicleta->ESPEC_BICICLETA."\n".
+                'Apoderado Bicicleta:'. $bicicleta->APODERADO_BICICLETA
+              )) !!}">
+            {{-- {!! 
+              QrCode::size(150)->generate(
                 'Marca Bicicleta: '.$bicicleta->MARCA_BICICLETA."\n".
                 'Número de Serie: '.$bicicleta->NUMEROSERIE_BICICLETA."\n".
                 'Modelo Bicicleta: '.$bicicleta->MODELO_BICICLETA."\n".
@@ -26,7 +39,7 @@
                 'Especificaciones: '.$bicicleta->ESPEC_BICICLETA."\n".
                 'Apoderado Bicicleta:'. $bicicleta->APODERADO_BICICLETA
               );
-            !!}
+            !!} --}}
           </div>
         </div>
         <br>
