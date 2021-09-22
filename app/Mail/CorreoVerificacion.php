@@ -11,14 +11,16 @@ class CorreoVerificacion extends Mailable
 {
     use Queueable, SerializesModels;
 
+    public $bicicleta;
+
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct($bicicleta)
     {
-        //
+        $this->bicicleta = $bicicleta;
     }
 
     /**
@@ -28,6 +30,8 @@ class CorreoVerificacion extends Mailable
      */
     public function build()
     {
-        return $this->view('mails.correoVerificacion');
+        return $this->view('mails.correoVerificacion')->with([
+            'bicicleta' => $this->bicicleta,
+        ]);;
     }
 }
