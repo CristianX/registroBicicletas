@@ -17,7 +17,7 @@
             QrCode::format('png')
             ->errorCorrection('H')
             ->gradient(255, 51, 51, 0, 7, 233, 'horizontal')
-            ->merge('\public\assets\bicicletaQR(1).png', .3)
+            ->merge('\public\assets\bicicletaQR(1).png', .2)
             ->size(200)
             ->generate(
               'Marca Bicicleta: '.$bicicleta->MARCA_BICICLETA."\n".

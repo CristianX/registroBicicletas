@@ -149,7 +149,7 @@ class BicicletaController extends Controller
                 'NOMBUSADA_BICICLETA' => request()->NOMBUSADA_BICICLETA,
                 'ACTIVAROBADA_BICICLETA' => $valorCheckBox,
                 'FOTODENUNCIA_BICICLETA' => $urlImgFotoDenuncia,
-                'CODREGISTRO_BICICLETA' => 'Pendiente',
+                'CODREGISTRO_BICICLETA' => substr(str_shuffle('0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'), 0, 10),
                 
             ]);
             

@@ -64,15 +64,16 @@ Route::get('consulta/{codRegistro}', 'App\Http\Controllers\BicicletaController@m
 // Email
 // Route::get('send-mail', function() {
 
-//     try {
+//     // try {
 
-//         Mail::to('thecristianx@hotmail.com')->send(new \App\Mail\CorreoVerificacion);
-//         dd('Email ha sido enviado');
+//     //     Mail::to('thecristianx@hotmail.com')->send(new \App\Mail\CorreoVerificacion);
+//     //     dd('Email ha sido enviado');
 
-//     } catch (\Exception $e) {
+//     // } catch (\Exception $e) {
 
-//         dd($e->getMessage());
+//     //     dd($e->getMessage());
         
-//     }
+//     // }
+//     echo(Str::random(10));
     
 // });
