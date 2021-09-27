@@ -37,6 +37,9 @@ Route::get('parroquiasApi', 'App\Http\Controllers\UsuarioAPIController@parroquas
 // EndPint de consulta por código
 Route::get('consulta/{codRegistro}', 'App\Http\Controllers\BicicletaAPIController@mostrarPorCodigo');
 
+// Registro completado
+Route::get('regCompletadoAPI/{bicicleta}', 'App\Http\Controllers\RegCompAPIController@index');
+
 
 
 // **********  Rutas Protegidas **********
