@@ -22,7 +22,7 @@ class AuthController extends Controller
             return $this->respondWithToken($token);
         }
 
-        return response()->json(['error' => 'Unauthorized'], 401);
+        return response()->json(['error' => 'Usuario o contraseña incorrectos'], 401);
     }
 
     protected function respondWithToken($token)
