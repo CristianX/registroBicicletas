@@ -23,18 +23,28 @@ class BicicletaAPIController extends Controller
     public function storeApi($identificacion) {
 
         $razonSocial = null;
+        $rucEstablecimiento = null;
 
-        $ruc = request()->get('RAZONSOCIAL_BICICLETA');
+        $ruc = request()->get('RUC_BICICLETA');
+        $razS = request()->get('RAZONSOCIAL_BICICLETA');
 
         // Datos ruc del web service
         $soapController = new SoapController();
         // return $datosEstablecimiento['NUMERO_RUC'];
         if($ruc != null) {
             $datosEstablecimiento = $soapController->datosRucEstablecimiento($ruc);
-            if(!$datosEstablecimiento) {
-                return response()->json('No Existe un establecimiento con el RUC indicado', 400);
+            if(!$datosEstablecimiento && !$razS) {
+                return back()->with('rucManual', 1)->withInput();
             } else {
-                $razonSocial = $datosEstablecimiento['RAZON_SOCIAL'];
+                if($datosEstablecimiento) {
+                    $razonSocial = $datosEstablecimiento['RAZON_SOCIAL'];
+                    $rucEstablecimiento = $datosEstablecimiento['NUMERO_RUC'];
+                } else {
+                    $rucEstablecimiento = $ruc;
+                    $razonSocial = $razS;
+                }
+                //TODO: añadir condicional para evaluar si existe datos de establecimiento (se modifico por el if primario)
+                //TODO: poner ruc tambíen campurado del web service
             }
         }
 
@@ -57,7 +67,7 @@ class BicicletaAPIController extends Controller
         $imgFotoFactura = request()->file('FOTOFACTURA_BICICLETA');
         if( $imgFotoFactura != null ) {
             $imgFotoFactura = request()->file('FOTOFRONTAL_BICICLETA')
-            ->store('public/'.$identificacion.'/'.$nombreApoderado.'/'.'Factura');
+                ->store('public/'.$identificacion.'/'.$nombreApoderado.'/'.'Factura');
             $urlImgFotoFactura = Storage::url($imgFotoFactura);
         } else {
             $urlImgFotoFactura = null;
@@ -66,26 +76,17 @@ class BicicletaAPIController extends Controller
         $imgFotoDenuncia = request()->file('FOTODENUNCIA_BICICLETA');
         if ($imgFotoDenuncia != null) {
             $imgFotoDenuncia = request()->file('FOTODENUNCIA_BICICLETA')
-            ->store('public/'.$identificacion.'/'.$nombreApoderado.'/'.'Denuncia');
+                ->store('public/'.$identificacion.'/'.$nombreApoderado.'/'.'Denuncia');
             $urlImgFotoDenuncia = Storage::url($imgFotoDenuncia);
         } else {
             $urlImgFotoDenuncia = null;
         }
         
 
-        // // Prueba campo foto frontal
-        // $imgFrontal = request()->FOTOFRONTAL_BICICLETA;
-        // $imgFrontal = str_replace('data:image;base64,', '', $imgFrontal);
-        // $imgFrontal = str_replace(' ', '+', $imgFrontal);
-        // $imgFrontal = base64_decode($imgFrontal);
-        // $imgFrontal->store('public/'.$identificacion.'/'.$nombreApoderado);
-        // $urlImgFrontal = Storage::url($imgFrontal);
-
-
         $imgFrontal = request()->file('FOTOFRONTAL_BICICLETA')
             ->store('public/'.$identificacion.'/'.$nombreApoderado);
         $urlImgFrontal = Storage::url($imgFrontal);
-        
+
         $imgCompleta = request()->file('FOTOCOMPLETA_BICICLETA')
             ->store('public/'.$identificacion.'/'.$nombreApoderado);
         $urlImgCompleta = Storage::url($imgCompleta);
@@ -108,6 +109,7 @@ class BicicletaAPIController extends Controller
             $urlImgComponentes = null;
         }
 
+        
         // Valor checkbox
         $valorCheckBox = (request()->get('ACTIVAROBADA_BICICLETA') == 'on' ? 1 : 0 );
         
@@ -129,6 +131,7 @@ class BicicletaAPIController extends Controller
                 'FOTOCOMP_BICICLETA' => $urlImgComponentes,
                 'APODERADO_BICICLETA' => $nombreApoderado,
                 'RAZONSOCIAL_BICICLETA' => $razonSocial,
+                'RUC_BICICLETA' => $rucEstablecimiento,
                 'FOTOFACTURA_BICICLETA' => $urlImgFotoFactura,
                 'DESCUSADA_BICICLETA' => request()->DESCUSADA_BICICLETA,
                 'NOMBUSADA_BICICLETA' => request()->NOMBUSADA_BICICLETA,
@@ -138,8 +141,9 @@ class BicicletaAPIController extends Controller
                 
             ]);
             
-            return response()->json($bicicleta, 201);
+
         } catch (\Exception $e) {
+            // Storage::deleteDirectory('public/'.$identificacion.'/'.request()->get('NUMEROSERIE_BICICLETA')); 
             Storage::delete($urlImgFotoFactura);
             Storage::delete($urlImgFotoDenuncia);
             Storage::delete($urlImgFrontal);
@@ -148,6 +152,8 @@ class BicicletaAPIController extends Controller
             Storage::delete($imgComponentes);
             return response()->json($e, 400);
         }
+
+        return response()->json($bicicleta, 201);
 
     }
 
@@ -198,7 +204,7 @@ class BicicletaAPIController extends Controller
                 'ACTIVAROBADA_BICICLETA' => $valorCheckBox,
                 'FOTODENUNCIA_BICICLETA' => $urlImgFotoDenuncia,
             ]);
-            return response()->json($bicicleta, 200);
+            return response()->json( $bicicleta , 200);
         } catch (\Exception $e) {
             Storage::delete($urlImgFotoDenuncia);
             return response()->json($e, 400);
