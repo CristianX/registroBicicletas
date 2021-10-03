@@ -238,4 +238,23 @@ class BicicletaAPIController extends Controller
             'EMAIL_USUARIO' => $usuario->EMAIL_USUARIO,
         ], 200);
     }
+
+    public function delete($id) {
+        $bicicleta = Bicicleta::findOrFail($id);
+        $usuario = Usuario::findOrFail($bicicleta->IDENTIFICACION_USUARIO);
+        $fechanacimiento = request()->get('FECHANACIMIENTO_USUARIO');
+        if($usuario->FECHANACIMIENTO_USUARIO === $fechanacimiento) {
+            try {
+                $bicicleta->update([
+                    'CODREGISTRO_BICICLETA' => null,
+                    'ESTADO_BICICLETA' => 0
+                ]);
+            } catch (\Exception $e) {
+                return response()->json('ERROR: No se pudo eliminar el registro de está bicicleta', 400);
+            }
+            return response()->json('Bicicleta eliminada correctamente', 200);
+        } else {
+            return response()->json('ERROR: La fecha que usted especificó no coincide con la registrada', 400);
+        }
+    }
 }
