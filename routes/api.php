@@ -22,7 +22,8 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 // Route::get('bicicletas', 'App\Http\Controllers\BicicletaAPIController@mostrarTodo');
 Route::get('bicicletas/{identificacion}', 'App\Http\Controllers\BicicletaAPIController@mostrarPorId');
 Route::post('crearBicicletaApi/{identificacion}', 'App\Http\Controllers\BicicletaAPIController@storeApi');
-Route::put('bicicletas/{bicicleta}', 'App\Http\Controllers\BicicletaAPIController@update');
+Route::put('bicicletas/update/{bicicleta}', 'App\Http\Controllers\BicicletaAPIController@update');
+Route::put('bicicleta/delete/{bicicleta}', 'App\Http\Controllers\BicicletaAPIController@delete');
 
 // EndPoints para usuarios
 Route::get('usuariosApi', function(){

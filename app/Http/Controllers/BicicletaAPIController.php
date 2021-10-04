@@ -254,7 +254,7 @@ class BicicletaAPIController extends Controller
             }
             return response()->json('Bicicleta eliminada correctamente', 200);
         } else {
-            return response()->json('ERROR: La fecha que usted especificó no coincide con la registrada', 400);
+            return response()->json('ERROR: La fecha ingresada no coincide con la registrada', 400);
         }
     }
 }
