@@ -34,7 +34,7 @@ class BicicletaAPIController extends Controller
         if($ruc != null) {
             $datosEstablecimiento = $soapController->datosRucEstablecimiento($ruc);
             if(!$datosEstablecimiento && !$razS) {
-                return back()->with('rucManual', 1)->withInput();
+                return response()->json('RUC no encontrado, ingreselo manualmente', 500);
             } else {
                 if($datosEstablecimiento) {
                     $razonSocial = $datosEstablecimiento['RAZON_SOCIAL'];
