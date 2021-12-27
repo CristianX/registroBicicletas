@@ -8,7 +8,7 @@
     <link rel = "stylesheet" href = "{{mix ('css/style.css')}}">
     <title>Bicicletas</title>
 </head>
-<body>
+<body class="background_image">
     @if (session('error'))
         <div class="alert alert-danger">{{ session('error') }}</div>
     @endif
@@ -31,18 +31,18 @@
         <br><br>
         <table class="table table table-bordered table-hover sortable">
             <thead style="background-color: #124176">
-              <tr>
-                  <th style="color: white">Apoderado</th>
-                  <th style="color: white">Marca</th>
-                  <th style="color: white">Modelo</th>
-                  <th style="color: white">Categoría</th>
-                  <th style="color: white">Tipo</th>
-                  <th style="color: white">Tamaño</th>
-                  <th style="color: white">Colores</th>
-                  <th style="color: white">Registro</th>
-                  <th style="color: white">Estado</th>
-                  <th style="color: white" colspan="2"></th>
-              </tr> 
+                <tr>
+                    <th style="color: white">Apoderado</th>
+                    <th style="color: white">Marca</th>
+                    <th style="color: white">Modelo</th>
+                    <th style="color: white">Categoría</th>
+                    <th style="color: white">Tipo</th>
+                    <th style="color: white">Tamaño</th>
+                    <th style="color: white">Colores</th>
+                    <th style="color: white">Registro</th>
+                    <th style="color: white">Estado</th>
+                    <th style="color: white" colspan="2"></th>
+                </tr> 
             </thead>
             <tbody>
                 @foreach ($bicicletas as $bicicleta)
@@ -178,6 +178,14 @@
         padding-top: 12px;
         color: white;
 
+    }
+
+    .background_image {
+        background-image: url("{{ asset('/assets/iconografia.png') }}");
+        background-repeat: no-repeat;
+        background-position: bottom right;
+        background-size: 85%;
+        margin-bottom: 50px;
     }
 
     html {
