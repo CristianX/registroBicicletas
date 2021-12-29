@@ -56,6 +56,38 @@ Route::get('web', function () {
     }
 });
 
+Route::get('web_personas', function () {
+    // $opts = array(
+    //     'ssl' => array('ciphers'=>'RC4-SHA', 'verify_peer'=>false, 'verify_peer_name'=>false)
+    // );
+
+    $params = array (
+        'encoding' => 'UTF-8', 
+        'verifypeer' => false, 
+        'verifyhost' => false, 
+        // 'soap_version' => SOAP_1_2, 
+        'trace' => 1, 
+        'exceptions' => 0, 
+        "connection_timeout" => 180,
+        'login' => 'InDrOmQdTa',
+        'password' => '2QK@71PSp/eDcH',
+        // 'stream_context' => stream_context_create($opts)
+    );
+
+
+    $url = "https://interoperabilidad.dinardap.gob.ec/interoperador?WSDL";
+    try {
+        $client = new SoapClient($url, $params);
+        // dd($client->__getTypes());
+        dd($client->getFichaGeneral([
+            'codigoPaquete' => '1038',
+            'numeroIdentificacion' => '0503297079'
+        ]));
+    } catch(SoapFault $fault) {
+        echo '<br>'.$fault;
+    }
+});
+
 // Posiblemente ruta quemada de webService (Eliminar si es el caso)
 Route::get('webService', 'App\Http\Controllers\Soap\SoapController@datosRucEstablecimiento')->name('webservice');
 
