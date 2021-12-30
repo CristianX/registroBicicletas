@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Usuario;
 use Illuminate\Support\Facades\Config;
+use App\Http\Controllers\Soap_Personas\SoapPersonasController;
 
 class UsuarioController extends Controller
 {
@@ -90,6 +91,20 @@ class UsuarioController extends Controller
     
 
     public function create() {
+
+        //TODO: Rellenar datos de usuario
+        // Web Service personas
+        $soapPersonasController = new SoapPersonasController();
+        $datosPersonales = $soapPersonasController->getFichaGeneral('0503297079');
+        // $datosPersonales = $soapPersonasController->getFichaGeneral($identificacion);
+        // dd($datosPersonales);
+        $nombre = $datosPersonales[1]->valor;
+        $fechaNacimiento = $datosPersonales[3]->valor;
+        $nacionalidad = ($datosPersonales[2]->valor === 'CIUDADANO') ? 'Ecuatoriano' : 'Extranjero';
+        // dd($nacionalidad);
+
+        // dd($datosPersonales[1]->valor);
+
         return view('usuario.index')->with([
             'parroquias' => $this->parroquias(),
         ]);

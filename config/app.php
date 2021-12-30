@@ -134,8 +134,9 @@ return [
     |
     */
 
-    // WEB SERVICE
+    // WEB SERVICES
     'urlwebservice' => env('URL_WEBSERVICE'),
+    'urlwebservice_personas' => env('URL_WEBSERVICE_PERSONAS'),
 
     'providers' => [
 

@@ -86,6 +86,9 @@ Route::get('web_personas', function () {
     } catch(SoapFault $fault) {
         echo '<br>'.$fault;
     }
+
+    // $soapController = new SoapPersonasController();
+    // $datosEstablecimiento = $soapController->getFichaGeneral('0503297079');
 });
 
 // Posiblemente ruta quemada de webService (Eliminar si es el caso)
