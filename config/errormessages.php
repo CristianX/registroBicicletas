@@ -5,6 +5,7 @@ return[
     // Usuarios
     'POSTERROR_USUARIO'         =>  'ERROR: Usuario Registrado Anteriormente',
     'PUTERROR_USUARIO'          =>  'ERROR: No se actualizaron los datos de usuario',
+    'GETDATA_USUARIO'           =>  'ERROR: Identificación no válida',
 
     // Bicicletas
     'ERROR_RUC'                 =>  'ERROR: No Existe un establecimiento con el RUC indicado',

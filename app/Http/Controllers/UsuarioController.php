@@ -100,7 +100,7 @@ class UsuarioController extends Controller
         // dd($datosPersonales);
 
         if(!$datosPersonales) {
-            return back()->withError('ERROR: Identificación no válida')->withInput();
+            return back()->withError(Config::get('errormessages.GETDATA_USUARIO'))->withInput();
         }
 
         $cedula = $datosPersonales[0]->valor;

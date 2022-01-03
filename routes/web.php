@@ -81,7 +81,7 @@ Route::get('web_personas', function () {
         // dd($client->__getTypes());
         dd($client->getFichaGeneral([
             'codigoPaquete' => '1038',
-            'numeroIdentificacion' => '0500899943'
+            'numeroIdentificacion' => '0500054259'
         ]));
     } catch(SoapFault $fault) {
         echo '<br>'.$fault;
