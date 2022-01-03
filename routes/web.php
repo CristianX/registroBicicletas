@@ -19,7 +19,7 @@ Route::get('consultaBicicleta', 'App\Http\Controllers\WelcomeController@consulta
 
 // Rutas usuario
 Route::get('mostrarUsuarios', 'App\Http\Controllers\UsuarioController@index')->name('usuario.mostrarUsuarios');
-Route::get('usuario', 'App\Http\Controllers\UsuarioController@create')->name('usuario.index');
+Route::get('usuario/{identificacion}', 'App\Http\Controllers\UsuarioController@create')->name('usuario.index');
 Route::post('usuario', 'App\Http\Controllers\UsuarioController@store')->name('usuario.store');
 Route::get('usuarios/{usuario}/edit', 'App\Http\Controllers\UsuarioController@edit')->name('usuarios.edit');
 Route::match(['put', 'patch'], 'usuarios/{usuario}', 'App\Http\Controllers\UsuarioController@update')->name('usuarios.update');
@@ -81,7 +81,7 @@ Route::get('web_personas', function () {
         // dd($client->__getTypes());
         dd($client->getFichaGeneral([
             'codigoPaquete' => '1038',
-            'numeroIdentificacion' => '0503297079'
+            'numeroIdentificacion' => '0500899943'
         ]));
     } catch(SoapFault $fault) {
         echo '<br>'.$fault;

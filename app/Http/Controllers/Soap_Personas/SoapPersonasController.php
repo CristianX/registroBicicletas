@@ -17,12 +17,17 @@ class SoapPersonasController extends BaseSoapController
             $result = $this->service->getFichaGeneral([
                 'codigoPaquete' => '1038',
                 // 'numeroIdentificacion' => $cedula
-                'numeroIdentificacion' => '0503297079'
+                'numeroIdentificacion' => $cedula
             ]);
             // dd($result->return->instituciones->datosPrincipales->registros);
             $datosPersonas = $result->return->instituciones->datosPrincipales->registros;
             // dd($datosPersonas);
-            return $datosPersonas;
+
+            if(!$datosPersonas) {
+                return null;
+            } else {
+                return $datosPersonas;
+            }
 
             // dd($personas['NewDataSet']['Table']);
             // if(!$personas) {

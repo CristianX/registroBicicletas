@@ -37,15 +37,15 @@
                 @csrf
                 <div class="mb-3">
                     <label for="identificacion" class="form-label">C.I./Pasaporte</label>
-                    <input placeholder="Ingrese su identificación" type="text" pattern="\d*" class="form-control"name="IDENTIFICACION_USUARIO" maxlength="15" minlength="5" required>
+                    <input placeholder="Ingrese su identificación" value="{{ $cedula }}" type="text" pattern="\d*" class="form-control"name="IDENTIFICACION_USUARIO" maxlength="15" minlength="5" required readonly>
                 </div>
                 <div class="mb-3">
                     <label for="nombres" class="form-label">Nombres</label>
-                    <input placeholder="Ingrese sus Nombres" type="text" class="form-control" name="NOMBRES_USUARIO" minlength="4" maxlength="200" required>
+                    <input placeholder="Ingrese sus Nombres" value="{{ $primerNombre }} {{ $segundoNombre }}" type="text" class="form-control" name="NOMBRES_USUARIO" minlength="4" maxlength="200" required readonly>
                 </div>
                 <div class="mb-3">
                     <label for="apellidos" class="form-label">Apellidos</label>
-                    <input placeholder="Ingrese sus Apellidos" type="text" class="form-control" name="APELLIDOS_USUARIO" minlength="4" maxlength="200" required>
+                    <input placeholder="Ingrese sus Apellidos" value="{{ $apellidoPaterno }} {{ $apellidoMaterno }}" type="text" class="form-control" name="APELLIDOS_USUARIO" minlength="4" maxlength="200" required readonly>
                 </div>
                 <div class="mb-3">
                     <label for="edad" class="form-label">Edad</label>
@@ -53,7 +53,7 @@
                 </div>
                 <div class="mb-3">
                     <label for="FECHANACIMIENTO_USUARIO" class="form-label">Fecha de Nacimiento</label>
-                    <input type="date" class="form-control" id="txtDate" name="FECHANACIMIENTO_USUARIO" required>
+                    <input type="date" value="{{ date('Y-m-d', strtotime($fechaNacimiento)) }}" class="form-control" id="txtDate" name="FECHANACIMIENTO_USUARIO" required readonly>
                 </div>
                 <div class="mb-3">
                   <label for="email" class="form-label">Correo Electrónico</label>
@@ -69,7 +69,7 @@
                 </div>
                 <div class="mb-3">
                     <label for="nacionalidad" class="form-label">Nacionalidad</label>
-                    <input placeholder="Ingrese su Nacionalidad" type="text" class="form-control" name="NACIONALIDAD_USUARIO" minlength="4" maxlength="200" required>
+                    <input placeholder="Ingrese su Nacionalidad" value="{{ $nacionalidad }}" type="text" class="form-control" name="NACIONALIDAD_USUARIO" minlength="4" maxlength="200" required readonly>
                 </div>
                 <div class="mb-3">
                     <label for="PARROQUIARES_USUARIO" class="form-label">Parroquia donde Reside</label>
@@ -120,23 +120,23 @@
 <script class="text/javascript">
 
     // Restriccion fecha
-    var dtToday = new Date();
-    var month = dtToday.getMonth() + 1;
-    var day = dtToday.getDate();
-    var year = dtToday.getFullYear();
-    var maxYear = year - 18;
-    if(month < 10) {
-        month = "0" + month.toString();
-    }
-    if(day < 10) {
-        day = "0" + day.toString();
-    }
+    // var dtToday = new Date();
+    // var month = dtToday.getMonth() + 1;
+    // var day = dtToday.getDate();
+    // var year = dtToday.getFullYear();
+    // var maxYear = year - 18;
+    // if(month < 10) {
+    //     month = "0" + month.toString();
+    // }
+    // if(day < 10) {
+    //     day = "0" + day.toString();
+    // }
 
-    var maxDate = maxYear + "-" + month + "-" + day;
-    var minYear = year - 120;
-    var minDate = minYear + "-" + month + "-" + day;
-    document.querySelectorAll("#txtDate")[0].setAttribute("max", maxDate);
-    document.querySelectorAll("#txtDate")[0].setAttribute("min", minDate);
+    // var maxDate = maxYear + "-" + month + "-" + day;
+    // var minYear = year - 120;
+    // var minDate = minYear + "-" + month + "-" + day;
+    // document.querySelectorAll("#txtDate")[0].setAttribute("max", maxDate);
+    // document.querySelectorAll("#txtDate")[0].setAttribute("min", minDate);
 
 
 </script>

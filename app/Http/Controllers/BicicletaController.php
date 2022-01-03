@@ -181,7 +181,7 @@ class BicicletaController extends Controller
                 'regIdentificacion' => $identificacion,
             ]);
         } catch (\Exception $e) {
-            return redirect()->route('usuario.index');
+            return redirect()->route('usuario.index', [$identificacion]);
         }
     }
 

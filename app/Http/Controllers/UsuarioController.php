@@ -90,23 +90,44 @@ class UsuarioController extends Controller
 
     
 
-    public function create() {
+    public function create($identificacion) {
 
         //TODO: Rellenar datos de usuario
         // Web Service personas
         $soapPersonasController = new SoapPersonasController();
-        $datosPersonales = $soapPersonasController->getFichaGeneral('0503297079');
+        $datosPersonales = $soapPersonasController->getFichaGeneral($identificacion);
         // $datosPersonales = $soapPersonasController->getFichaGeneral($identificacion);
         // dd($datosPersonales);
-        $nombre = $datosPersonales[1]->valor;
-        $fechaNacimiento = $datosPersonales[3]->valor;
+
+        if(!$datosPersonales) {
+            return back()->withError('ERROR: Identificación no válida')->withInput();
+        }
+
+        $cedula = $datosPersonales[0]->valor;
         $nacionalidad = ($datosPersonales[2]->valor === 'CIUDADANO') ? 'Ecuatoriano' : 'Extranjero';
-        // dd($nacionalidad);
+        $nombre = $datosPersonales[1]->valor;
+
+        $fechaNacimiento = $datosPersonales[3]->valor;
+        $fechaNacimiento = strtr($fechaNacimiento, '/', '-');
+
+        $apellidoMaterno = explode(' ', $nombre)[1];
+        $apellidoPaterno = explode(' ', $nombre)[0];
+        $primerNombre = explode(' ', $nombre)[2];
+        $segundoNombre = explode(' ', $nombre)[3];
+        // dd($fechaNacimientoFormat);
 
         // dd($datosPersonales[1]->valor);
 
         return view('usuario.index')->with([
             'parroquias' => $this->parroquias(),
+
+            'cedula' => $cedula,
+            'primerNombre' => $primerNombre,
+            'segundoNombre' => $segundoNombre,
+            'apellidoPaterno' => $apellidoPaterno,
+            'apellidoMaterno' => $apellidoMaterno,
+            'fechaNacimiento' => $fechaNacimiento,
+            'nacionalidad' => $nacionalidad,
         ]);
     }
 
@@ -117,6 +138,7 @@ class UsuarioController extends Controller
             //TODO: Checar la línea 27
             $identificacion = request()->get('IDENTIFICACION_USUARIO');
         } catch (\Exception $e) {
+            dd($e);
             return back()->withError(Config::get('errormessages.POSTERROR_USUARIO'))->withInput();
         }
         
