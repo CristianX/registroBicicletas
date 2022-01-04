@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Usuario;
+use App\Http\Controllers\Soap_Personas\SoapPersonasController;
 
 class UsuarioAPIController extends Controller
 {
@@ -86,6 +87,40 @@ class UsuarioAPIController extends Controller
             'Yaruquí',
             'Zámbisa',
         ];
-        return response()->json($parroquias, 201);
+        return response()->json($parroquias, 200);
+    }
+
+    public function datosPersonas($identificacion) {
+        // Web Service personas
+        $soapPersonasController = new SoapPersonasController();
+        $datosPersonales = $soapPersonasController->getFichaGeneral($identificacion);
+        // $datosPersonales = $soapPersonasController->getFichaGeneral($identificacion);
+        // dd($datosPersonales);
+
+        if(!$datosPersonales) {
+            return response()->json(Config::get('errormessages.GETDATA_USUARIO'), 400);
+        }
+
+        $cedula = $datosPersonales[0]->valor;
+        $nacionalidad = ($datosPersonales[2]->valor === 'CIUDADANO') ? 'Ecuatoriano' : 'Extranjero';
+        $nombre = $datosPersonales[1]->valor;
+
+        $fechaNacimiento = $datosPersonales[3]->valor;
+        $fechaNacimiento = strtr($fechaNacimiento, '/', '-');
+
+        $apellidoMaterno = explode(' ', $nombre)[1];
+        $apellidoPaterno = explode(' ', $nombre)[0];
+        $primerNombre = explode(' ', $nombre)[2];
+        $segundoNombre = explode(' ', $nombre)[3];
+
+        return response()->json([
+            'cedula' => $cedula,
+            'primerNombre' => $primerNombre,
+            'segundoNombre' => $segundoNombre,
+            'apellidoPaterno' => $apellidoPaterno,
+            'apellidoMaterno' => $apellidoMaterno,
+            'fechaNacimiento' => $fechaNacimiento,
+            'nacionalidad' => $nacionalidad,
+        ], 200);
     }
 }

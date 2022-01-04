@@ -18,14 +18,14 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-// EndPoints para Bicicletas
+// ****************** EndPoints para Bicicletas *****************************************
 // Route::get('bicicletas', 'App\Http\Controllers\BicicletaAPIController@mostrarTodo');
 Route::get('bicicletas/{identificacion}', 'App\Http\Controllers\BicicletaAPIController@mostrarPorId');
 Route::post('crearBicicletaApi/{identificacion}', 'App\Http\Controllers\BicicletaAPIController@storeApi');
 Route::put('bicicletas/update/{bicicleta}', 'App\Http\Controllers\BicicletaAPIController@update');
 Route::put('bicicleta/delete/{bicicleta}', 'App\Http\Controllers\BicicletaAPIController@delete');
 
-// EndPoints para usuarios
+// ******************************** EndPoints para usuarios *****************************************
 Route::get('usuariosApi', function(){
     return Usuario::all();
 });
@@ -35,11 +35,14 @@ Route::post('crearUsuarioApi', 'App\Http\Controllers\UsuarioAPIController@storeA
 // EndPoints para parroquias
 Route::get('parroquiasApi', 'App\Http\Controllers\UsuarioAPIController@parroquasApi');
 
-// EndPint de consulta por código
+// EndPoint de consulta por código
 Route::get('consulta/{codRegistro}', 'App\Http\Controllers\BicicletaAPIController@mostrarPorCodigo');
 
 // Registro completado
 Route::get('regCompletadoAPI/{bicicleta}', 'App\Http\Controllers\RegCompAPIController@index');
+
+// Datos persona
+Route::get('datosPersona/{identificacion}', 'App\Http\Controllers\UsuarioAPIController@datosPersonas');
 
 
 

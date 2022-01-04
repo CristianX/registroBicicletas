@@ -92,7 +92,6 @@ class UsuarioController extends Controller
 
     public function create($identificacion) {
 
-        //TODO: Rellenar datos de usuario
         // Web Service personas
         $soapPersonasController = new SoapPersonasController();
         $datosPersonales = $soapPersonasController->getFichaGeneral($identificacion);
