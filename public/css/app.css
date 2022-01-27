@@ -1,1 +1,35 @@
+/* input[type="text"] {
+    border: 1px solid blue;
+} */
 
+input[class="form-control"]:focus {
+    border: 1px solid #716dd4;
+    outline: none;
+    /* box-shadow: 0 0 10px #2F2D7C; */
+}
+
+textarea[class="form-control"]:focus {
+    border: 1px solid #716dd4;
+    outline: none;
+    /* box-shadow: 0 0 10px #2F2D7C; */
+}
+
+select[class="form-select"]:focus {
+    border: 1px solid #716dd4;
+    outline: none;
+}
+
+button[type="submit"] {
+    background-color: #2F2D7C;
+    border-color: #716dd4;
+}
+
+button[type="submit"]:hover {
+    background-color: #4a44e4;
+    border-color: #716dd4;
+}
+
+button[type="submit"]:focus {
+    background-color: #4a44e4;
+    border-color: #716dd4;
+}

@@ -20,7 +20,6 @@ class Usuario extends Model
         'IDENTIFICACION_USUARIO',
         'NOMBRES_USUARIO',
         'APELLIDOS_USUARIO',
-        'EDAD_USUARIO',
         'FECHANACIMIENTO_USUARIO',
         'EMAIL_USUARIO',
         'TELFCONVENCIONAL_USUARIO',

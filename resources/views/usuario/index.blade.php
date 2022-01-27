@@ -47,10 +47,10 @@
                     <label for="apellidos" class="form-label">Apellidos</label>
                     <input placeholder="Ingrese sus Apellidos" value="{{ $apellidoPaterno }} {{ $apellidoMaterno }}" type="text" class="form-control" name="APELLIDOS_USUARIO" minlength="4" maxlength="200" required readonly>
                 </div>
-                <div class="mb-3">
+                {{-- <div class="mb-3">
                     <label for="edad" class="form-label">Edad</label>
                     <input placeholder="Ingrese su Edad" type="number" min="18" max="120" step="1" class="form-control" name="EDAD_USUARIO" required>
-                </div>
+                </div> --}}
                 <div class="mb-3">
                     <label for="FECHANACIMIENTO_USUARIO" class="form-label">Fecha de Nacimiento</label>
                     <input type="date" value="{{ date('Y-m-d', strtotime($fechaNacimiento)) }}" class="form-control" id="txtDate" name="FECHANACIMIENTO_USUARIO" required readonly>

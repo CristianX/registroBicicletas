@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+   {{-- CSS personalizado --}}
+    <link rel="stylesheet" type="text/css" href="{{ url('/css/app.css') }}" />
     <title>Inicio</title>
 </head>
 {{-- vh Altura de la ventana gráfica --}}
@@ -40,7 +42,7 @@
                                         <input name="identificacion" id="identificacion" placeholder="Ingrese su Identificación" type="text" pattern="\d*" class="form-control" maxlength="15" minlength="5" required>
                                         <label for="identificacion" style="color: #bdbdbd; margin-left: 5%">C.I./Pasaporte</label>
                                     </div>
-                                    <button class="btn btn-primary" style="background-color: #2F2D7C; border-color: #716dd4" type="submit" >Registrarse/Ingresar</button>
+                                    <button class="btn btn-primary" type="submit" >Registrarse/Ingresar</button>
                                 </form>
                                 <br>
                                 <label style="text-align: start" for="notificacionCodRegistro" class="form-label">Consulta por Código de Registro</label>
@@ -53,7 +55,7 @@
                                             <small class="text-danger">{{ session('error') }}</small>
                                         @endif
                                     </div>
-                                    <button class="btn btn-primary" style="background-color: #2F2D7C; border-color: #716dd4" type="submit" >Consultar</button>
+                                    <button class="btn btn-primary" type="submit" >Consultar</button>
                                 </form>
                             </div>
                         </div>

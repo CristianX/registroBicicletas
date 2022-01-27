@@ -5,6 +5,8 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+        {{-- CSS personalizado --}}
+        <link rel="stylesheet" type="text/css" href="{{ url('/css/app.css') }}" />
         <title>Formulario de Usuarios</title>
     </head>
     <body>
@@ -36,10 +38,10 @@
             <form method="POST" action="{{ route('usuarios.update',['usuario' => $identificacion]) }}" enctype="multipart/form-data" style="padding: 10px" >
                 @csrf
                 @method('PUT')
-                <div class="mb-3">
+                {{-- <div class="mb-3">
                     <label for="edad" class="form-label">Edad</label>
                     <input value="{{ $usuario->EDAD_USUARIO }}" type="number" min="18" max="120" step="1" class="form-control" name="EDAD_USUARIO" required>
-                </div>
+                </div> --}}
                 <div class="mb-3">
                   <label for="email" class="form-label">Correo Electrónico</label>
                   <input value="{{ $usuario->EMAIL_USUARIO }}" type="email" class="form-control" name="EMAIL_USUARIO" required>
