@@ -13,7 +13,8 @@ class RegCompAPIController extends Controller
         try {
             // dd(phpinfo());
             $bicicleta = Bicicleta::findOrFail($bicicleta);
-            Mail::to('thecristianx@hotmail.com')->send(new \App\Mail\CorreoVerificacion($bicicleta));
+            $usuario = Usuario::findOrFail($bicicleta->IDENTIFICACION_USUARIO);
+            Mail::to($usuario->EMAIL_USUARIO)->send(new \App\Mail\CorreoVerificacion($bicicleta));
             return response()->json($bicicleta, 201);
         } catch (\Exception $e) {
             return response()->json($e->getMessage(), 400);

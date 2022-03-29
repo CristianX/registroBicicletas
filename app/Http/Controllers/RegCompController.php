@@ -16,6 +16,9 @@ class RegCompController extends Controller
             $bicicleta = Bicicleta::findOrFail($bicicleta);
             $usuario = Usuario::findOrFail($bicicleta->IDENTIFICACION_USUARIO);
             Mail::to($usuario->EMAIL_USUARIO)->send(new \App\Mail\CorreoVerificacion($bicicleta));
+
+            // dd($mail_status);
+
             return view('registroCompletado.index')->with([
                 'bicicleta' => $bicicleta,
             ]);

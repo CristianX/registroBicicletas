@@ -5,13 +5,19 @@
 input[class="form-control"]:focus {
     border: 1px solid #716dd4;
     outline: none;
-    /* box-shadow: 0 0 10px #2F2D7C; */
+    /* box-shadow: 0 0 10px #09D7DF; */
+}
+
+input[class="form-control"] {
+    border-radius: 30px;
+    display: inline-block;
+    /* box-shadow: 0 0 10px #09D7DF; */
 }
 
 textarea[class="form-control"]:focus {
     border: 1px solid #716dd4;
     outline: none;
-    /* box-shadow: 0 0 10px #2F2D7C; */
+    /* box-shadow: 0 0 10px #09D7DF; */
 }
 
 select[class="form-select"]:focus {
@@ -20,8 +26,9 @@ select[class="form-select"]:focus {
 }
 
 button[type="submit"] {
-    background-color: #2F2D7C;
+    background-color: #09D7DF;
     border-color: #716dd4;
+    border-radius: 30px;
 }
 
 button[type="submit"]:hover {
