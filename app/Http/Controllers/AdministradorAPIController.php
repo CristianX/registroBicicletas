@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Bicicleta;
 use App\Models\usuario;
+use App\Models\User;
 
 class AdministradorAPIController extends Controller
 {
@@ -114,5 +115,31 @@ class AdministradorAPIController extends Controller
         } catch (\Exception $e) {
             return response()->json($e, 400);
         }
+    }
+
+    // ***************** Funciones de creación de usuarios administradores *****************
+    public function create(Request $request) {
+
+        $name = $request->input("name");
+        $email = $request->input("email");
+        $password = $request->input("password");
+        
+        if(!empty($name) && !empty($email) && !empty($password)) {
+            $user = new User();
+            $user->name = $name;
+            $user->email = $email;   
+            $valiEmail = User::where('email', $email)->first();
+            if(!empty($valiEmail['email'])) {
+               return view('register', [
+                    "information"=> "email exist"
+                   ]);  
+            }
+            $user->password = bcrypt($password);
+            $user->save();
+            return response()->json(['msg' => 'user added']);
+        }
+        return  view('register', [
+            "information"=> "I miss some field to fill"
+        ]);  
     }
 }

@@ -63,3 +63,6 @@ Route::get('bicicleta/{bicicleta}', 'App\Http\Controllers\AdministradorAPIContro
 
 Route::put('bicicletaCodigo/{bicicleta}', 'App\Http\Controllers\AdministradorAPIController@putBicicletaPendiente');
 Route::put('bicicletaRestaurar/{bicicleta}', 'App\Http\Controllers\AdministradorAPIController@putRestaurarBicicleta');
+
+// ************************* Creación de usuarios admin ***********************
+Route::post('register', 'App\Http\Controllers\AdministradorAPIController@create');
