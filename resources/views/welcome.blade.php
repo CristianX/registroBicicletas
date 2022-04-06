@@ -45,7 +45,7 @@
                                 <br>
                                 <form method="GET" action="{{ route('welcome.pasarRegBIcicletas') }}">
                                     <div class="form-floating mb-3">
-                                        <input name="identificacion" style="width: 100%;" id="identificacion" placeholder="Ingrese su Identificación" type="text" pattern="\d*" class="form-control" maxlength="15" minlength="5" required>
+                                        <input name="identificacion" style="width: 100%;" id="identificacion" placeholder="Ingrese su Identificación" type="text" pattern="\d*" class="form-control" autocomplete="off" maxlength="15" minlength="5" required>
                                         <label for="identificacion" style="color: #bdbdbd; margin-left: 5%">C.I./Pasaporte</label>
                                     </div>
                                     <button class="btn btn-primary" type="submit" >Registrate/Ingresa</button>
@@ -56,7 +56,7 @@
                                 {{-- <label style="text-align: start" for="notificacionCodRegistro" class="form-label">o Nº de Serie</label> --}}
                                 <form method="GET" action="{{ route('welcome.consulta') }}">
                                     <div class="form-floating mb-3">
-                                        <input name="codRegistro" style="width: 100%;" id="codRegistro" placeholder="Ingrese su Identificación" type="text" class="form-control" maxlength="40" minlength="10" required>
+                                        <input name="codRegistro" style="width: 100%;" id="codRegistro" placeholder="Ingrese su Identificación" type="text" class="form-control" autocomplete="off" maxlength="40" minlength="10" required>
                                         <label for="codRegistro" style="color: #bdbdbd; margin-left: 5%">Código de Registro</label>
                                         @if (session('error'))
                                             <small class="text-danger">{{ session('error') }}</small>
