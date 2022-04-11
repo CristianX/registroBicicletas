@@ -9,12 +9,12 @@
     </head>
     <body>
         <div class="d-none d-sm-none d-md-block contenedorIzquierda">
-            <div class="row" style="background-color: #124176">
+            <div class="row" style="background-color: #ffffff">
                 <div class="col-md-auto">
                     <img class="imagenIzquierda" src="{{ asset('/assets/bicicleta.png') }}" alt="bicicleta">
                 </div>
                 <div class="col contenedorCentro">
-                    <h1 class="estiloTexto" style="text-align: center" >Ingrese sus Datos</h1>
+                    <h1 class="estiloTexto" style="text-align: center; color: #4CBBCE" >Formulario de Registro</h1>
                 </div>
                 <div class="col-md-auto contenedorDerecha">
                     <img src="{{ asset('/assets/bicicleta.png') }}" width="100px" alt="bicicleta">

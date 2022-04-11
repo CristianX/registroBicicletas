@@ -33,12 +33,12 @@
                 </div>
                 <div class="col-sm-5 formulario">
                     <div class="card cardFormulario">
-                        <div class="content-box" style="background-color: #09D7DF; color: white; width: 100%; text-align: center; padding-top: 10px; padding-bottom: 10px; ">
+                        <div class="content-box" style="background-color: #4CBBCE; color: white; width: 100%; text-align: center; padding-top: 10px; padding-bottom: 10px; ">
                             <h3 style="font-weight: bold">Registro de bicicletas</h3>
                         </div>
                         <div class="card-body">
                             <div class="form-group" style="text-align: center;">
-                                <i class="fas fa-id-card fa-2x" style="color: #09D7DF; padding: 10px; vertical-align: middle"></i>
+                                <i class="fas fa-id-card fa-2x" style="color: #4CBBCE; padding: 10px; vertical-align: middle"></i>
                                 <label style="text-align: start; te;" for="notificacion" class="form-label">
                                     Ingresa tu C.I. o Pasaporte
                                 </label>
@@ -51,7 +51,7 @@
                                     <button class="btn btn-primary" type="submit" >Registrate/Ingresa</button>
                                 </form>
                                 <br>
-                                <i class="fas fa-barcode fa-2x" style="color: #09D7DF; padding: 10px; vertical-align: middle"></i>
+                                <i class="fas fa-barcode fa-2x" style="color: #4CBBCE; padding: 10px; vertical-align: middle"></i>
                                 <label style="text-align: start" for="notificacionCodRegistro" class="form-label">Consulta por Código de Registro</label>
                                 {{-- <label style="text-align: start" for="notificacionCodRegistro" class="form-label">o Nº de Serie</label> --}}
                                 <form method="GET" action="{{ route('welcome.consulta') }}">
