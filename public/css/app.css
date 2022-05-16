@@ -20,6 +20,10 @@ textarea[class="form-control"]:focus {
     /* box-shadow: 0 0 10px #09D7DF; */
 }
 
+select[class="form-select"] {
+    border-radius: 20px;
+}
+
 select[class="form-select"]:focus {
     border: 1px solid #716dd4;
     outline: none;
@@ -39,4 +43,68 @@ button[type="submit"]:hover {
 button[type="submit"]:focus {
     background-color: #4a44e4;
     border-color: #716dd4;
+}
+
+
+/* ****************************************Fuentes Municipio **************************** */
+
+@font-face {
+    font-family: 'Otterco-Normal';
+    src: url('../fonts/municipio/Otterco-Regular.otf');
+    font-size: normal;
+}
+
+@font-face {
+    font-family: 'Otterco';
+    src: url('../fonts/municipio/Otterco-Medium.otf');
+    font-weight: medium;
+}
+
+@font-face {
+    font-family: 'Otterco-Ligh';
+    src: url('../fonts/municipio/Otterco-Light.otf');
+    font-weight: lighter;
+}
+
+@font-face {
+    font-family: 'Otterco';
+    src: url('../fonts/municipio/Otterco-ExtraBoldItalic.otf');
+    font-weight: bolder;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'Otterco-ExtraBold';
+    src: url('../fonts/municipio/Otterco-ExtraBold.otf');
+    font-weight: bolder;
+}
+
+@font-face {
+    font-family: 'Otterco-Bold';
+    src: url('../fonts/municipio/Otterco-Bold.otf');
+    font-weight: bold;
+}
+
+h1 {
+    font-family: 'Otterco-Bold';
+}
+
+h3 {
+    font-family: 'Otterco-Bold';
+    font-weight: bold;
+}
+
+div {
+    font-family: 'Otterco-Normal';
+    font-size: normal;
+}
+
+select,
+option,
+input {
+    font-family: 'Otterco-Ligh';
+}
+
+button {
+    font-family: 'Otterco-Bold';
 }

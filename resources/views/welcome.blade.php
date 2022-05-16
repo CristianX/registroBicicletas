@@ -29,7 +29,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-sm-8 imagen">
-                <img src="{{ asset('/assets/izquierda_inicio.svg') }}" style="width: 60%">
+                {{-- <img src="{{ asset('/assets/izquierda_inicio.svg') }}" style="width: 60%"> --}}
                 </div>
                 <div class="col-sm-4 formulario">
                     <div class="card cardFormulario">
@@ -129,6 +129,8 @@
         top: 0;
         width: 100%;
         height: 100%; */
-        background-image: url('/assets/Fondo_1.png');
+        background-image: url('/assets/FondoPantallaPrincipal1.png');
+        background-repeat: no-repeat;
+        background-size: cover;
     }
 </style>
