@@ -12,70 +12,68 @@
 </head>
 {{-- vh Altura de la ventana gráfica --}}
 <body class="background_image" style="min-height: 100vh">
-    <div>
-        <div class="d-none d-sm-none d-md-block contenedorIzquierda">
-            <div class="row" style="background-color: #FFFFFF; width: 100%; margin: 0%; padding-top: 5px">
-                <div class="col-sm-4">
-                    <img src="{{ asset('/assets/logo_secretariaBN.png') }}" width="auto" height="50px">
-                </div>
-                <div class="col-sm-4" style="text-align: center">
-                    {{-- <img src="{{ asset('/assets/sello_quito.png') }}" width="auto" height="60px" style="padding-bottom: 5px"> --}}
-                </div>
-                <div class="col-sm-4" style="text-align: right">
-                    <img src="{{ asset('/assets/CabeceraInicio.svg') }}" width="auto" height="60px">
-                </div>
+    <div class="d-none d-sm-none d-md-block contenedorIzquierda">
+        <div class="row" style="background-color: #FFFFFF; width: 100%; margin: 0%; padding-top: 5px">
+            <div class="col-sm-4">
+                <img src="{{ asset('/assets/logo_secretariaBN.png') }}" width="auto" height="50px">
+            </div>
+            <div class="col-sm-4" style="text-align: center">
+                {{-- <img src="{{ asset('/assets/sello_quito.png') }}" width="auto" height="60px" style="padding-bottom: 5px"> --}}
+            </div>
+            <div class="col-sm-4" style="text-align: right">
+                <img src="{{ asset('/assets/CabeceraInicio.svg') }}" width="auto" height="60px">
             </div>
         </div>
-        <div class="container">
-            <div class="row">
-                <div class="col-sm-8 imagen">
-                {{-- <img src="{{ asset('/assets/izquierda_inicio.svg') }}" style="width: 60%"> --}}
-                </div>
-                <div class="col-sm-4 formulario">
-                    <div class="card cardFormulario">
-                        <div class="content-box" style="background-color: #4CBBCE; color: white; width: 100%; text-align: center; padding-top: 10px; padding-bottom: 10px; ">
-                            <h4 style="font-weight: bold">Registro de bicicletas</h4>
-                        </div>
-                        <div class="card-body">
-                            <div class="form-group" style="text-align: center;">
-                                <div class="row align-items-center" style="padding: 5px">
-                                    <div class="col-sm-2">
-                                        <i class="fas fa-id-card fa-2x" style="color: #4CBBCE"></i>
-                                    </div>
-                                    <div class="col-sm-10" style="text-align: left">
-                                        <label for="notificacion" class="form-label">
-                                            Ingresa tu C.I. o Pasaporte
-                                        </label>
-                                    </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-8 imagen">
+            {{-- <img src="{{ asset('/assets/izquierda_inicio.svg') }}" style="width: 60%"> --}}
+            </div>
+            <div class="col-sm-4 formulario">
+                <div class="card cardFormulario">
+                    <div class="content-box" style="background-color: #4CBBCE; color: white; width: 100%; text-align: center; padding-top: 10px; padding-bottom: 10px; ">
+                        <h4 style="font-weight: bold">Registro de bicicletas</h4>
+                    </div>
+                    <div class="card-body">
+                        <div class="form-group" style="text-align: center;">
+                            <div class="row align-items-center" style="padding: 5px">
+                                <div class="col-sm-2">
+                                    <i class="fas fa-id-card fa-2x" style="color: #4CBBCE"></i>
                                 </div>
-                                <form method="GET" action="{{ route('welcome.pasarRegBIcicletas') }}">
-                                    <div class="form-floating mb-3 ">
-                                        <input name="identificacion" style="width: 100%;" id="identificacion" placeholder="Ingrese su Identificación" type="text" pattern="\d*" class="form-control" autocomplete="off" maxlength="15" minlength="5" required>
-                                        <label for="identificacion" style="color: #bdbdbd; margin-left: 5%">C.I./Pasaporte</label>
-                                    </div>
-                                    <button class="btn btn-primary" type="submit" >Registrate/Ingresa</button>
-                                </form>
-                                <br>
-                                <div class="row align-items-center">
-                                    <div class="col-sm-2">
-                                        <i class="fas fa-barcode fa-2x" style="color: #4CBBCE"></i>
-                                    </div>
-                                    <div class="col-sm-10" style="text-align: left">
-                                        <label for="notificacionCodRegistro" class="form-label">Consulta por Código<br/>de registro</label>
-                                    </div>
+                                <div class="col-sm-10" style="text-align: left">
+                                    <label for="notificacion" class="form-label">
+                                        Ingresa tu C.I. o Pasaporte
+                                    </label>
                                 </div>
-                                {{-- <label style="text-align: start" for="notificacionCodRegistro" class="form-label">o Nº de Serie</label> --}}
-                                <form method="GET" action="{{ route('welcome.consulta') }}">
-                                    <div class="form-floating mb-3">
-                                        <input name="codRegistro" style="width: 100%;" id="codRegistro" placeholder="Ingrese su Identificación" type="text" class="form-control" autocomplete="off" maxlength="40" minlength="10" required>
-                                        <label for="codRegistro" style="color: #bdbdbd; margin-left: 5%">Código de Registro</label>
-                                        @if (session('error'))
-                                            <small class="text-danger">{{ session('error') }}</small>
-                                        @endif
-                                    </div>
-                                    <button class="btn btn-primary" type="submit" >Consultar</button>
-                                </form>
                             </div>
+                            <form method="GET" action="{{ route('welcome.pasarRegBIcicletas') }}">
+                                <div class="form-floating mb-3 ">
+                                    <input name="identificacion" style="width: 100%;" id="identificacion" placeholder="Ingrese su Identificación" type="text" pattern="\d*" class="form-control" autocomplete="off" maxlength="15" minlength="5" required>
+                                    <label for="identificacion" style="color: #bdbdbd; margin-left: 5%">C.I./Pasaporte</label>
+                                </div>
+                                <button class="btn btn-primary" type="submit" >Registrate/Ingresa</button>
+                            </form>
+                            <br>
+                            <div class="row align-items-center">
+                                <div class="col-sm-2">
+                                    <i class="fas fa-barcode fa-2x" style="color: #4CBBCE"></i>
+                                </div>
+                                <div class="col-sm-10" style="text-align: left">
+                                    <label for="notificacionCodRegistro" class="form-label">Consulta por Código<br/>de registro</label>
+                                </div>
+                            </div>
+                            {{-- <label style="text-align: start" for="notificacionCodRegistro" class="form-label">o Nº de Serie</label> --}}
+                            <form method="GET" action="{{ route('welcome.consulta') }}">
+                                <div class="form-floating mb-3">
+                                    <input name="codRegistro" style="width: 100%;" id="codRegistro" placeholder="Ingrese su Identificación" type="text" class="form-control" autocomplete="off" maxlength="40" minlength="10" required>
+                                    <label for="codRegistro" style="color: #bdbdbd; margin-left: 5%">Código de Registro</label>
+                                    @if (session('error'))
+                                        <small class="text-danger">{{ session('error') }}</small>
+                                    @endif
+                                </div>
+                                <button class="btn btn-primary" type="submit" >Consultar</button>
+                            </form>
                         </div>
                     </div>
                 </div>
