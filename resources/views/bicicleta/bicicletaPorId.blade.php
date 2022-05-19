@@ -15,7 +15,7 @@
         <div class="alert alert-danger">{{ session('error') }}</div>
     @endif
     <div class="d-none d-sm-none d-md-block stylePadre">
-        <h1 class="estiloTexto" style="color: #09CFD5" >Formulario de Registro</h1>
+        <img src="{{ asset('/assets/LogoRUBQ.png') }}" width="auto" height="50px" style="margin-top: 10px">
     </div>
     <div class="container d-flex justify-content-center align-items-center" style="vertical-align: middle; padding-top: 30px;">
         <div class="card cardContenedorForm">
@@ -39,8 +39,8 @@
                     </div>
                 </div>
                 <div class="col-sm-2" style="text-align: center">
-                    <a href="{{ route('usuarios.edit', [$regIdentificacion]) }}" type="button" class="btn btn-warning" style="float: right">
-                        <i style="color:#515054 " class="fas fa-edit"></i>
+                    <a href="{{ route('usuarios.edit', [$regIdentificacion]) }}" type="button" class="btn" style="background-color: #09CFD5; border-radius: 100%;">
+                        <i style="color:white; padding: 5px" class="fas fa-edit fa-3x"></i>
                     </a>
                 </div>
             </div>
