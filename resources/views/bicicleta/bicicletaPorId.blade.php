@@ -293,10 +293,10 @@
         /* background-color: red */
     }
 
-    html {
+    /* html {
       min-height: 100%;
       position: relative;
-    }
+    } */
 
     body {
       margin: 0;

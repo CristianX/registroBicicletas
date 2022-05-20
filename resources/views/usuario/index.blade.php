@@ -10,18 +10,8 @@
         <title>Formulario de Usuarios</title>
     </head>
     <body class="background_image" style="min-height: 100vh">
-        <div class="d-none d-sm-none d-md-block contenedorIzquierda">
-            <div class="row" style="background-color: #ffffff">
-                <div class="col-md-auto">
-                    <img class="imagenIzquierda" src="{{ asset('/assets/bicicleta.png') }}" alt="bicicleta">
-                </div>
-                <div class="col contenedorCentro">
-                    <h1 class="estiloTexto" style="text-align: center; color: #4CBBCE" >Formulario de Registro</h1>
-                </div>
-                <div class="col-md-auto contenedorDerecha">
-                    <img src="{{ asset('/assets/bicicleta.png') }}" width="100px" alt="bicicleta">
-                </div>
-            </div>
+        <div class="d-none d-sm-none d-md-block stylePadre">
+            <img src="{{ asset('/assets/LogoFormularioRegistro.svg') }}" width="auto" height="50px" style="margin-top: 5px; margin-bottom: 5px">
         </div>
         <div class="d-block d-sm-block d-md-none">
             <div class="row" style="background-color: #124176">
@@ -192,7 +182,12 @@
                 </form> 
             </div>
         </div>
-
+        <footer>
+            <div class="d-none d-sm-none d-md-block styleFooter">
+                <img src="{{ asset('/assets/LogoRUBQMonoColor.svg') }}" width="auto" height="50px" style="float: middle; margin-left: 250px">
+                <img src="{{ asset('/assets/LogoQuitoBlanco.svg') }}" width="auto" height="50px" style="float: right; margin-right: 30px">
+            </div>
+        </footer>
         
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
     </body>
@@ -260,6 +255,26 @@
         background-repeat: no-repeat;
         background-size: cover;
     }
+    .stylePadre {
+        width: 100%; 
+        background-color: white; 
+        text-align: center;
+        padding-bottom: 5px;
+    }
+
+    .styleFooter {
+        width: 100%; 
+        /* background-color: white;  */
+        text-align: center;
+        padding-bottom: 5px;
+    }
+
+    footer {
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+    }
+
 </style>
 
 <script class="text/javascript">
