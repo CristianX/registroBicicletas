@@ -15,7 +15,7 @@
         <div class="alert alert-danger">{{ session('error') }}</div>
     @endif
     <div class="d-none d-sm-none d-md-block stylePadre">
-        <img src="{{ asset('/assets/LogoRUBQ.png') }}" width="auto" height="50px" style="margin-top: 10px">
+        <img src="{{ asset('/assets/LogoRUBQ.svg') }}" width="auto" height="70px" style="margin-top: 10px">
     </div>
     <div class="container d-flex justify-content-center align-items-center" style="vertical-align: middle; padding-top: 30px;">
         <div class="card cardContenedorForm">
@@ -25,8 +25,8 @@
                         <div class="col-sm-5" style="background-color: rgba(255, 255, 255, 0.65);">
                             <h2 style="color: white; background-color: #09CFD5; padding-left: 20px; padding-top: 5px">IDENTIFICACIÓN:</h2>
                         </div>
-                        <div class="col-sm-7" style="background-color: rgba(255, 255, 255, 0.65);; padding-left: 20px; padding-top: 5px">
-                            <h3>{{ $identificacion->NOMBRES_USUARIO }} {{ $identificacion->APELLIDOS_USUARIO }}</h3>
+                        <div class="col-sm-7" style="background-color: rgba(255, 255, 255, 0.65); padding-left: 20px; padding-top: 5px">
+                            <h3 style="color: #283374">{{ $identificacion->NOMBRES_USUARIO }} {{ $identificacion->APELLIDOS_USUARIO }}</h3>
                         </div>
                     </div>
                     <div class="row">
@@ -34,13 +34,13 @@
                             <h2 style="color: white; background-color: #09CFD5; padding-left: 20px; padding-top: 5px">BICICLETAS REGISTRADAS:</h2>
                         </div>
                         <div class="col" style="background-color: rgba(255, 255, 255, 0.65); padding-left: 20px; padding-top: 5px">
-                            <h3>{{ count($bicicletas) }}</h3>
+                            <h3 style="color: #283374">{{ count($bicicletas) }}</h3>
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-2" style="text-align: center">
+                <div class="col-sm-2" style="text-align: center; background-color: rgba(255, 255, 255, 0.65); display: flex; align-items: center; justify-content: center">
                     <a href="{{ route('usuarios.edit', [$regIdentificacion]) }}" type="button" class="btn" style="background-color: #09CFD5; border-radius: 100%;">
-                        <i style="color:white; padding: 5px" class="fas fa-edit fa-3x"></i>
+                        <i style="color:white;" class="fas fa-edit fa-3x"></i>
                     </a>
                 </div>
             </div>
@@ -269,7 +269,7 @@
     }
 
     .background_image {
-        background-image: url("{{ asset('/assets/FondoTablaBicis.png') }}");
+        background-image: url("{{ asset('/assets/FondoListaBicis.png') }}");
         background-repeat: no-repeat;
         background-position: bottom;
         background-size: contain;
@@ -287,7 +287,7 @@
         overflow: hidden;
         /* background-color: bisque;  */
         background-size: contain;
-        width: 95%;
+        width: 100%;
         border-radius: 30px;
         background-color: rgba(211, 211, 211, 0.65);
         /* background-color: red */
