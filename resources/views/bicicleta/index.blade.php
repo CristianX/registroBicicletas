@@ -47,138 +47,192 @@
                 </div>
                 <form method="POST" action="{{ route('bicicleta.store',['identificacion' => $registroIdentificacion ]) }}" enctype="multipart/form-data" style="padding: 10px" >
                     @csrf
-                    <div class="mb-3">
-                        <label for="modelo" class="form-label">Marca</label>
-                        <input value="{{ old('MARCA_BICICLETA') }}" placeholder="Ingrese la marca de su Bicicleta" type="text" class="form-control" name="MARCA_BICICLETA" minlength="3" maxlength="200" required>
+                    <div class="row" style="text-align: center">
+                        <div class="col">
+                            <label for="MARCA_BICICLETA" class="form-label">Marca</label>
+                        </div>
+                        <div class="col">
+                            <label for="NUMEROSERIE_BICICLETA" class="form-label">Modelo</label>
+                        </div>
+                        <div class="col">
+                            <label for="MODELO_BICICLETA" class="form-label">Número de Serie o chasis de la Bicicleta</label>
+                            <br><a style="font-size: 12px">(En caso de no tenerlo registrar como SN)</a>
+                        </div>
                     </div>
-                    <div class="mb-3">
-                        <label for="modelo" class="form-label">Modelo</label>
-                        <input value="{{ old('MODELO_BICICLETA') }}" placeholder="Ingrese el modelo de su Bicicleta" type="text" class="form-control" name="MODELO_BICICLETA" minlength="3" maxlength="200" required>
+                    <div class="row">
+                        <div class="col">
+                            <div class="mb-3">
+                                {{-- <label for="modelo" class="form-label">Marca</label> --}}
+                                <input value="{{ old('MARCA_BICICLETA') }}" placeholder="Ingrese la marca de su Bicicleta" type="text" class="form-control" name="MARCA_BICICLETA" id="MARCA_BICICLETA" minlength="3" maxlength="200" required>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="mb-3">
+                                {{-- <label for="modelo" class="form-label">Modelo</label> --}}
+                                <input value="{{ old('MODELO_BICICLETA') }}" placeholder="Ingrese el modelo de su Bicicleta" type="text" class="form-control" name="MODELO_BICICLETA" id="MODELO_BICICLETA" minlength="3" maxlength="200" required>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="mb-3">
+                                {{-- <label for="nserie" class="form-label">Número de Serie o chasis de la Bicicleta</label> --}}
+                                {{-- <a>(En caso de no tenerlo registrar como SN)</a> --}}
+                                <input value="{{ old('NUMEROSERIE_BICICLETA') }}" placeholder="Ingrese el número de serie de su Bicicleta" type="text" class="form-control" name="NUMEROSERIE_BICICLETA" id="NUMEROSERIE_BICICLETA" minlength="2" maxlength="40" required>
+                            </div>
+                        </div>
                     </div>
-                    <div class="mb-3">
-                        <label for="nserie" class="form-label">Número de Serie o chasis de la Bicicleta (En caso de no tenerlo registrar como SN)</label>
-                        <input value="{{ old('NUMEROSERIE_BICICLETA') }}" placeholder="Ingrese el número de serie de su Bicicleta" type="text" class="form-control" name="NUMEROSERIE_BICICLETA" minlength="2" maxlength="40" required>
+                    <div class="row" style="text-align: center">
+                        <div class="col">
+                            <div class="mb-3">
+                                <label for="categoria" class="form-label">Gama o Categoría</label>
+                                <select class="form-select" name="CATEGORIA_BICICLETA" required>
+                                    <option value="" {{ old('CATEGORIA_BICICLETA') == '' ? 'selected': '' }} disabled>Seleccione una Categoría</option>
+                                    <option value="Alta" {{ old('CATEGORIA_BICICLETA') == 'Alta' ? 'selected': '' }}>Alta</option>
+                                    <option value="Media" {{ old('CATEGORIA_BICICLETA') == 'Media' ? 'selected': '' }}>Media</option>
+                                    <option value="Baja" {{ old('CATEGORIA_BICICLETA') == 'Baja' ? 'selected': '' }}>Baja</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="mb-3">
+                                <label for="tipoBicicleta" class="form-label">Tipo de Bicicleta</label>
+                                <select class="form-select" name="TIPOBICICLETA_BICICLETA" required>
+                                    <option value="" {{ old('TIPOBICICLETA_BICICLETA') == '' ? 'selected': '' }} disabled>Seleccione un Tipo</option>
+                                    <option value="Montaña" {{ old('TIPOBICICLETA_BICICLETA') == 'Montaña' ? 'selected': '' }}>Montaña</option>
+                                    <option value="Urbana" {{ old('TIPOBICICLETA_BICICLETA') == 'Urbana' ? 'selected': '' }}>Urbana</option>
+                                    <option value="Carretera" {{ old('TIPOBICICLETA_BICICLETA') == 'Carretera' ? 'selected': '' }}>Carretera</option>
+                                    <option value="Freestyle" {{ old('TIPOBICICLETA_BICICLETA') == 'Freestyle' ? 'selected': '' }}>Freestyle</option>
+                                    <option value="Eléctrica" {{ old('TIPOBICICLETA_BICICLETA') == 'Eléctrica' ? 'selected': '' }}>Eléctrica</option>
+                                    <option value="Bici Cargo" {{ old('TIPOBICICLETA_BICICLETA') == 'Bici Cargo' ? 'selected': '' }}>Bici Cargo</option>
+                                    <option value="Plegable" {{ old('TIPOBICICLETA_BICICLETA') == 'Plegable' ? 'selected': '' }}>Plegable</option>
+                                    <option value="Niña/o" {{ old('TIPOBICICLETA_BICICLETA') == 'Niña/o' ? 'selected': '' }}>Niña/o</option>
+                                    <option value="OTRO" {{ old('TIPOBICICLETA_BICICLETA') == 'OTRO' ? 'selected': '' }}>OTRO</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="mb-3">
+                                <label for="tamanio" class="form-label">Tamaño</label>
+                                <select class="form-select" name="TAMANIO_BICICLETA" required>
+                                    <option value="" {{ old('TAMANIO_BICICLETA') == '' ? 'selected': '' }} disabled>Seleccione el Tamaño de Bicicleta</option>
+                                    <option value="Large" {{ old('TAMANIO_BICICLETA') == 'Large' ? 'selected': '' }}>Large</option>
+                                    <option value="Medium" {{ old('TAMANIO_BICICLETA') == 'Medium' ? 'selected': '' }}>Medium</option>
+                                    <option value="Small" {{ old('TAMANIO_BICICLETA') == 'Small' ? 'selected': '' }}>Small</option>
+                                </select>
+                            </div>
+                        </div>
                     </div>
-                    <div class="mb-3">
-                        <label for="categoria" class="form-label">Gama o Categoría</label>
-                        <select class="form-select" name="CATEGORIA_BICICLETA" required>
-                            <option value="" {{ old('CATEGORIA_BICICLETA') == '' ? 'selected': '' }} disabled>Seleccione una Categoría</option>
-                            <option value="Alta" {{ old('CATEGORIA_BICICLETA') == 'Alta' ? 'selected': '' }}>Alta</option>
-                            <option value="Media" {{ old('CATEGORIA_BICICLETA') == 'Media' ? 'selected': '' }}>Media</option>
-                            <option value="Baja" {{ old('CATEGORIA_BICICLETA') == 'Baja' ? 'selected': '' }}>Baja</option>
-                        </select>
+                    <div class="row" style="text-align: center">
+                        <div class="col-sm-4">
+                            <div class="mb-3">
+                                <label for="combColores" class="form-label">Combinación de Colores</label>
+                                <input value="{{ old('COMBCOLORES_BICICLETA') }}" placeholder="Ingrese la combinación de colores de su Bicicleta" type="text" class="form-control" name="COMBCOLORES_BICICLETA" minlength="4" maxlength="600" required>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="mb-3">
+                                <label for="especBicicleta" class="form-label">Especificaciónes de la Bicicleta (Componentes o personalización)</label>
+                                <textarea placeholder="Ingrese las Especificaciones de su Bicicleta" type="text" class="form-control" name="ESPEC_BICICLETA" minlength="4" maxlength="600" required>{{old('ESPEC_BICICLETA')}}</textarea>
+                            </div>
+                        </div>
                     </div>
-                    <div class="mb-3">
-                        <label for="tipoBicicleta" class="form-label">Tipo de Bicicleta</label>
-                        <select class="form-select" name="TIPOBICICLETA_BICICLETA" required>
-                            <option value="" {{ old('TIPOBICICLETA_BICICLETA') == '' ? 'selected': '' }} disabled>Seleccione un Tipo</option>
-                            <option value="Montaña" {{ old('TIPOBICICLETA_BICICLETA') == 'Montaña' ? 'selected': '' }}>Montaña</option>
-                            <option value="Urbana" {{ old('TIPOBICICLETA_BICICLETA') == 'Urbana' ? 'selected': '' }}>Urbana</option>
-                            <option value="Carretera" {{ old('TIPOBICICLETA_BICICLETA') == 'Carretera' ? 'selected': '' }}>Carretera</option>
-                            <option value="Freestyle" {{ old('TIPOBICICLETA_BICICLETA') == 'Freestyle' ? 'selected': '' }}>Freestyle</option>
-                            <option value="Eléctrica" {{ old('TIPOBICICLETA_BICICLETA') == 'Eléctrica' ? 'selected': '' }}>Eléctrica</option>
-                            <option value="Bici Cargo" {{ old('TIPOBICICLETA_BICICLETA') == 'Bici Cargo' ? 'selected': '' }}>Bici Cargo</option>
-                            <option value="Plegable" {{ old('TIPOBICICLETA_BICICLETA') == 'Plegable' ? 'selected': '' }}>Plegable</option>
-                            <option value="Niña/o" {{ old('TIPOBICICLETA_BICICLETA') == 'Niña/o' ? 'selected': '' }}>Niña/o</option>
-                            <option value="OTRO" {{ old('TIPOBICICLETA_BICICLETA') == 'OTRO' ? 'selected': '' }}>OTRO</option>
-                        </select>
-                    </div>
-                    <div class="mb-3">
-                        <label for="tamanio" class="form-label">Tamaño</label>
-                        <select class="form-select" name="TAMANIO_BICICLETA" required>
-                            <option value="" {{ old('TAMANIO_BICICLETA') == '' ? 'selected': '' }} disabled>Seleccione el Tamaño de Bicicleta</option>
-                            <option value="Large" {{ old('TAMANIO_BICICLETA') == 'Large' ? 'selected': '' }}>Large</option>
-                            <option value="Medium" {{ old('TAMANIO_BICICLETA') == 'Medium' ? 'selected': '' }}>Medium</option>
-                            <option value="Small" {{ old('TAMANIO_BICICLETA') == 'Small' ? 'selected': '' }}>Small</option>
-                        </select>
-                    </div>
-                    <div class="mb-3">
-                        <label for="combColores" class="form-label">Combinación de Colores</label>
-                        <input value="{{ old('COMBCOLORES_BICICLETA') }}" placeholder="Ingrese la combinación de colores de su Bicicleta" type="text" class="form-control" name="COMBCOLORES_BICICLETA" minlength="4" maxlength="600" required>
-                    </div>
-                    <div class="mb-3">
-                        <label for="especBicicleta" class="form-label">Especificaciónes de la Bicicleta (Componentes o personalización)</label>
-                        <textarea placeholder="Ingrese las Especificaciones de su Bicicleta" type="text" class="form-control" name="ESPEC_BICICLETA" minlength="4" maxlength="600" required>{{old('ESPEC_BICICLETA')}}</textarea>
-                    </div>
-                    <div class="mb-3">
-                        <div class="card">
-                            <div class="card-body">
-                                <div class="form-group">
-                                    <label for="especBicicleta" class="form-label">Fotografía Frontal de la Bicicleta (Con El Usuario)</label>
-                                    <br>
-                                    <input type="file" name="FOTOFRONTAL_BICICLETA" accept="image/*" required>
-                                    @error('FOTOFRONTAL_BICICLETA')
-                                        <br>
-                                        <small class="text-danger" >{{'No se admiten otro tipo de archivos que no sean imagenes que tengan un peso máximo de 2mb'}}</small>
-                                    @enderror
+                    <div class="row">
+                        <div class="col">
+                            <div class="mb-3">
+                                <div class="card" style="border-radius: 20px">
+                                    <div class="card-body">
+                                        <div class="form-group">
+                                            <label for="especBicicleta" class="form-label">Fotografía Frontal de la Bicicleta (Con El Usuario)</label>
+                                            <br>
+                                            <input type="file" name="FOTOFRONTAL_BICICLETA" accept="image/*" required>
+                                            @error('FOTOFRONTAL_BICICLETA')
+                                                <br>
+                                                <small class="text-danger" >{{'No se admiten otro tipo de archivos que no sean imagenes que tengan un peso máximo de 2mb'}}</small>
+                                            @enderror
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="mb-3">
+                                <div class="card" style="border-radius: 20px">
+                                    <div class="card-body">
+                                        <div class="form-group">
+                                            <label for="especBicicleta" class="form-label">Fotografía Lateral de la Bicicleta</label>
+                                            <br>
+                                            <input type="file" name="FOTOCOMPLETA_BICICLETA" accept="image/*" required>
+                                            @error('FOTOCOMPLETA_BICICLETA')
+                                                <br>
+                                                <small class="text-danger" >{{'No se admiten otro tipo de archivos que no sean imagenes que tengan un peso máximo de 2mb'}}</small>
+                                            @enderror
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="mb-3">
+                                <div class="card" style="border-radius: 20px">
+                                    <div class="card-body">
+                                        <div class="form-group">
+                                            <label for="especBicicleta" class="form-label">Fotografía del Número de serie o Chasis de la Bicicleta (Opcional)</label>
+                                            <br>
+                                            <input type="file" name="FOTONUMSERIE_BICICLETA" accept="image/*">
+                                            @error('FOTONUMSERIE_BICICLETA')
+                                                <br>
+                                                <small class="text-danger" >{{'No se admiten otro tipo de archivos que no sean imagenes que tengan un peso máximo de 2mb'}}</small>
+                                            @enderror
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="mb-3">
+                                <div class="card" style="border-radius: 20px">
+                                    <div class="card-body">
+                                        <div class="form-group">
+                                            <label for="especBicicleta" class="form-label">Fotografía de algún componente o detalle personalizado (Opcional)</label>
+                                            <br>
+                                            <input type="file" name="FOTOCOMP_BICICLETA" accept="image/*">
+                                            @error('FOTOCOMP_BICICLETA')
+                                                <br>
+                                                <small class="text-danger" >{{'No se admiten otro tipo de archivos que no sean imagenes que tengan un peso máximo de 2mb'}}</small>
+                                            @enderror
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="mb-3">
-                        <div class="card">
-                            <div class="card-body">
-                                <div class="form-group">
-                                    <label for="especBicicleta" class="form-label">Fotografía Lateral de la Bicicleta</label>
-                                    <br>
-                                    <input type="file" name="FOTOCOMPLETA_BICICLETA" accept="image/*" required>
-                                    @error('FOTOCOMPLETA_BICICLETA')
-                                        <br>
-                                        <small class="text-danger" >{{'No se admiten otro tipo de archivos que no sean imagenes que tengan un peso máximo de 2mb'}}</small>
-                                    @enderror
+                    <div class="row">
+                        <div class="col">
+                            <div class="mb-3">
+                                <label class="form-label">¿Desea registrar esta bicicleta a nombre de otra persona? (Menor de Edad/Préstamo/Empleado) </label>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" onclick="ocultarCampoHijo()" value="0" {{ !old('flexRadioDefault') ? 'checked' : '' }}>
+                                    <label class="form-check-label" for="flexRadioDefault2">
+                                      No
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" onclick="mostrarCampoHijo()" value="1" {{ old('flexRadioDefault') ? 'checked' : '' }}>
+                                    <label class="form-check-label" for="flexRadioDefault1">
+                                      Si
+                                    </label>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="mb-3">
-                        <div class="card">
-                            <div class="card-body">
-                                <div class="form-group">
-                                    <label for="especBicicleta" class="form-label">Fotografía del Número de serie o Chasis de la Bicicleta (Opcional)</label>
-                                    <br>
-                                    <input type="file" name="FOTONUMSERIE_BICICLETA" accept="image/*">
-                                    @error('FOTONUMSERIE_BICICLETA')
-                                        <br>
-                                        <small class="text-danger" >{{'No se admiten otro tipo de archivos que no sean imagenes que tengan un peso máximo de 2mb'}}</small>
-                                    @enderror
-                                </div>
+                        <div class="col">
+                            <div class="mb-3" id="nombreDuenio">
+                                <label class="form-label">Nombres completos de la Persona</label>
+                                <input value="{{ old('APODERADO_BICICLETA') }}" id="campoNombreDuenio" placeholder="Ingrese los nombres completos de la persona apoderada de la bicicleta" type="text" class="form-control" name="APODERADO_BICICLETA" minlength="4" maxlength="400">
                             </div>
                         </div>
                     </div>
-                    <div class="mb-3">
-                        <div class="card">
-                            <div class="card-body">
-                                <div class="form-group">
-                                    <label for="especBicicleta" class="form-label">Fotografía de algún componente o detalle personalizado (Opcional)</label>
-                                    <br>
-                                    <input type="file" name="FOTOCOMP_BICICLETA" accept="image/*">
-                                    @error('FOTOCOMP_BICICLETA')
-                                        <br>
-                                        <small class="text-danger" >{{'No se admiten otro tipo de archivos que no sean imagenes que tengan un peso máximo de 2mb'}}</small>
-                                    @enderror
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="mb-3">
-                        <label class="form-label">¿Desea registrar esta bicicleta a nombre de otra persona? (Menor de Edad/Préstamo/Empleado) </label>
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" onclick="ocultarCampoHijo()" value="0" {{ !old('flexRadioDefault') ? 'checked' : '' }}>
-                            <label class="form-check-label" for="flexRadioDefault2">
-                              No
-                            </label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" onclick="mostrarCampoHijo()" value="1" {{ old('flexRadioDefault') ? 'checked' : '' }}>
-                            <label class="form-check-label" for="flexRadioDefault1">
-                              Si
-                            </label>
-                        </div>
-                    </div>
-                    <div class="mb-3" id="nombreDuenio">
-                        <label class="form-label">Nombres completos de la Persona</label>
-                        <input value="{{ old('APODERADO_BICICLETA') }}" id="campoNombreDuenio" placeholder="Ingrese los nombres completos de la persona apoderada de la bicicleta" type="text" class="form-control" name="APODERADO_BICICLETA" minlength="4" maxlength="400">
-                    </div>
+
+                    <hr>
+                    
                     <div class="mb-3">
                         <label class="form-label">¿La bicicleta es nueva o usada?</label>
                         <div class="form-check">
