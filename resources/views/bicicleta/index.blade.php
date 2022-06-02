@@ -40,7 +40,7 @@
             <div class="alert alert-warning">Ruc no registrado: Ingreselo Manualmente</div>
         @endif
 
-        <div div class="container d-flex justify-content-center align-items-center" style="vertical-align: middle; padding-top: 30px">
+        <div class="container d-flex justify-content-center align-items-center" style="vertical-align: middle; padding-top: 30px">
             <div class="card cardContenedorForm">
                 <div class="content-box" style="background-color: #4CBBCE; color: white; width: 100%; text-align: center; padding-top: 10px; padding-bottom: 10px; ">
                     <h3 style="font-weight: bold">Registro de bicicletas de {{ $identificacion->NOMBRES_USUARIO  }} {{ $identificacion->APELLIDOS_USUARIO }}</h3>
