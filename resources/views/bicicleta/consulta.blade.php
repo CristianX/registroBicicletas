@@ -66,31 +66,7 @@
       </p>
     </div>
   </div>
-    {{-- <div class="centrado">
-        <h1 style="color: #3C763D">Bicicleta marca {{ $bicicleta->MARCA_BICICLETA }}</h1>
-      <div class="cabecera">
-        <h3 style="color: #31708F">Estado:
-          @if ($bicicleta->ACTIVAROBADA_BICICLETA == 1)
-            <span style="color: red" >Robada</span>
-          @else
-            <span style="color: green" >Activa</span>
-          @endif
-        </h3>
-        <h3 style="color: #31708F">Registrada con identificación de: {{ $usuario->NOMBRES_USUARIO }} {{ $usuario->APELLIDOS_USUARIO }} </h3>
-        <h3 style="color: #31708F">Nombre del Apoderado: {{ $bicicleta->APODERADO_BICICLETA }} </h3>
-        <h3 style="color: #31708F">Número de Celular: {{ $usuario->TELFCELULAR_USUARIO }} </h3>
-        <h3 style="color: #31708F">Correo Electrónico: {{ $usuario->EMAIL_USUARIO }} </h3>
-        <h3 style="color: #FA8500">En caso de requerir mayor información, contactarse al correo xxxxxx@xxxxx.com o llamar al 3952300 ext. 14013</h3>
-      </div>
-      <div class="container">
-        <div class="row">
-          <div class="col">        
-            <a class="btn btn-primary btn-block" style="width: 100%" href="{{ route('welcome') }}">Inicio</a>
-          </div>
-        </div>
-      </div>
-    </div> --}}
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
 </body>
 </html>
 
