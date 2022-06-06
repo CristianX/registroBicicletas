@@ -207,7 +207,6 @@
     function eliminarBicicleta(id) {
         var url = "{{ route('bicicletas.delete', ['bicicleta' => 'idTemp']) }}";
         url = url.replace('idTemp', id);
-        console.log(url)
         Swal.fire({
             title: 'Eliminar',
             icon: 'error',

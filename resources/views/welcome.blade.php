@@ -64,16 +64,14 @@
                                 </div>
                             </div>
                             {{-- <label style="text-align: start" for="notificacionCodRegistro" class="form-label">o Nº de Serie</label> --}}
-                            <form method="GET" action="{{ route('welcome.consulta') }}">
-                                <div class="form-floating mb-3">
-                                    <input name="codRegistro" style="width: 100%;" id="codRegistro" placeholder="Ingrese su Identificación" type="text" class="form-control" autocomplete="off" maxlength="40" minlength="10" required>
-                                    <label for="codRegistro" style="color: #bdbdbd; margin-left: 5%">Código de Registro</label>
-                                    @if (session('error'))
-                                        <small class="text-danger">{{ session('error') }}</small>
-                                    @endif
-                                </div>
-                                <button class="btn btn-primary" type="submit" >Consultar</button>
-                            </form>
+                            <div class="form-floating mb-3">
+                                <input name="codRegistro" style="width: 100%;" id="codRegistro" placeholder="Ingrese su Identificación" type="text" class="form-control" autocomplete="off" maxlength="40" minlength="10" required>
+                                <label for="codRegistro" style="color: #bdbdbd; margin-left: 5%">Código de Registro</label>
+                                @if (session('error'))
+                                    <small class="text-danger">{{ session('error') }}</small>
+                                @endif
+                            </div>
+                            <a type="button" class="btn btn-outline-warning  openModal">Consultar</a>
                         </div>
                     </div>
                 </div>
@@ -85,6 +83,62 @@
             <img src="{{ asset('/assets/SecretariaMovilidad.svg') }}" width="auto" height="40px">
         </div>
     </footer>
+    {{-- Modal --}}
+    <div class="modal fade" id="modal-id">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content" style="border-radius: 20px; overflow: hidden; background-color: rgba(255, 255, 255, 0.85);">
+                <div class="modal-header" style="background-color: #4CBBCE;">
+                    {{-- <h3 style="font-weight: bold">Bicicleta Marca {{ $bicicleta->MARCA_BICICLETA }}</h3> --}}
+                    <h3 class="col-12 text-center" style="font-weight: bold; color: white">Bicicleta Marca</h3>
+                </div>
+                <div class="modal-body">
+                    <div class="row" style="padding-top: 20px">
+                        <div class="col" style="text-align: center; padding-left: 50px; padding-right: 50px">
+                            <div class="col">
+                                Aqui des que va la imagen
+                            </div>
+                            <div class="col">
+                                <h3 style="background-color: green; color: white; border-radius: 20px">
+                                    ACTIVA
+                                </h3>
+                            </div>
+                        </div>
+                        <div class="col" style="margin-left: 20px">
+                            <div class="col">
+                                <p>
+                                    <b>Registrada con identificación de</b> <br>
+                                    <i>El usuario</i>
+                                </p>
+                            </div>
+                            <div class="col">
+                                <p>
+                                    <b>Nombre del Apoderado</b><br>
+                                    <i>El apoderado</i>
+                                </p>
+                            </div>
+                            <div class="col">
+                                <p>
+                                    <b>Número de Celular</b><br>
+                                    <i>El celular</i>
+                                </p>
+                            </div>
+                            <div class="col">
+                                <p>
+                                    <b>Correo Electrónico</b><br>
+                                    <i>El correo</i>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <hr style="margin-left: 10px; margin-right: 10px">
+                    <p style="text-align: center; color: #FF5900">
+                        En caso de requerir mayor información, contactarse al <br>
+                        correo xxxxxx@xxxxx.com o llamar al 3952300 ext. 14013
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
 </html>
@@ -131,4 +185,52 @@
         background-repeat: no-repeat;
         background-size: cover;
     }
-</style>
+    </style>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+<script>
+    $(document).ready(function () {
+
+        // get_bici_data()
+
+        // $.ajaxSetup({
+        //     headers: {
+        //         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        //     }
+        // });
+
+        // // Obtener data de la bicicleta
+        // function get_bici_data() {
+        //     $.ajax({
+        //         url: '{{ route('welcome.consulta') }}',
+        //         type: 'GET',
+        //         data: { },
+        //         success: function (data) {
+        //             console.log(data)
+        //         }
+        //     });
+        // }
+        $('.openModal').on('click', function () {
+            var codigoBicicleta = document.getElementById('codRegistro').value;
+            get_bici_data(codigoBicicleta);
+            
+
+            $('#modal-id').modal('show');
+        });
+
+        function get_bici_data(codigo) {
+                var url = "{{ route('bicicleta.consulta', ['codRegistro' => 'codigoTemp']) }}";
+                url = url.replace('codigoTemp', codigo);
+                var infoBicicleta;
+                console.log(url);
+                $.ajax({
+                    url: url,
+                    type: 'GET',
+                    dataType: 'json',
+                    success: function (data) {
+                        infoBicicleta = data;
+                        console.log(infoBicicleta);
+                    }
+                });
+            }
+    });
+</script>

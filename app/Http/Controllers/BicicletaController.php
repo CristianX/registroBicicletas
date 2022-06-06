@@ -257,10 +257,17 @@ class BicicletaController extends Controller
             ->orWhere('NUMEROSERIE_BICICLETA', $codRegistro)
             ->where('ESTADO_BICICLETA', 1)->firstOrFail();
             $usuario = Usuario::findOrFail($bicicleta->IDENTIFICACION_USUARIO);
-            return view('bicicleta.consulta')->with([
+           return ([
                 'bicicleta' => $bicicleta,
                 'usuario' => $usuario,
             ]);
+            // return view('bicicleta.consulta')->with([
+            //     'bicicleta' => $bicicleta,
+            //     'usuario' => $usuario,
+            // ]);
+            // return $request->ajax() ?
+            //                 response()->json($bicicleta, $usuario, 200)
+            //                 : abort(404);
         } catch (\Exception $e) {
             return back()->withError(Config::get('errormessages.CONSULTAERROR_BICICLETA'))->withInput();
         }
