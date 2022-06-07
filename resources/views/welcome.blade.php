@@ -71,7 +71,7 @@
                                     <small class="text-danger">{{ session('error') }}</small>
                                 @endif
                             </div>
-                            <a type="button" class="btn btn-outline-warning  openModal">Consultar</a>
+                            <a type="button" class="btn openModal" style="background-color: #4CBBCE; border-color: #716dd4; border-radius: 30px; color: white">Consultar</a>
                         </div>
                     </div>
                 </div>
