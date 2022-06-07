@@ -87,54 +87,12 @@
     <div class="modal fade" id="modal-id">
         <div class="modal-dialog modal-lg">
             <div class="modal-content" style="border-radius: 20px; overflow: hidden; background-color: rgba(255, 255, 255, 0.85);">
-                <div class="modal-header" style="background-color: #4CBBCE;">
+                <div class="modal-header" id="cabecera-modal" style="background-color: #4CBBCE;">
                     {{-- <h3 style="font-weight: bold">Bicicleta Marca {{ $bicicleta->MARCA_BICICLETA }}</h3> --}}
                     <h3 class="col-12 text-center" style="font-weight: bold; color: white">Bicicleta Marca</h3>
                 </div>
-                <div class="modal-body">
-                    <div class="row" style="padding-top: 20px">
-                        <div class="col" style="text-align: center; padding-left: 50px; padding-right: 50px">
-                            <div class="col">
-                                Aqui des que va la imagen
-                            </div>
-                            <div class="col">
-                                <h3 style="background-color: green; color: white; border-radius: 20px">
-                                    ACTIVA
-                                </h3>
-                            </div>
-                        </div>
-                        <div class="col" style="margin-left: 20px">
-                            <div class="col">
-                                <p>
-                                    <b>Registrada con identificación de</b> <br>
-                                    <i>El usuario</i>
-                                </p>
-                            </div>
-                            <div class="col">
-                                <p>
-                                    <b>Nombre del Apoderado</b><br>
-                                    <i>El apoderado</i>
-                                </p>
-                            </div>
-                            <div class="col">
-                                <p>
-                                    <b>Número de Celular</b><br>
-                                    <i>El celular</i>
-                                </p>
-                            </div>
-                            <div class="col">
-                                <p>
-                                    <b>Correo Electrónico</b><br>
-                                    <i>El correo</i>
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                    <hr style="margin-left: 10px; margin-right: 10px">
-                    <p style="text-align: center; color: #FF5900">
-                        En caso de requerir mayor información, contactarse al <br>
-                        correo xxxxxx@xxxxx.com o llamar al 3952300 ext. 14013
-                    </p>
+                <div class="modal-body" id="cuerpo-modal">
+                    SADSADSA
                 </div>
             </div>
         </div>
@@ -211,26 +169,132 @@
         // }
         $('.openModal').on('click', function () {
             var codigoBicicleta = document.getElementById('codRegistro').value;
+            // console.log(JSON.stringify(get_bici_data(codigoBicicleta)));
             get_bici_data(codigoBicicleta);
-            
-
-            $('#modal-id').modal('show');
         });
 
         function get_bici_data(codigo) {
-                var url = "{{ route('bicicleta.consulta', ['codRegistro' => 'codigoTemp']) }}";
-                url = url.replace('codigoTemp', codigo);
-                var infoBicicleta;
-                console.log(url);
-                $.ajax({
-                    url: url,
-                    type: 'GET',
-                    dataType: 'json',
-                    success: function (data) {
-                        infoBicicleta = data;
-                        console.log(infoBicicleta);
+            var url = "{{ route('bicicleta.consulta', ['codRegistro' => 'codigoTemp']) }}";
+            url = url.replace('codigoTemp', codigo);
+            console.log(url);
+            $.ajax({
+                url: url,
+                type: 'GET',
+                dataType: 'json',
+                success: function (data) {
+                    console.log(data);
+                    MostrarModal(data); 
+                },
+                error: function (xhr, ajaxOptions, thrownError) {
+                    if(codigo != "") {
+                        alert('No se encontró ninguna bicicleta con ese código de registro');
+                    } else {
+                        alert('Debe ingresar un código de registro');
                     }
-                });
+                }
+            });
+        };
+
+        function MostrarModal(data) {
+            $("#cabecera-modal").html(
+                `<h3 class="col-12 text-center" style="font-weight: bold; color: white">Bicicleta Marca ${data.bicicleta.MARCA_BICICLETA}</h3>`
+            );
+
+            if (data.bicicleta.ACTIVAROBADA_BICICLETA == 0) {
+                $("#cuerpo-modal").html(
+                    `<div class="row" style="padding-top: 20px">
+                        <div class="col" style="text-align: center; padding-left: 50px; padding-right: 50px">
+                            <div class="col">
+                                <img src="${data.bicicleta.FOTOCOMPLETA_BICICLETA}" height="220px" alt="bicicleta" style="border-radius: 20px">
+                            </div>
+                            <div class="col">
+                                <h3 style="background-color: green; color: white; border-radius: 20px">
+                                    ACTIVA
+                                </h3>
+                            </div>
+                        </div>
+                        <div class="col" style="margin-left: 20px">
+                            <div class="col">
+                                <p>
+                                    <b>Registrada con identificación de</b> <br>
+                                    <i>${data.usuario.NOMBRES_USUARIO} ${data.usuario.APELLIDOS_USUARIO}</i>
+                                </p>
+                            </div>
+                            <div class="col">
+                                <p>
+                                    <b>Nombre del Apoderado</b><br>
+                                    <i>${data.bicicleta.APODERADO_BICICLETA}</i>
+                                </p>
+                            </div>
+                            <div class="col">
+                                <p>
+                                    <b>Número de Celular</b><br>
+                                    <i>${data.usuario.TELFCELULAR_USUARIO}</i>
+                                </p>
+                            </div>
+                            <div class="col">
+                                <p>
+                                    <b>Correo Electrónico</b><br>
+                                    <i>${data.usuario.EMAIL_USUARIO}</i>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <hr style="margin-left: 10px; margin-right: 10px">
+                    <p style="text-align: center; color: #FF5900">
+                        En caso de requerir mayor información, contactarse al <br>
+                        correo xxxxxx@xxxxx.com o llamar al 3952300 ext. 14013
+                    </p>`
+                );  
+            } else {
+                $("#cuerpo-modal").html(
+                    `<div class="row" style="padding-top: 20px">
+                        <div class="col" style="text-align: center; padding-left: 50px; padding-right: 50px">
+                            <div class="col">
+                                <img src="${data.bicicleta.FOTOCOMPLETA_BICICLETA}" height="220px" alt="bicicleta" style="border-radius: 20px">
+                            </div>
+                            <div class="col">
+                                <h3 style="background-color: red; color: white; border-radius: 20px">
+                                    ROBADA
+                                </h3>
+                            </div>
+                        </div>
+                        <div class="col" style="margin-left: 20px">
+                            <div class="col">
+                                <p>
+                                    <b>Registrada con identificación de</b> <br>
+                                    <i>${data.usuario.NOMBRES_USUARIO} ${data.usuario.APELLIDOS_USUARIO}</i>
+                                </p>
+                            </div>
+                            <div class="col">
+                                <p>
+                                    <b>Nombre del Apoderado</b><br>
+                                    <i>${data.bicicleta.APODERADO_BICICLETA}</i>
+                                </p>
+                            </div>
+                            <div class="col">
+                                <p>
+                                    <b>Número de Celular</b><br>
+                                    <i>${data.usuario.TELFCELULAR_USUARIO}</i>
+                                </p>
+                            </div>
+                            <div class="col">
+                                <p>
+                                    <b>Correo Electrónico</b><br>
+                                    <i>${data.usuario.EMAIL_USUARIO}</i>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <hr style="margin-left: 10px; margin-right: 10px">
+                    <p style="text-align: center; color: #FF5900">
+                        En caso de requerir mayor información, contactarse al <br>
+                        correo xxxxxx@xxxxx.com o llamar al 3952300 ext. 14013
+                    </p>`
+                );  
+                 
             }
+            $('#modal-id').modal('show');
+        };
     });
 </script>
