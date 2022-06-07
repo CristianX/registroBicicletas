@@ -88,11 +88,9 @@
         <div class="modal-dialog modal-lg">
             <div class="modal-content" style="border-radius: 20px; overflow: hidden; background-color: rgba(255, 255, 255, 0.85);">
                 <div class="modal-header" id="cabecera-modal" style="background-color: #4CBBCE;">
-                    {{-- <h3 style="font-weight: bold">Bicicleta Marca {{ $bicicleta->MARCA_BICICLETA }}</h3> --}}
-                    <h3 class="col-12 text-center" style="font-weight: bold; color: white">Bicicleta Marca</h3>
+                    {{-- <h3 class="col-12 text-center" style="font-weight: bold; color: white">Bicicleta Marca</h3> --}}
                 </div>
                 <div class="modal-body" id="cuerpo-modal">
-                    SADSADSA
                 </div>
             </div>
         </div>
@@ -171,6 +169,7 @@
             var codigoBicicleta = document.getElementById('codRegistro').value;
             // console.log(JSON.stringify(get_bici_data(codigoBicicleta)));
             get_bici_data(codigoBicicleta);
+            document.getElementById('codRegistro').value = null;
         });
 
         function get_bici_data(codigo) {
