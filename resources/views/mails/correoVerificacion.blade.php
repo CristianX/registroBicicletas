@@ -17,18 +17,10 @@
             QrCode::format('png')
             ->errorCorrection('H')
             ->gradient(255, 51, 51, 0, 7, 233, 'horizontal')
-            ->merge('\public\assets\bicicletaQR(1).png', .2)
+            // ->merge('\public\assets\bicicletaQR(1).png', .2)
             ->size(200)
             ->generate(
-              'Marca Bicicleta: '.$bicicleta->MARCA_BICICLETA."\n".
-              'Número de Serie: '.$bicicleta->NUMEROSERIE_BICICLETA."\n".
-              'Modelo Bicicleta: '.$bicicleta->MODELO_BICICLETA."\n".
-              'Categoría Bicicleta: '.$bicicleta->CATEGORIA_BICICLETA."\n".
-              'Tipo de Bicicleta:' .$bicicleta->TIPOBICICLETA_BICICLETA."\n".
-              'Tamaño de la Bicicleta: '.$bicicleta->TAMANIO_BICICLETA."\n".
-              'Combinación de Colores: '.$bicicleta->COMBCOLORES_BICICLETA."\n".
-              'Especificaciones: '.$bicicleta->ESPEC_BICICLETA."\n".
-              'Apoderado Bicicleta:'. $bicicleta->APODERADO_BICICLETA
+                'http://localhost:8000/consulta/'.$bicicleta->CODREGISTRO_BICICLETA
             )) !!}">
     </div>
 

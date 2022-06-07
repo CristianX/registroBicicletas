@@ -8,27 +8,33 @@
     <title>Registro Completado</title>
 </head>
 <body>
-    <div class="centrado">
-      <div class="cabecera">
-        <h1 style="color: #3C763D">Su registro ha entrado en fase de validación.</h1>
-        <h3 style="color: #31708F">Pronto nos contactaremos con usted.</h3>
-        <div class="card">
-        </div>
-        <br>
-        <h3 style="color: #31708F">¿Desea ingresar otra bicicleta?</h3>
+
+  <div class="container d-flex justify-content-center align-items-center" style="vertical-align: middle; padding-top: 5%">
+    <div class="card cardContenedorForm">
+      <div class="content-box" style="background-color: #4CBBCE; color: white; width: 100%; text-align: center; padding-top: 10px; padding-bottom: 10px; ">
+        <h1 style="font-weight: bold">REGISTRO COMPLETADO</h1>
       </div>
-      <div class="container">
-        <div class="row">
-          <div class="col-6">        
-            <a class="btn btn-primary btn-block" style="width: 100%" href="{{ route('bicicleta.index', ['identificacion' => $bicicleta->IDENTIFICACION_USUARIO]) }}">Si</a>
-          </div>
-          <div class="col-6">
-            <a class="btn btn-danger btn-block" style="width: 100%" href="{{ route('bicicleta.mostrarBicicletasPorId', ['identificacion' => $bicicleta->IDENTIFICACION_USUARIO]) }}">No</a>
-          </div>
+      <div class="row" style="text-align: center; padding-top: 20px">
+        <h2>Su registro ha sido existoso, pronto recibirá un correo con el QR de su bicicleta!</h2>
+      </div>
+      <div class="row" style="text-align: center; padding-top: 20px">
+        <h3 style="color: #606060">¿Desea registrar otra bicicleta?</h3>
+      </div>
+      <div class="row" style="padding-top: 20px; padding-bottom: 30px; text-align: center">
+        <div class="col">
+          <a class="btn btn-block" style="width: 50%; border-radius: 30px; background-color: #4CBBCE" href="{{ route('bicicleta.index', ['identificacion' => $bicicleta->IDENTIFICACION_USUARIO]) }}">
+            <h3 style="font-weight: bold; color: white">SI</h3>
+          </a>
+        </div>
+        <div class="col">
+          <a class="btn btn-danger btn-block" style="width: 50%; border-radius: 30px; background-color: #FF0000" href="{{ route('bicicleta.mostrarBicicletasPorId', ['identificacion' => $bicicleta->IDENTIFICACION_USUARIO]) }}">
+            <h3 style="font-weight: bolt; color: white">NO</h3>
+          </a>
         </div>
       </div>
     </div>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
 </body>
 </html>
 
@@ -56,6 +62,16 @@
   }
   .izquierdo {
     left: 20;
+  }
+  .cardContenedorForm{
+    overflow: hidden;
+    /* background-color: bisque;  */
+    background-size: contain;
+    width: 100%;
+    border-radius: 30px;
+    background-color: #FFFFF0;
+    margin-bottom: 30px;
+    box-shadow: 2px 2px 10px #666;
   }
 
 
