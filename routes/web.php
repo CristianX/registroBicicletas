@@ -39,6 +39,9 @@ Route::get('regCompletado/{bicicleta}', 'App\Http\Controllers\RegCompController@
 
 Route::get('consulta/{codRegistro}', 'App\Http\Controllers\BicicletaController@mostrarPorCodigo')->name('bicicleta.consulta');
 
+// Consulta por QR
+Route::get('consultaQR/{codRegistro}', 'App\Http\Controllers\BicicletaController@mostrarPorQR')->name('bicicleta.consultaQR');
+
 // Email
 // Route::get('send-mail', function() {
 

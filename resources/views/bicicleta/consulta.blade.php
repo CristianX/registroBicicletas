@@ -76,7 +76,7 @@
     overflow: hidden;
     /* background-color: bisque;  */
     background-size: contain;
-    width: 80%;
+    width: 100%;
     border-radius: 30px;
     background-color: #FFFFF0;
     margin-bottom: 30px;

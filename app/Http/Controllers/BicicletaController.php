@@ -268,6 +268,22 @@ class BicicletaController extends Controller
         
     }
 
+    public function mostrarPorQR($codRegistro){
+        try {
+            $bicicleta = Bicicleta::where('CODREGISTRO_BICICLETA', $codRegistro)
+            ->orWhere('NUMEROSERIE_BICICLETA', $codRegistro)
+            ->where('ESTADO_BICICLETA', 1)->firstOrFail();
+            $usuario = Usuario::findOrFail($bicicleta->IDENTIFICACION_USUARIO);
+            return view('bicicleta.consulta')->with([
+                'bicicleta' => $bicicleta,
+                'usuario' => $usuario,
+            ]);
+        } catch (\Exception $e) {
+            print($e);
+            // return back()->withError(Config::get('errormessages.CONSULTAERROR_BICICLETA'))->withInput();
+        }
+    }
+
     public function delete($id) {
         $bicicleta = Bicicleta::findOrFail($id);
         $usuario = Usuario::findOrFail($bicicleta->IDENTIFICACION_USUARIO);
