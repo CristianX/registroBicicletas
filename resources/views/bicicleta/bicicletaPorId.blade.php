@@ -70,7 +70,7 @@
                             <td>{{ $bicicleta->TIPOBICICLETA_BICICLETA }}</td>
                             <td style="background-color: rgba(202, 202, 202, 0.65)">{{ $bicicleta->TAMANIO_BICICLETA }}</td>
                             <td>{{ $bicicleta->COMBCOLORES_BICICLETA }}</td>
-                            <td>
+                            <td style="background-color: rgba(202, 202, 202, 0.65)">
                                 @if ($bicicleta->ACTIVAROBADA_BICICLETA == 0)
                                     <span style="color: green" >Activa</span>
                                 @else
