@@ -56,9 +56,8 @@
                         <th style="color: white; background-color: #059594">Tipo</th>
                         <th style="color: white; background-color: #028783">Tamaño</th>
                         <th style="color: white; background-color: #027873">Colores</th>
-                        <th style="color: white; background-color: #016962">Registro</th>
-                        <th style="color: white; background-color: #005B52">Estado</th>
-                        <th style="color: white; background-color: #002824"></th>
+                        <th style="color: white; background-color: #016962">Estado</th>
+                        <th style="color: white; background-color: #005B52"></th>
                     </tr> 
                 </thead>
                 <tbody>
@@ -71,7 +70,6 @@
                             <td>{{ $bicicleta->TIPOBICICLETA_BICICLETA }}</td>
                             <td style="background-color: rgba(202, 202, 202, 0.65)">{{ $bicicleta->TAMANIO_BICICLETA }}</td>
                             <td>{{ $bicicleta->COMBCOLORES_BICICLETA }}</td>
-                            <td style="background-color: rgba(202, 202, 202, 0.65)">{{ $bicicleta->CODREGISTRO_BICICLETA }}</td>
                             <td>
                                 @if ($bicicleta->ACTIVAROBADA_BICICLETA == 0)
                                     <span style="color: green" >Activa</span>
@@ -100,85 +98,6 @@
             </div>
         </div>
     </div>
-    {{-- <div class="container" style="padding-bottom: 20px">
-        <div class="row">
-            <div class="col-md-11">
-                <h2>Identificación: {{ $identificacion->NOMBRES_USUARIO }} {{ $identificacion->APELLIDOS_USUARIO }}</h2>
-                <h2>Bicicletas Registradas:</h2>
-            </div>
-            <div class="col-md-1" style="padding-top: 40px">
-                <a href="{{ route('usuarios.edit', [$regIdentificacion]) }}" type="button" class="btn btn-warning" style="float: right">
-                    <i style="color:#515054 " class="fas fa-edit"></i>
-                </a>
-            </div>
-        </div>
-        <hr>
-        <a href="{{ route('welcome') }}" type="button" class="btn btn-danger" style="float: right">
-            <i class="fas fa-sign-out-alt"></i>
-        </a>
-        <br><br>
-        <table class="table table table-bordered table-hover sortable">
-            <thead style="background-color: #124176">
-                <tr>
-                    <th style="color: white">Apoderado</th>
-                    <th style="color: white">Marca</th>
-                    <th style="color: white">Modelo</th>
-                    <th style="color: white">Categoría</th>
-                    <th style="color: white">Tipo</th>
-                    <th style="color: white">Tamaño</th>
-                    <th style="color: white">Colores</th>
-                    <th style="color: white">Registro</th>
-                    <th style="color: white">Estado</th>
-                    <th style="color: white" colspan="2"></th>
-                </tr> 
-            </thead>
-            <tbody>
-                @foreach ($bicicletas as $bicicleta)
-                    <tr>
-                        <td>{{ $bicicleta->APODERADO_BICICLETA }}</td>
-                        <td>{{ $bicicleta->MARCA_BICICLETA }}</td>
-                        <td>{{ $bicicleta->MODELO_BICICLETA }}</td>
-                        <td>{{ $bicicleta->CATEGORIA_BICICLETA }}</td>
-                        <td>{{ $bicicleta->TIPOBICICLETA_BICICLETA }}</td>
-                        <td>{{ $bicicleta->TAMANIO_BICICLETA }}</td>
-                        <td>{{ $bicicleta->COMBCOLORES_BICICLETA }}</td>
-                        <td>{{ $bicicleta->CODREGISTRO_BICICLETA }}</td>
-                        <td>
-                            @if ($bicicleta->ACTIVAROBADA_BICICLETA == 0)
-                                <span style="color: green" >Activa</span>
-                            @else
-                                <span style="color: red" >Robada</span>
-                            @endif
-                        </td>
-                        <td>
-                            <a type="button" class="btn btn-outline-warning" href="{{ route('bicicletas.edit', ['bicicleta' => $bicicleta->id]) }}" style="color: black" onclick="editarBicicleta(event)">
-                                <i class="fas fa-edit" style="color:#515054"></i>
-                            </a>
-                        </td>
-                        <td>
-                            <a type="button" class="btn btn-outline-danger" style="color: black" onclick="eliminarBicicleta({{$bicicleta->id}})">
-                                <i class="fas fa-trash-alt" style="color:#515054"></i>
-                            </a>
-                        </td>
-                    </tr>
-                @endforeach
-                
-            </tbody>
-        </table>
-        <a type="button" class="btn btn-success float-right" href="{{ route('bicicleta.index', [$regIdentificacion]) }}">Nuevo Registro</a>
-    </div> --}}
-    {{-- <footer>
-        <div class="d-none d-sm-none d-md-block">
-            <div class="row">
-                <div class="col-1">
-                    <img src="{{ asset('/assets/LogoSecretaria.png') }}" width="150px" style="padding-left: 10px" alt="bicicleta">
-                </div>
-                <div class="col-11 contenedorCentro">
-                    <span>En caso de requerir mayor información, contactarse al correo xxxxxx@xxxxx.com o llamar al 3952300 ext. 14013</span>
-                </div>
-            </div>
-        </div>
-    </footer> --}}
 </body>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
 <script src="/js/sorttable.js" ></script>
