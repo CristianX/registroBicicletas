@@ -246,7 +246,7 @@ class BicicletaAPIController extends Controller
         if($usuario->FECHANACIMIENTO_USUARIO === $fechanacimiento) {
             try {
                 $bicicleta->update([
-                    'CODREGISTRO_BICICLETA' => null,
+                    // 'CODREGISTRO_BICICLETA' => null,
                     'ESTADO_BICICLETA' => 0
                 ]);
             } catch (\Exception $e) {
