@@ -78,7 +78,7 @@
                             <div class="mb-3">
                                 <div class="row align-items-center" style="padding: 5px">
                                     <div class="col-sm-2">
-                                        <i class="fas fa-user fa-2x" style="color: #4CBBCE"></i>
+                                        <i class="fas fa-birthday-cake fa-2x" style="color: #4CBBCE"></i>
                                     </div>
                                     <div class="col-sm-10">
                                         <label for="FECHANACIMIENTO_USUARIO" class="form-label">Fecha de Nacimiento</label>
@@ -91,7 +91,7 @@
                             <div class="mb-3">
                                 <div class="row align-items-center" style="padding: 5px">
                                     <div class="col-sm-2">
-                                        <i class="fas fa-id-card fa-2x" style="color: #4CBBCE"></i>
+                                        <i class="fas fa-flag-checkered fa-2x" style="color: #4CBBCE"></i>
                                     </div>
                                     <div class="col-sm-10">
                                         <label for="nacionalidad" class="form-label">Nacionalidad</label>
@@ -107,7 +107,7 @@
                             <div class="mb-3">
                                 <div class="row align-items-center" style="padding: 5px">
                                     <div class="col-sm-2">
-                                        <i class="fas fa-id-card fa-2x" style="color: #4CBBCE"></i>
+                                        <i class="fas fa-at fa-2x" style="color: #4CBBCE"></i>
                                     </div>
                                     <div class="col-sm-10">
                                         <label for="email" class="form-label">Correo Electrónico</label>
@@ -120,7 +120,7 @@
                             <div class="mb-3">
                                 <div class="row align-items-center" style="padding: 5px">
                                     <div class="col-sm-2">
-                                        <i class="fas fa-id-card fa-2x" style="color: #4CBBCE"></i>
+                                        <i class="fas fa-mobile-alt fa-2x" style="color: #4CBBCE"></i>
                                     </div>
                                     <div class="col-sm-10">
                                         <label for="telefCelular" class="form-label">Teléfono Celular</label>
@@ -133,7 +133,7 @@
                             <div class="mb-3">
                                 <div class="row align-items-center" style="padding: 5px">
                                     <div class="col-sm-2">
-                                        <i class="fas fa-id-card fa-2x" style="color: #4CBBCE"></i>
+                                        <i class="	fas fa-phone-square-alt fa-2x" style="color: #4CBBCE"></i>
                                     </div>
                                     <div class="col-sm-10">
                                         <label for="telefConvencional" class="form-label">Teléfono de Emergencia</label>
@@ -148,7 +148,7 @@
                             <div class="mb-3">
                                 <div class="row align-items-center" style="padding: 5px">
                                     <div class="col-sm-2">
-                                        <i class="fas fa-id-card fa-2x" style="color: #4CBBCE"></i>
+                                        <i class="fas fa-map-marked-alt fa-2x" style="color: #4CBBCE"></i>
                                     </div>
                                     <div class="col-sm-10">
                                         <label for="PARROQUIARES_USUARIO" class="form-label">Parroquia donde Reside</label>
@@ -166,7 +166,7 @@
                             <div class="mb-3">
                                 <div class="row align-items-center" style="padding: 5px">
                                     <div class="col-sm-2">
-                                        <i class="fas fa-id-card fa-2x" style="color: #4CBBCE"></i>
+                                        <i class="fas fa-home fa-2x" style="color: #4CBBCE"></i>
                                     </div>
                                     <div class="col-sm-10">
                                         <label for="barrioDondeReside" class="form-label">Barrio donde Reside</label>
